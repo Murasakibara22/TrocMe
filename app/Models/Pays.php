@@ -16,6 +16,7 @@ class Pays extends Model
         'libelle',
         'code',
         'slug',
+        
         'created_at',
         'updated_at',
     ];
