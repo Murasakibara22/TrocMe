@@ -14,8 +14,21 @@ class CreateAbonnementsTable extends Migration
     public function up()
     {
         Schema::create('abonnements', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('type');
+            $table->date('debut');
+            $table->date('fin');
+            $table->float('prix');
+            $table->string('status');
+            $table->string('slug')->unique();
             $table->timestamps();
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+    
         });
     }
 

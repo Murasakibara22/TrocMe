@@ -17,6 +17,7 @@ class Abonnement extends Model
         'fin',
         'prix',
         'status',
+        'slug',
         'created_at',
         'updated_at',
         'user_id',
@@ -25,5 +26,10 @@ class Abonnement extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function payement()
+    {
+        return $this->hasMany(Paiement::class, 'abonnement_id')->get();
     }
 }

@@ -14,8 +14,36 @@ class CreateAnnoncesTable extends Migration
     public function up()
     {
         Schema::create('annonces', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('titre');
+            $table->text('description');
+            $table->string('contactWhatsapp');
+            $table->float('prix');
+            $table->string('type')->default('Vente');
+            $table->string('Lieu');
+            $table->string('email');
+            $table->string('photo');
+            $table->string('facebook');
+            $table->string('slug')->unique();
             $table->timestamps();
+
+            $table->unsignedBigInteger('ville_id');
+            $table->foreign('ville_id')
+                ->references('id')
+                ->on('villes')
+                ->onDelete('cascade');
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+
+            $table->unsignedBigInteger('souscategorie_id');
+            $table->foreign('souscategorie_id')
+                ->references('id')
+                ->on('sous_categories')
+                ->onDelete('cascade');
         });
     }
 
