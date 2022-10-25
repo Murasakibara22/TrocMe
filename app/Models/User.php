@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Annonces;
 use App\Models\Abonnement;
+use Illuminate\Contracts\Auth\CanResetPassword;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Notifications\Notifiable;
