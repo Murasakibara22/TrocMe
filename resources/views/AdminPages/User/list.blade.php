@@ -42,7 +42,7 @@
                             email
                           </th>
                           <th>
-                            Mobile
+                            Contact
                           </th>
                           <th>
                             Modifier
@@ -92,7 +92,7 @@
                           {{$u->email}}
                           </td>
                           <td>
-                          {{$u->mobile}}
+                          {{$u->contact}}
                           </td> 
                        <td>
                                <a href="/Utilisateurs-edit/{{$u->slug}}">  <button type="button" class="btn btn-outline-primary">Modifier</button> </a> 
