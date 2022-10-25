@@ -51,6 +51,7 @@ class RegisteredUserController extends Controller
             'slug' => Str::slug("$request->token". Hash::make($request->nom),"-")
         ]);
 
+
         event(new Registered($user));
 
         Auth::login($user);

@@ -58,7 +58,7 @@ Route::get('/Categorie_delete/{slug}', [CategorieController::class , 'deleteCat'
 Route::delete('/CategoriDelete/{slug}', [CategorieController::class , 'destroyCat']);
 
 
-            //categories
+    //Sous-categories
  Route::get('/new_SousCategorie', [SousCatController::class , 'newSousCat']);
 
  Route::post('/new_SousCategorie', [SousCatController::class , 'addSousCat'])->name('addsouscat');
