@@ -15,6 +15,7 @@ class Categorie extends Model
         'id',
         'libelle',
         'description',
+        'slug',
         'created_at',
         'updated_at',
         'photo',

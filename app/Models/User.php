@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Annonces;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -18,9 +20,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'id',
+        'nom',
+        'prenom',
+        'contact',
         'email',
+        'photo',
+        'slug',
         'password',
+        'role',
     ];
 
     /**
@@ -41,4 +49,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    
+    public function annonces() {
+        return $this->hasMany(Annonces::class);
+    }
+
+    public function delete()
+    {
+       DB::transaction(function(){
+            $this->annonces()->delete();
+            parent::delete();
+       });
+    }
 }

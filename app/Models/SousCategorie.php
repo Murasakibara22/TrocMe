@@ -15,6 +15,7 @@ class SousCategorie extends Model
         'id',
         'categorie_id',
         'libelle',
+        'slug',
         'description',
         'created_at',
         'updated_at',
