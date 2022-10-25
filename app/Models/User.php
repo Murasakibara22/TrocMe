@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Annonces;
+use App\Models\Abonnement;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Notifications\Notifiable;
@@ -55,10 +56,15 @@ class User extends Authenticatable
         return $this->hasMany(Annonces::class);
     }
 
+    public function abonnement() {
+        return $this->hasMany(Abonnement::class, 'user_id')->get();
+    }
+
     public function delete()
     {
        DB::transaction(function(){
             $this->annonces()->delete();
+            $this->abonnement()->delete();
             parent::delete();
        });
     }
