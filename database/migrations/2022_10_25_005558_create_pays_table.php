@@ -14,7 +14,10 @@ class CreatePaysTable extends Migration
     public function up()
     {
         Schema::create('pays', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('libelle');
+            $table->string('code');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

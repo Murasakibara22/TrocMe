@@ -14,8 +14,17 @@ class CreateVillesTable extends Migration
     public function up()
     {
         Schema::create('villes', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('libelle');
+            $table->string('code');
+            $table->string('slug')->unique();
             $table->timestamps();
+
+            $table->unsignedBigInteger('pays_id');
+            $table->foreign('pays_id')
+                ->references('id')
+                ->on('pays')
+                ->onDelete('cascade');
         });
     }
 
