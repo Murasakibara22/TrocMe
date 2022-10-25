@@ -34,8 +34,8 @@
                       <input type="email" value="{{ old($users->email)  ??  $users->email }}" name="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword4">mobile</label>
-                      <input type="text" value="{{ old($users->mobile)  ??  $users->mobile }}" name="mobile" class="form-control" id="exampleInputPassword4" placeholder="mobile">
+                      <label for="exampleInputPassword4">contact</label>
+                      <input type="text" value="{{ old($users->contact)  ??  $users->contact }}" name="contact" class="form-control" id="exampleInputPassword4" placeholder="mobile">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputCity1">role</label>
