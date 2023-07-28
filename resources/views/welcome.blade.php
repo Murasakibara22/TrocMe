@@ -2,641 +2,544 @@
 
 
 @section('content')
-
+@if ( session('succesEdit'))
+<div class="alert alert-success">
+    Vos informations ont été modifier avec succes, veuillez rafraichir la page pour voir les modifications
+</div>
+@endif
 <main>
+    @if ( session('Nodetails'))
+    <div class="alert alert-warning">
+        Aucune annonce publiez pour ce type de recherche
+    </div>
 
-<!-- =======================
-Main Banner START -->
-<section class="pt-0">
-	<div class="container">
-		<!-- Background image -->
-		<div class="p-3 p-sm-5 rounded-3" style="background-image: url(assets/images/bg/04.jpg); background-position: center center; background-repeat: no-repeat; background-size: cover;">
-			<!-- Banner title -->
-			<div class="row"> 
-				<div class="col-md-8 mx-auto my-5"> 
-					<h1 class="text-center text-dark">Maldives</h1>
-					<ul class="nav nav-divider h6 text-dark mb-0 justify-content-center">
-						<li class="nav-item">1 Destination</li>
-						<li class="nav-item">115 Package</li>
-					</ul>
-				</div>
-			</div>
-		</div>
+    @endif
+    <section class="">
+        <div class="container--xxl">
+            <div class="hero-slider ">
+                <div
+                    style="background: url(assets/images/slideback.jpg)no-repeat; background-size: cover; border-radius: ; background-position: center;">
+                    <div class="ps-lg-12 py-lg-10 col-xxl-5 col-md-7 py-5 px-8 text-xs-center">
 
-		<!-- Search START -->
-		<div class="row mt-n4 mt-sm-n7">
-			<div class="col-11 mx-auto">
-				
-				<!-- Booking from START -->
-				<div class="bg-mode shadow p-4 rounded-3">
+                        <h2 class="text-dark display-5 fw-bold mt-4 text-white">Bienvenue </br>sur Troc Moi</h2>
+                        <p class="lead text-white">Troque tous, rapidement et simplement ici</p>
+                        <a href="/publiez" class="btn btn-dark mt-3">Publiez <i
+                                class="feather-icon icon-arrow-right ms-1"></i></a>
+                    </div>
 
-					<!-- Main search START -->
-					<form class="form-control-bg-transparent bg-mode rounded-3">
-						<div class="row g-4 align-items-center">
+                </div>
+                <div class=" "
+                    style="background: url(assets/images/bann.jpg)no-repeat; background-size: cover; border-radius: ; background-position: center;">
+                    <div class="ps-lg-12 py-lg-10 col-xxl-5 col-md-7 py-5 px-8 text-xs-center">
+                        <h2 class="text-white display-5 fw-bold mt-4">Une plateform <br> simple pour tous </h2>
+                        <p class="lead text-white ">Troque tous, rapidement et simplement ici
+                        </p>
+                        <a href="/publiez" class="btn btn-dark mt-3">publiez <i
+                                class="feather-icon icon-arrow-right ms-1"></i></a>
+                    </div>
 
-							<div class="col-xl-10">
-								<div class="row g-4">
-									<!-- Location -->
-									<div class="col-md-6 col-lg-4">
-										<label class="h6 fw-normal mb-0"><i class="bi bi-geo-alt text-primary me-1"></i>Location</label>
-										<!-- Input field -->
-										<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-											<select class="form-select js-choice" data-search-enabled="true">
-												<option value="">Select location</option>
-												<option>San Jacinto, USA</option>
-												<option selected>North Dakota, Canada</option>
-												<option>West Virginia, Paris</option>
-											</select>
-										</div>
-									</div>
-	
-									<!-- Check in -->
-									<div class="col-md-6 col-lg-4">
-										<label class="h6 fw-normal mb-0"><i class="bi bi-calendar text-primary me-1"></i>Date</label>
-										<!-- Input field -->
-										<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-											<input type="text" class="form-control flatpickr" value="20 Nov 2022" placeholder="Choose a date" data-date-format="d M Y">
-										</div>
-									</div>
-	
-									<!-- Guest -->
-									<div class="col-md-6 col-lg-4">
-										<label class="h6 fw-normal mb-0"><i class="fa-solid fa-person-skating text-primary me-1"></i>Tour type</label>
-										<!-- Input field -->
-										<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
-											<select class="form-select js-choice" data-search-enabled="true">
-												<option value="">Select type</option>
-												<option selected>Adventure</option>
-												<option>Beach</option>
-												<option>Desert</option>
-												<option>History</option>
-											</select>
-										</div>
-									</div>
-								</div>
-							</div>
-	
-							<!-- Button -->
-							<div class="col-xl-2">
-								<div class="d-grid">
-									<a href="#" class="btn btn-lg btn-dark mb-0">Take a Tour</a>
-								</div>
-							</div>
-						</div>
-					</form>
-					<!-- Main search END -->
+                </div>
 
-					<!-- Collapse button -->
-					<div class="d-grid mt-4">
-						<input type="checkbox" class="btn-check" id="btn-check-soft">
-						<label class="btn btn-primary-soft btn-primary-check mb-0" for="btn-check-soft" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-controls="collapseExample">
-							<i class="bi fa-fe bi-sliders me-2"></i>Advance Filters
-						</label>
-					</div>
-					
-					<!-- Advance filter START -->
-					<div class="collapse" id="collapseExample">
-						<form class="row g-4 mt-3">
+            </div>
+        </div>
 
-							<!-- Input item -->
-							<div class="col-md-6 col-lg-4">
-								<div class="form-control-borderless">
-									<label class="form-label">Enter Tour Name</label>
-									<input type="text" class="form-control form-control-lg bg-light">
-								</div>
-							</div>
+        <!--filter-->
+        <div class="container mt-2 rounded-2 py-4 mb-5" style="box-shadow: 5px 1px 30px 2px;">
+            <div class="col-12">
+                <div class="col-lg-11 justify-content-between align-items-center ">
+       
+                    <form action="{{ route('FilterAnnonces') }}">
+                        <div class="d-flex mt-2 mt-lg-0">
+                            <div class="me-2 col-lg-4">
+                                    <!-- select option -->
+                                    <div class="input-group ">
+                                        <input type="text" class="form-control" name="fieldSearch" placeholder="Recherche..." aria-label="Recherche..." aria-describedby="basic-addon1">
+                                    </div>
+                            </div>
 
-							<!-- nouislider item -->
-							<div class="col-md-6 col-lg-4">
-								<label class="form-label">Price Range</label>
-								<div class="position-relative">
-									<div class="noui-wrapper">
-										<div class="d-flex justify-content-between">
-											<input type="text" class="text-body input-with-range-min">
-											<input type="text" class="text-body input-with-range-max">
-										</div>
-										<div class="noui-slider-range mt-2" data-range-min='500' data-range-max='2000' data-range-selected-min='700' data-range-selected-max='1500'></div>
-									</div>
-								</div>
-							</div>
+                            <div class="me-2 col-lg-4">
+                                <!-- select option -->
+                                <select class="form-select" aria-label="Default select example" name="ville_id">
+                                    <option value="" selected>ville:</option>
+                                    @foreach($ville as $villes)
+                                    <option value="{{$villes->id}}" name="ville_id">{{$villes->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="me-2 col-lg-4">
+                                <select class="form-select" aria-label="Default select example" name="souscategorie_id">
+                                    <option value="" selected>categories:</option>
+                                    @foreach($souscat as $souscats)
+                                    <option value="{{$souscats->id}}" name="souscategorie_id">{{$souscats->libelle}}
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-							<!-- Select item -->
-							<div class="col-md-6 col-lg-4">
-								<label class="form-label">Duration (3D/4N)</label>
-								<div class="position-relative">
-									<div class="noui-wrapper">
-										<div class="d-flex justify-content-between">
-											<input type="text" class="text-body input-with-range-min">
-											<input type="text" class="text-body input-with-range-max">
-										</div>
-										<div class="noui-slider-range mt-2" data-range-min='2' data-range-max='7' data-range-selected-min='3' data-range-selected-max='4'></div>
-									</div>
-								</div>
-							</div>
+                            <div>
+                                <button type="submit" class="btn btn-warning ms-2 me-1">
+                               <i class="bi bi-search"></i>
 
-							<!-- Flights -->
-							<div class="col-md-6 col-lg-4">
-								<label class="form-label">Flights</label>
-								<div>
-									<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-										<input type="radio" class="btn-check" name="btnradio" id="btnradio1" checked>
-										<label class="btn btn-light btn-primary-soft-check mb-0" for="btnradio1">With Flights</label>
-									
-										<input type="radio" class="btn-check" name="btnradio" id="btnradio2">
-										<label class="btn btn-light btn-primary-soft-check mb-0" for="btnradio2">Without Flights</label>
-									</div>
-								</div>	
-							</div>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
 
-							<!-- Star rating -->
-							<div class="col-md-6 col-lg-4">
-								<label class="form-label">Star Rating</label>
-								<ul class="list-inline mb-0 g-3">
-									<!-- 1 -->
-									<li class="list-inline-item">
-										<input type="checkbox" class="btn-check" id="btn-check-9">
-										<label class="btn btn-light btn-primary-soft-check" for="btn-check-9">1<i class="bi bi-star-fill"></i></label>
-									</li>
-									<!-- 2 -->
-									<li class="list-inline-item">
-										<input type="checkbox" class="btn-check" id="btn-check-10">
-										<label class="btn btn-light btn-primary-soft-check" for="btn-check-10">2<i class="bi bi-star-fill"></i></label>
-									</li>
-									<!-- 3 -->
-									<li class="list-inline-item">
-										<input type="checkbox" class="btn-check" id="btn-check-11">
-										<label class="btn btn-light btn-primary-soft-check" for="btn-check-11">3<i class="bi bi-star-fill"></i></label>
-									</li>
-									<!-- 4 -->
-									<li class="list-inline-item">
-										<input type="checkbox" class="btn-check" id="btn-check-12">
-										<label class="btn btn-light btn-primary-soft-check" for="btn-check-12">4<i class="bi bi-star-fill"></i></label>
-									</li>
-									<!-- 4 -->
-									<li class="list-inline-item">
-										<input type="checkbox" class="btn-check" id="btn-check-13">
-										<label class="btn btn-light btn-primary-soft-check" for="btn-check-13">5<i class="bi bi-star-fill"></i></label>
-									</li>
-								</ul>	
-							</div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
 
-							
-							<!-- Select item -->
-							<div class="col-md-6 col-lg-4">
-								<div class="form-control-bg-light form-size-lg">
-									<label class="form-label">Holiday Type</label>
-									<select class="form-select js-choice">
-										<option value="">Select Option</option>
-										<option>Most Popular</option>
-										<option>Experiential Stays</option>
-										<option>Featured</option>
-										<option>Group Holiday</option>
-										<option>Experiential</option>
-										<option>Offbeat</option>
-										<option>Indulgence</option>
-										<option>Fully Loaded</option>
-										<option>Kid-friendly</option>
-									</select>
-								</div>
-							</div>
-						</form>
-					</div>
-					<!-- Advance filter END -->
 
-				</div>
-				<!-- Booking from END -->
-			</div>
-		</div>
-		<!-- Search END -->
 
-		
-		<!-- <div class="alert alert-danger d-flex align-items-center mt-5 rounded-3 mb-0" role="alert">
-			<span class="h4 mb-0 alert-heading"><i class="bi bi-exclamation-octagon-fill me-2"></i> </span>
-			<div class="ms-3">
-				<h6 class="mb-0 alert-heading">Hurry! 51% off the tours are already fully booked</h6>
-				<p class="mb-0">Many trips to various areas have been ordered, don't let you miss it</p>
-			</div>
-		</div> -->
-		
 
-	</div>
-</section>
-<!-- =======================
-Main Banner END -->
+    <!-- section category -->
+    <section class="my-lg-8 my-1" style="margin-bottom: 0.8rem!important;
+     margin-top: 2rem!important;">
+        <div class="container-xl ">
+            <div class="row ms-1">
+                <div class="col-12">
+                    <div class="mb-1">
+                        <!-- heading    -->
+                        <h3 class="mb-0 ms-3">Categories
+                            <a href="/viewCategorie" class="h6 float-end text-primary">Plus de categories</a>
+                        </h3>
+                    </div>
+                </div>
+                <div class="row ">
+                    @foreach($category as $atry => $categorys)
 
-<!-- =======================
-Tour grid START -->
-<section class="pt-0">
-	<div class="container">
+                    <!-- col -->
+                    <div class="col-lg-2 col-md-2 col-6 mt-4">
+                        <div class="text-center mb-1">
 
-		<!-- Filter and content START -->
-		<div class="row g-4 align-items-center justify-content-between mb-4">
-			<!-- Content -->
-			<div class="col-12 col-xl-8">
-				<h5 class="mb-0">Showing 1-7 of 32 result</h5>
-			</div>
+                            <a href="/listAllAnnonceCat/{{$categorys->slug}}"><img
+                                    src="../images/Categorie/{{$categorys->photo}}" alt="trock moi images"
+                                    class="card-image rounded-4 shadow p-0"></a>
 
-			<!-- Select option -->
-			<div class="col-xl-2">
-				<form class="form-control-bg-light">
-					<select class="form-select js-choice">
-						<option value="">Most Viewed</option>
-						<option>Recently search</option>
-						<option>Most popular</option>
-						<option>Top rated</option>
-					</select>
-				</form>
-			</div>
-		</div>
-		<!-- Filter and content END -->
+                            <div class="mt-4">
+                                <h5 class="fs-6 mb-0"> <a href="/listAllAnnonceCat/{{$categorys->slug}}"
+                                        class="text-inherit">{{$categorys->libelle}}</a></h5>
+                            </div>
 
-		<div class="row g-4">
+                        </div>
 
-			<!-- Card item START -->
-			<div class="col-md-6 col-xl-4">
-				<div class="card card-hover-shadow pb-0 h-100">
-					<!-- Overlay item -->
-					<div class="position-relative">
-						<!-- Image -->
-						<img src="assets/images/category/tour/4by3/04.jpg" class="card-img-top" alt="Card image">
-						<!-- Overlay -->
-						<div class="card-img-overlay d-flex flex-column p-4 z-index-1">
-							<!-- Card overlay top -->
-							<div>
-								<span class="badge text-bg-danger">30% Off</span>
-								<span class="badge text-bg-dark">Adventure</span>
-							</div>
-							<!-- Card overlay bottom -->
-							<div class="w-100 mt-auto">
-								<span class="badge text-bg-white fs-6">6 days / 5 nights</span>
-							</div>
-						</div>
-					</div>
-					<!-- Image -->
 
-					<!-- Card body START -->
-					<div class="card-body px-3">
-						<!-- Title -->
-						<h5 class="card-title mb-0"><a href="tour-detail.html" class="stretched-link">Beautiful Bali with Malaysia</a></h5>
-						<span class="small"><i class="far fa-calendar-alt me-2"></i>April 12-17</span>
+                    </div>
 
-						<!-- List -->
-						<ul class="nav nav-divider mt-3 mb-0">
-							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-plane text-orange me-2"></i>1 Flight
-							</li>
-							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-hotel text-info me-2"></i>1 Hotel
-							</li>
-							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-person-skating text-danger me-2"></i>2 Activities
-							</li>
-						</ul>
-					</div>
-					<!-- Card body END -->
+                    @if($atry == 5)
 
-					<!-- Card footer START-->
-					<div class="card-footer pt-0">
-						<!-- Price and Button -->
-						<div class="d-sm-flex justify-content-sm-between align-items-center flex-wrap">
-							<!-- Price -->
-							<div class="hstack gap-2">
-								<h5 class="fw-normal text-success mb-0">$1500</h5>
-								<small>/per person</small>
-								<span class="text-decoration-line-through">$1800</span>
-							</div>
-							<!-- Button -->
-							<div class="mt-2 mt-sm-0">
-								<a href="#" class="btn btn-sm btn-primary mb-0">View Details</a>    
-							</div>
-						</div>
-					</div>
 
-				</div>
-			</div>
-			<!-- Card item END -->
+                    @break
+                    @endif
 
-			<!-- Card item START -->
-			<div class="col-md-6 col-xl-4">
-				<div class="card card-hover-shadow pb-0 h-100">
-					<!-- Overlay item -->
-					<div class="position-relative">
-						<!-- Image -->
-						<img src="assets/images/category/tour/4by3/05.jpg" class="card-img-top" alt="Card image">
-						<!-- Overlay -->
-						<div class="card-img-overlay d-flex flex-column p-4 z-index-1">
-							<!-- Card overlay top -->
-							<div> <span class="badge text-bg-dark">Honeymoon</span> </div>
-							<!-- Card overlay bottom -->
-							<div class="w-100 mt-auto">
-								<!-- Card category -->
-								<span class="badge text-bg-white fs-6">6 days / 5 nights</span>
-							</div>
-						</div>
-					</div>
-					<!-- Image -->
 
-					<!-- Card body START -->
-					<div class="card-body px-3">
-						<!-- Title -->
-						<h5 class="card-title mb-0"><a href="tour-detail.html" class="stretched-link">Meeru Island Resort (Without Flight)</a></h5>
-						<span class="small"><i class="far fa-calendar-alt me-2"></i>April 12-17</span>
+                    @endforeach
 
-						<!-- List -->
-						<ul class="nav nav-divider mt-3 mb-0">
-							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-hotel text-info me-2"></i>1 Hotel
-							</li>
-							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-person-skating text-danger me-2"></i>2 Activities
-							</li>
-						</ul>
-					</div>
-					<!-- Card body END -->
 
-					<!-- Card footer START-->
-					<div class="card-footer pt-0">
-						<!-- Price and Button -->
-						<div class="d-sm-flex justify-content-sm-between align-items-center flex-wrap">
-							<!-- Price -->
-							<div class="hstack gap-2">
-								<h5 class="fw-normal text-success mb-0">$800</h5>
-								<small>/per person</small>
-							</div>
-							<!-- Button -->
-							<div class="mt-2 mt-sm-0">
-								<a href="#" class="btn btn-sm btn-primary mb-0">View Details</a>    
-							</div>
-						</div>
-					</div>
+                </div>
 
-				</div>
-			</div>
-			<!-- Card item END -->
+            </div>
+        </div>
+    </section>
 
-			<!-- Card item START -->
-			<div class="col-md-6 col-xl-4">
-				<div class="card card-hover-shadow pb-0 h-100">
-					<!-- Overlay item -->
-					<div class="position-relative">
-						<!-- Image -->
-						<img src="assets/images/category/tour/4by3/06.jpg" class="card-img-top" alt="Card image">
-						<!-- Overlay -->
-						<div class="card-img-overlay d-flex flex-column p-4 z-index-1">
-							<!-- Card overlay top -->
-							<div> <span class="badge text-bg-dark">Beach</span> </div>
-							<!-- Card overlay bottom -->
-							<div class="w-100 mt-auto">
-								<!-- Card category -->
-								<span class="badge text-bg-white fs-6">5 days / 4 nights</span>
-							</div>
-						</div>
-					</div>
-					<!-- Image -->
 
-					<!-- Card body START -->
-					<div class="card-body px-3">
-						<!-- Title -->
-						<h5 class="card-title mb-0"><a href="tour-detail.html" class="stretched-link">Sun Siyam Iru Veli Vacation</a></h5>
-						<span class="small"><i class="far fa-calendar-alt me-2"></i>April 22-28</span>
 
-						<!-- List -->
-						<ul class="nav nav-divider mt-3 mb-0">
-							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-plane text-orange me-2"></i>1 Flight
-							</li>
-							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-hotel text-info me-2"></i>1 Hotel
-							</li>
-							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-person-skating text-danger me-2"></i>2 Activities
-							</li>
-						</ul>
-					</div>
-					<!-- Card body END -->
 
-					<!-- Card footer START-->
-					<div class="card-footer pt-0">
-						<!-- Price and Button -->
-						<div class="d-sm-flex justify-content-sm-between align-items-center flex-wrap">
-							<!-- Price -->
-							<div class="hstack gap-2">
-								<h5 class="fw-normal text-success mb-0">$725</h5>
-								<small>/per person</small>
-							</div>
-							<!-- Button -->
-							<div class="mt-2 mt-sm-0">
-								<a href="#" class="btn btn-sm btn-primary mb-0">View Details</a>    
-							</div>
-						</div>
-					</div>
 
-				</div>
-			</div>
-			<!-- Card item END -->
+    <!-- <section class="mb-lg-10 mt-lg-14 my-1 mb-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 mb-6">
 
-			<!-- Card item START -->
-			<div class="col-md-6 col-xl-4">
-				<div class="card card-hover-shadow pb-0 h-100">
-					<!-- Overlay item -->
-					<div class="position-relative">
-						<!-- Image -->
-						<img src="assets/images/category/tour/4by3/07.jpg" class="card-img-top" alt="Card image">
-						<!-- Overlay -->
-						<div class="card-img-overlay d-flex flex-column p-4 z-index-1">
-							<!-- Card overlay top -->
-							<div> <span class="badge text-bg-dark">Nature</span> </div>
-							<!-- Card overlay bottom -->
-							<div class="w-100 mt-auto">
-								<!-- Card category -->
-								<span class="badge text-bg-white fs-6">4 days / 3 nights</span>
-							</div>
-						</div>
-					</div>
-					<!-- Image -->
+            <h3 class="mb-0">Toutes les Categories</h3>
 
-					<!-- Card body START -->
-					<div class="card-body px-3">
-						<!-- Title -->
-						<h5 class="card-title mb-0"><a href="tour-detail.html" class="stretched-link">Lux South Ari Atoll Vacation</a></h5>
-						<span class="small"><i class="far fa-calendar-alt me-2"></i>April 22-28</span>
+          </div>
+        </div>
+        <div class="category-slider" >
+          @foreach($category as $categorys)
+          <div class="col-lg-1 col-md-2 col-6" >
+            <div class="text-center mb-3" >
 
-						<!-- List -->
-						<ul class="nav nav-divider mt-3 mb-0">
-							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-hotel text-info me-2"></i>1 Hotel
-							</li>
-							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-person-skating text-danger me-2"></i>2 Activities
-							</li>
-						</ul>
-					</div>
-					<!-- Card body END -->
 
-					<!-- Card footer START-->
-					<div class="card-footer pt-0">
-						<!-- Price and Button -->
-						<div class="d-sm-flex justify-content-sm-between align-items-center flex-wrap">
-							<!-- Price -->
-							<div class="hstack gap-2">
-								<h5 class="fw-normal text-success mb-0">$400</h5>
-								<small>/per person</small>
-							</div>
-							<!-- Button -->
-							<div class="mt-2 mt-sm-0">
-								<a href="#" class="btn btn-sm btn-primary mb-0">View Details</a>    
-							</div>
-						</div>
-					</div>
+              <a href="/listAllAnnonceCat/{{$categorys->slug}}"><img src="../images/Categorie/{{$categorys->photo}}" alt="trock moi images"
+                  class="card-image rounded-4"></a>
 
-				</div>
-			</div>
-			<!-- Card item END -->
+              <div class="mt-4">
+                <h5 class="fs-6 mb-0"> <a href="/listAllAnnonceCat/{{$categorys->slug}}" class="text-inherit">{{$categorys->libelle}}</a></h5>
+              </div>
 
-			<!-- Card item START -->
-			<div class="col-md-6 col-xl-4">
-				<div class="card card-hover-shadow pb-0 h-100">
-					<!-- Overlay item -->
-					<div class="position-relative">
-						<!-- Image -->
-						<img src="assets/images/category/tour/4by3/08.jpg" class="card-img-top" alt="Card image">
-						<!-- Overlay -->
-						<div class="card-img-overlay d-flex flex-column p-4 z-index-1">
-							<!-- Card overlay top -->
-							<div> <span class="badge text-bg-dark">Adventure</span> </div>
-							<!-- Card overlay bottom -->
-							<div class="w-100 mt-auto">
-								<!-- Card category -->
-								<span class="badge text-bg-white fs-6">5 days / 4 nights</span>
-							</div>
-						</div>
-					</div>
-					<!-- Image -->
+            </div>
 
-					<!-- Card body START -->
-					<div class="card-body px-3">
-						<!-- Title -->
-						<h5 class="card-title mb-0"><a href="tour-detail.html" class="stretched-link">Romantic Seaside - Bentota and Colombo Taj Special</a></h5>
-						<span class="small"><i class="far fa-calendar-alt me-2"></i>May 02-06</span>
 
-						<!-- List -->
-						<ul class="nav nav-divider mt-3 mb-0">
-							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-plane text-orange me-2"></i>1 Flight
-							</li>
-							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-hotel text-info me-2"></i>1 Hotel
-							</li>
-							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-person-skating text-danger me-2"></i>2 Activities
-							</li>
-						</ul>
-					</div>
-					<!-- Card body END -->
+          </div>
+          @endforeach
+        </div>
+      </div>
+    </section> -->
 
-					<!-- Card footer START-->
-					<div class="card-footer pt-0">
-						<!-- Price and Button -->
-						<div class="d-sm-flex justify-content-sm-between align-items-center flex-wrap">
-							<!-- Price -->
-							<div class="hstack gap-2">
-								<h5 class="fw-normal text-success mb-0">$845</h5>
-								<small>/per person</small>
-							</div>
-							<!-- Button -->
-							<div class="mt-2 mt-sm-0">
-								<a href="#" class="btn btn-sm btn-primary mb-0">View Details</a>    
-							</div>
-						</div>
-					</div>
 
-				</div>
-			</div>
-			<!-- Card item END -->
 
-			<!-- Card item START -->
-			<div class="col-md-6 col-xl-4">
-				<div class="card card-hover-shadow pb-0 h-100">
-					<!-- Overlay item -->
-					<div class="position-relative">
-						<!-- Image -->
-						<img src="assets/images/category/tour/4by3/09.jpg" class="card-img-top" alt="Card image">
-						<!-- Overlay -->
-						<div class="card-img-overlay d-flex flex-column p-4 z-index-1">
-							<!-- Card overlay top -->
-							<div> <span class="badge text-bg-dark">Heritage</span> </div>
-							<!-- Card overlay bottom -->
-							<div class="w-100 mt-auto">
-								<!-- Card category -->
-								<span class="badge text-bg-white fs-6">6 days / 7 nights</span>
-							</div>
-						</div>
-					</div>
-					<!-- Image -->
+    <!-- <section>
+        <div class="container">
+            <div class="row">
+                @foreach($espace1 as $espaces1)
+                <div class="col-12 col-md-6 mb-1 mb-lg-0">
+                    <div>
+                        <div class="py-10 px-8 rounded-3"
+                            style="background:url(../images/EspacePub/{{$espaces1->photo}})no-repeat; background-size: cover; background-position: center;">
+                            <div>
+                                @if($espaces1->titre == "Publiez une Annonce en un clique")
+                                <h3 class="fw-bold mb-3 ">{{$espaces1->titre}}
+                                </h3>
+                                @else
+                                <h3 class="fw-bold mb-3 text-ligth">{{$espaces1->titre}}
+                                </h3>
+                                @endif
 
-					<!-- Card body START -->
-					<div class="card-body px-3">
-						<!-- Title -->
-						<h5 class="card-title mb-0"><a href="tour-detail.html" class="stretched-link">Colombo Vacay - Exotic Beaches of Bali</a></h5>
-						<span class="small"><i class="far fa-calendar-alt me-2"></i>May 02-08</span>
+                                @if($espaces1->titre == "Publiez une Annonce en un clique")
+                                <a href="/publiez" class="btn btn-dark">Publiez</a>
+                                @else
+                                <a href="/pricings" class="btn btn-success">Abonnements</a>
+                                @endif
+                            </div>
+                        </div>
 
-						<!-- List -->
-						<ul class="nav nav-divider mt-3 mb-0">
-							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-plane text-orange me-2"></i>1 Flight
-							</li>
-							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-hotel text-info me-2"></i>1 Hotel
-							</li>
-							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-person-skating text-danger me-2"></i>2 Activities
-							</li>
-						</ul>
-					</div>
-					<!-- Card body END -->
+                    </div>
 
-					<!-- Card footer START-->
-					<div class="card-footer pt-0">
-						<!-- Price and Button -->
-						<div class="d-sm-flex justify-content-sm-between align-items-center flex-wrap">
-							<!-- Price -->
-							<div class="hstack gap-2">
-								<h5 class="fw-normal text-success mb-0">$1250</h5>
-								<small>/per person</small>
-							</div>
-							<!-- Button -->
-							<div class="mt-2 mt-sm-0">
-								<a href="#" class="btn btn-sm btn-primary mb-0">View Details</a>    
-							</div>
-						</div>
-					</div>
+                </div>
+                @endforeach
+                 <div class="col-12 col-md-6 ">
 
-				</div>
-			</div>
-			<!-- Card item END -->
+            <div>
+              <div class="py-10 px-8 rounded-3"
+                style="background:url(assets/images/prioriter.jpg)no-repeat; background-size: cover; background-position: center;">
+                <div>
+                  <h3 class="fw-bold mb-1 text-white">Deviens Prioritaire
+                    
+                  </h3>
+                  <p class="mb-4 text-white">Abonne toi <span class="fw-bold"></span> ici</p>
+                  <a href="/pricings" class="btn btn-success">Abonnements</a>
+                </div>
+              </div>
 
-		</div> <!-- Row END -->
+            </div>
+          </div> 
+            </div>
+        </div>
+    </section> -->
 
-		<!-- Pagination -->
-		<div class="row">
-			<div class="col-12">
-				<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
-					<ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
-						<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fa-solid fa-angle-left"></i></a></li>
-						<li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
-						<li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
-						<li class="page-item mb-0"><a class="page-link" href="#">..</a></li>
-						<li class="page-item mb-0"><a class="page-link" href="#">6</a></li>
-						<li class="page-item mb-0"><a class="page-link" href="#"><i class="fa-solid fa-angle-right"></i></a></li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-	</div>
-</section>
-<!-- =======================
-Tour grid END -->
+    <section class="mt-6 mb-lg-6 mb-8">
+        <!-- container -->
+        <div class="container">
 
+            <div class="row mb-3">
+                <!-- col -->
+                <div class="col-12">
+                    <!-- cta -->
+                    <div
+                        class="bg-light d-lg-flex justify-content-between align-items-center py-2 py-lg-2 px-8  text-center text-lg-start">
+                        <!-- img -->
+                        <div class="d-lg-flex align-items-center">
+                            <div class="ms-lg-4">
+                                <h2 class="fs-2 mb-1">Annonces ({{$annonce_sponsoriser->count() + $annonce->count()}})</h2>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- row -->
+            <div class="row">
+                @foreach($annonce_sponsoriser as $annonce_sponsorisers)
+                <div class="col-12 col-sm-12 col-xs-12 col-md-6 mt-3" style="padding-right: 1%!important;">
+                    <div class="card card-product">
+                        <!-- card body -->
+                        <div class="card-body shadow p-3"
+                            style="padding-top: 0.9%!important;padding-bottom: 0.3%!important;padding-left: 1%!importatnt; border: 0.02em #0dad63 solid; background-color: #fffdde; border-radius: 0.3rem!important;">
+                            <div class=" row ">
+                                <!-- col -->
+                                <div class="col-md-4 col-5 col-sm-6 col-xs-6">
+                                    <div class="text-center position-relative ">
+
+                                        <a href="/annonceDetail/{{$annonce_sponsorisers->slug}}"> <img
+                                                src="../images/Annonce/{{$annonce_sponsorisers->photo}}" alt="troc moi {{$annonce_sponsorisers->titre}}"
+                                                class=" img-fluid" style="height: 6.5rem!important;"></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-7 col-sm-6  col-xs-6 flex-grow-1 my-auto" align="start">
+
+                                    <h2 class="fs-5 text-truncate" style="max-whidth: 97%;">
+                                        <a href="/annonceDetail/{{$annonce_sponsorisers->slug}}"
+                                            class="text-inherit text-decoration-none">{{$annonce_sponsorisers->titre}}</a>
+                                    </h2>
+                                    <span
+                                        class="text-muted small">{{$annonce_sponsorisers->created_at->diffForHumans()}}
+                                        <i class="bi bi-award float-end text-success fs-2"></i>
+
+                                    </span>
+
+                                   
+
+                                    <div>
+
+                                        <div class="mt-1"><span
+                                                class="text-dark bold">{{number_format($annonce_sponsorisers->prix,0,',',' ')}}
+                                                FCFA</span>
+                                        </div>
+
+                                        <!-- btn -->
+                                     <div class="fs-3">
+
+                                     <i class="bi bi-patch-check-fill  fs-6"  style="color: green;"></i> <span class="text-success small fs-6"> certifiée </span> 
+                                    
+                                            <a href="/annonceDetail/{{$annonce_sponsorisers->slug}}"
+                                                class="btn btn-info btn-sm mt-1 float-end d-none d-sm-block  align-items-end">Voir
+                                                plus</a>
+
+                                                </div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section class="my-lg-3 my-2">
+        <div class="container">
+
+
+        <div class="row  row-cols-lg-4 row-cols-2 row-cols-md-3  my-2"  style="padding-right: 0.5%!important; ">
+                @foreach($annonce as $annonces)
+                <div class="col" style="padding-right: 0.5%!important; margin-top: 1rem;">
+                    <div class="card card-product">
+                        <div class="card-body" style="padding: 4% 4%; ">
+
+                            <div class="text-center position-relative ">
+                                <div class=" position-absolute top-0 start-0">
+                                    @if($annonces->type == "troque")
+                                    <span class="badge bg-success">{{$annonces->type}}</span>
+                                    @elseif($annonces->type == "Troque ou Vente")
+                                    <span class="badge bg-warning">{{$annonces->type}}</span>
+                                    @elseif($annonces->type == "demandez")
+                                    <span class="badge bg-danger">{{$annonces->type}}</span>
+                                    @else
+                                    <span class="badge bg-dark">{{$annonces->type}}</span>
+                                    @endif
+                                </div>
+                                @if($annonces->type == "troque")
+                                <a href="/annonceDetail/{{$annonces->slug}}"> <img
+                                        src="../images/Annonce/{{$annonces->photo}}" alt="troc moi {{$annonces->titre}}"
+                                        class="mb-3 img-fluid"></a>
+                                @elseif($annonces->type == "vente")
+                                <a href="/annonceDetailVentes/{{$annonces->slug}}"> <img
+                                        src="../images/Annonce/{{$annonces->photo}}" alt="troc moi {{$annonces->titre}}"
+                                        class="mb-3 img-fluid"></a>
+                                @elseif($annonces->type == "Troque ou Vente")
+                                <a href="/annonceDetail/{{$annonces->slug}}"> <img
+                                        src="../images/Annonce/{{$annonces->photo}}" alt="troc moi {{$annonces->titre}}"
+                                        class="mb-3 img-fluid"></a>
+                                @else
+                                <a href="/annonceDetail/{{$annonces->slug}}"> <img
+                                        src="../images/Annonce/{{$annonces->photo}}" alt="troc moi {{$annonces->titre}}"
+                                        class="mb-3 img-fluid"></a>
+                                @endif
+
+
+
+                            </div>
+                            @foreach($annonces->villes()->get() as $ville)
+                            <div class="text-small mb-1"><a href="/annonceDetail/{{$annonces->slug}}"
+                                    class="text-decoration-none text-muted"><small>{{$ville->libelle}}</small></a></div>
+                            @endforeach
+                            <div style="height:19px;" class="overflow-hidden justify-content-between">
+                                <h2 class="fs-6 "><a href="/annonceDetail/{{$annonces->slug}}"
+                                        class="text-inherit text-decoration-none">{{$annonces->titre}}</a></h2>
+                            </div>
+
+                            <div>
+                                @if( date('j M, Y', strtotime($annonces->created_at)) == $today )
+                                <span class="text-muted small">Aujourd'hui</span>
+                                @else
+                                <span class="text-muted small">{{ $annonces->created_at->diffForHumans() }}</span>
+                                @endif
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div><span class="text-dark">{{number_format($annonces->prix,0,',',' ')}} FCFA</span>
+                                </div>
+                            </div>
+                            @if($annonces->type == "troque")
+                            <div><a href="/annonceDetail/{{$annonces->slug}}"
+                                    class="btn btn-outline-primary btn-sm mt-2  align-items-center">
+                                    Afficher</a></div>
+                            @elseif($annonces->type == "vente")
+                            <div><a href="/annonceDetailVentes/{{$annonces->slug}}"
+                                    class="btn btn-outline-warning btn-sm mt-2  align-items-center">
+                                    Achetez</a></div>
+                            @elseif($annonces->type == "Troque ou Vente")
+                            <div><a href="/annonceDetail/{{$annonces->slug}}"
+                                    class="btn btn-outline-info btn-sm mt-2  align-items-center">
+                                    Afficher</a></div>
+                            @else
+                            <div><a href="/annonceDetail/{{$annonces->slug}}"
+                                    class="btn btn-outline-primary btn-sm mt-2  align-items-center">
+                                    proposez</a></div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            <div class="d-grid mt-4 w-lg-20 w-50 float-center">
+                <a href="/get_all_annonce" class="btn btn-primary ">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg> PLUS D'ANNONCES <i class="feather-icon icon-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Popular Products End-->
+
+
+    <!-- section debute -->
+    <section class="mt-2">
+        <!-- contianer -->
+        <div class="container">
+            <div class="row">
+                <!-- col -->
+                <div class="col-12">
+                    <!-- cta -->
+                    <div
+                        class="bg-light d-lg-flex justify-content-between align-items-center py-6 py-lg-3 px-8  text-center text-lg-start">
+                        <!-- img -->
+                        <div class="d-lg-flex align-items-center">
+                          
+                            <!-- text -->
+
+                            <div class="ms-lg-4">
+                                <h1 class="fs-2 mb-1">Telecharger Troc Moi gratuitement  </h1>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-3 col-12">
+                        <div class="row">
+                        <div class="mt-3 mt-lg-0 col-lg-6 col-6" >
+                            <a href="https://itunes.apple.com/app/idYOUR_APP_ID" target="_blank">
+                                <img src="../assets/images/logo/appstore.png" class="w-100 h-100" alt="Télécharger sur l'App Store">
+                            </a>
+                        </div>
+                        <div class="mt-3  mt-lg-0 col-lg-6 col-6" >
+                            <a href="https://itunes.apple.com/app/idYOUR_APP_ID" target="_blank">
+                                <img src="../assets/images/logo/playstore.png" class="w-100 h-100" alt="Télécharger sur l'App Store">
+                            </a>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- section -->
+    <section class="mt-4 mb-5">
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                @if($espace2->count() > 0 || isset($espace2))
+                @foreach($espace2 as $espaces2)
+                @foreach($espaces2->souscategorie()->get() as $souscat_links)
+                    <a href="/searchAnnonceSouscat/{{$souscat_links->slug}}" class="col-lg-6 col-md-6 col-12" > 
+                <div >
+                    <div class="p-8 rounded-3 mb-3 blink-img"
+                        style="background:url(../images/EspacePub/{{$espaces2->photo}})no-repeat; background-size: cover; border: 0.04em #cccc solid; box-shadow:  -0.3rem 0.2rem 0.2rem #5c6c75;">
+                        <div>
+
+
+                            <div style="height:93px;" class="overflow-hidden justify-content-between">
+
+                            </div>
+                            <div class="mt-2 mb-3 fs-6">
+                                <div style="height:25px;" class="overflow-hidden justify-content-between">
+                                    <p class="mb-0 text-truncate">
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                </a>
+                @endforeach
+                @endforeach
+                @endif
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <!-- section -->
+    <section class="mt-1">
+        <!-- container -->
+        <div class="container">
+            <div class="row">
+                <!-- col -->
+                <div class="offset-md-1 col-md-10">
+                    <div class="mb-11">
+                        <!-- heading -->
+                        <h2> </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section -->
+    <!-- section -->
+    <section class="mb-9">
+        <!-- slider -->
+        <div class="container">
+            <div class="team-slider">
+                <!-- item -->
+                @foreach($patenaire as $patenaires)
+                <div class="item mx-2 bg-white"  style="max-width: 180px!important;">
+                    <div class="bg-light rounded-3 bg-white" >
+                        <!-- img -->
+                        <img src="../images/Partenaire/{{$patenaires->photo}}" alt="trock moi images" class="img-fluid">
+                    </div>
+                </div>
+                @endforeach
+
+
+
+
+
+            </div>
+        </div>
+    </section>
 </main>
 
 

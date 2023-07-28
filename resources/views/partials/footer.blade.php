@@ -1,153 +1,108 @@
+<footer class="footer">
+  <div class="container">
+    <div class="row g-4 py-4">
+      <div class="col-12 col-md-12 col-lg-4">
+        <h6 class="mb-4">Categories</h6>
+        <div class="row">
+          <div class="col-6">
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="./pages/shop-grid.html" class="nav-link">Vetements</a></li>
+              <li class="nav-item mb-2"><a href="./pages/shop-grid.html" class="nav-link">Loisirs</a></li>
+              <li class="nav-item mb-2"><a href="./pages/shop-grid.html" class="nav-link">jeux & Arts</a></li>
+              <li class="nav-item mb-2"><a href="./pages/shop-grid.html" class="nav-link">Beauté & Maquillage</a></li>
+              <li class="nav-item mb-2"><a href="./pages/shop-grid.html" class="nav-link">Nourritures</a></li>
+              <li class="nav-item mb-2"><a href="./pages/shop-grid.html" class="nav-link">Vehicules</a></li>
+              <li class="nav-item mb-2"><a href="./pages/shop-grid.html" class="nav-link"> Ordinateurs</a></li>
+            </ul>
+          </div>
 
-<!-- =======================
-Footer START -->
-<footer class="bg-dark pt-5">
-	<div class="container">
-		<!-- Row START -->
-		<div class="row g-4">
+          <div class="col-6">
+          <ul class="nav flex-column me-4">
+              
+              <a href="/publiez" class="btn btn-outline-dark mb-4 ">publiez</a>
+              <a href="/pricings" class="btn btn-success mt-2  ">Abonnements</a>
+            </ul>
+            </div>
 
-			<!-- Widget 1 START -->
-			<div class="col-lg-3">
-				<!-- logo -->
-				<a href="index.html">
-					<img class="h-40px" src="assets/images/logo-light.svg" alt="logo">
-				</a>
-				<p class="my-3 text-muted">Departure defective arranging rapturous did believe him all had supported.</p>
-				<p class="mb-2"><a href="#" class="text-muted text-primary-hover"><i class="bi bi-telephone me-2"></i>+1234 568 963</a> </p>
-				<p class="mb-0"><a href="#" class="text-muted text-primary-hover"><i class="bi bi-envelope me-2"></i>example@gmail.com</a></p>
-			</div>
-			<!-- Widget 1 END -->
 
-			<!-- Widget 2 START -->
-			<div class="col-lg-8 ms-auto">
-				<div class="row g-4">
-					<!-- Link block -->
-					<div class="col-6 col-md-3">
-						<h5 class="text-white mb-2 mb-md-4">Page</h5>
-						<ul class="nav flex-column text-primary-hover">
-							<li class="nav-item"><a class="nav-link text-muted" href="#">About us</a></li>
-							<li class="nav-item"><a class="nav-link text-muted" href="#">Contact us</a></li>
-							<li class="nav-item"><a class="nav-link text-muted" href="#">News and Blog</a></li>
-							<li class="nav-item"><a class="nav-link text-muted" href="#">Meet a Team</a></li>
-						</ul>
-					</div>
+        </div>
 
-					<!-- Link block -->
-					<div class="col-6 col-md-3">
-						<h5 class="text-white mb-2 mb-md-4">Link</h5>
-						<ul class="nav flex-column text-primary-hover">
-							<li class="nav-item"><a class="nav-link text-muted" href="#">Sign up</a></li>
-							<li class="nav-item"><a class="nav-link text-muted" href="#">Sign in</a></li>
-							<li class="nav-item"><a class="nav-link text-muted" href="#">Privacy Policy</a></li>
-							<li class="nav-item"><a class="nav-link text-muted" href="#">Terms</a></li>
-							<li class="nav-item"><a class="nav-link text-muted" href="#">Cookie</a></li>
-							<li class="nav-item"><a class="nav-link text-muted" href="#">Support</a></li>
-						</ul>
-					</div>
-									
-					<!-- Link block -->
-					<div class="col-6 col-md-3">
-						<h5 class="text-white mb-2 mb-md-4">Global Site</h5>
-						<ul class="nav flex-column text-primary-hover">
-							<li class="nav-item"><a class="nav-link text-muted" href="#">India</a></li>
-							<li class="nav-item"><a class="nav-link text-muted" href="#">California</a></li>
-							<li class="nav-item"><a class="nav-link text-muted" href="#">Indonesia</a></li>
-							<li class="nav-item"><a class="nav-link text-muted" href="#">Canada</a></li>
-							<li class="nav-item"><a class="nav-link text-muted" href="#">Malaysia</a></li>
-						</ul>
-					</div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-8">
+        <div class="row g-4">
+          <div class="col-6 col-sm-6 col-md-3">
+            <h6 class="mb-4">Les liens</h6>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="/" class="nav-link">Accueil</a></li>
+              <li class="nav-item mb-2"><a href="/apropos" class="nav-link">A propos</a></li>
+              <li class="nav-item mb-2"><a href="/" class="nav-link">Troc</a></li>
+              <li class="nav-item mb-2"><a href="/" class="nav-link">Ventes</a></li>
+              <li class="nav-item mb-2"><a href="/" class="nav-link">Demandez</a></li>
+            </ul>
+          </div>
 
-					<!-- Link block -->
-					<div class="col-6 col-md-3">
-						<h5 class="text-white mb-2 mb-md-4">Booking</h5>
-						<ul class="nav flex-column text-primary-hover">
-							<li class="nav-item"><a class="nav-link text-muted" href="#"><i class="fa-solid fa-hotel me-2"></i>Hotel</a></li>
-							<li class="nav-item"><a class="nav-link text-muted" href="#"><i class="fa-solid fa-plane me-2"></i>Flight</a></li>
-							<li class="nav-item"><a class="nav-link text-muted" href="#"><i class="fa-solid fa-globe-americas me-2"></i>Tour</a></li>
-							<li class="nav-item"><a class="nav-link text-muted" href="#"><i class="fa-solid fa-car me-2"></i>Cabs</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!-- Widget 2 END -->
+          <div class="col-6 col-sm-6 col-md-3">
+            <h6 class="mb-4">Aide</h6>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="/aproposDetail" class="nav-link">Qui Sommes-nous</a></li>
+              <li class="nav-item mb-2"><a href="/" class="nav-link">Aide</a></li>
+              <li class="nav-item mb-2"><a href="#!" class="nav-link">Infos Pratique</a></li>
+              <li class="nav-item mb-2"><a href="#!" class="nav-link">Condition Générale</a></li>
+            </ul>
+          </div>
 
-		</div><!-- Row END -->
+          <div class="col-6 col-sm-6 col-md-3">
+            <h6 class="mb-4">Become a Shopper</h6>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="#!" class="nav-link">Shopper Opportunities</a></li>
+              <li class="nav-item mb-2"><a href="#!" class="nav-link">Become a Shopper</a></li>
+              <li class="nav-item mb-2"><a href="#!" class="nav-link">Earnings</a></li>
+              <li class="nav-item mb-2"><a href="#!" class="nav-link">Ideas & Guides</a></li>
+              <li class="nav-item mb-2"><a href="#!" class="nav-link">New Retailers</a></li>
+            </ul>
+          </div>
+    
+        </div>
+      </div>
 
-		<!-- Tops Links -->
-		<div class="row mt-5">
-			<h5 class="mb-2 text-white">Top Links</h5>
-			<ul class="list-inline text-primary-hover lh-lg">
-				<li class="list-inline-item"><a href="#" class="text-muted">Flights</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Hotels</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Tours</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Cabs</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">About</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Contact us</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Blogs</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Services</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Detail page</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Services</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Policy</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Testimonials</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Newsletters</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Podcasts</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Protests</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">NewsCyber</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Education</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Sports</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Tech and Auto</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Opinion</a></li>
-				<li class="list-inline-item"><a href="#" class="text-muted">Share Market</a></li>
-			</ul>
-		</div>
 
-		<!-- Payment and card -->
-		<div class="row g-4 justify-content-between mt-0 mt-md-2">
 
-			<!-- Payment card -->
-			<div class="col-sm-7 col-md-6 col-lg-4">
-				<h5 class="text-white mb-2">Payment & Security</h5>
-				<ul class="list-inline mb-0 mt-3">
-					<li class="list-inline-item"> <a href="#"><img src="assets/images/element/paypal.svg" class="h-30px" alt=""></a></li>
-					<li class="list-inline-item"> <a href="#"><img src="assets/images/element/visa.svg" class="h-30px" alt=""></a></li>
-					<li class="list-inline-item"> <a href="#"><img src="assets/images/element/mastercard.svg" class="h-30px" alt=""></a></li>
-					<li class="list-inline-item"> <a href="#"><img src="assets/images/element/expresscard.svg" class="h-30px" alt=""></a></li>
-				</ul>
-			</div>
 
-			<!-- Social media icon -->
-			<div class="col-sm-5 col-md-6 col-lg-3 text-sm-end">
-				<h5 class="text-white mb-2">Follow us on</h5>
-				<ul class="list-inline mb-0 mt-3">
-					<li class="list-inline-item"> <a class="btn btn-sm px-2 bg-facebook mb-0" href="#"><i class="fab fa-fw fa-facebook-f"></i></a> </li>
-					<li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-instagram mb-0" href="#"><i class="fab fa-fw fa-instagram"></i></a> </li>
-					<li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-twitter mb-0" href="#"><i class="fab fa-fw fa-twitter"></i></a> </li>
-					<li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-linkedin mb-0" href="#"><i class="fab fa-fw fa-linkedin-in"></i></a> </li>
-				</ul>	
-			</div>
-		</div>
 
-		<!-- Divider -->
-		<hr class="mt-4 mb-0">
+    </div>
+    <div class="border-top py-1">
+      <div class="row align-items-center">
+        <div class="col-lg-5 text-lg-start text-center mb-2 mb-lg-0">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item text-dark">Payment Partners</li>
+            <li class="list-inline-item">
+              <a href="#!"><img src="./assets/images/payment/amazonpay.svg" alt=""></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#!"><img src="./assets/images/payment/american-express.svg" alt=""></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#!"><img src="./assets/images/payment//mastercard.svg" alt=""></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#!"><img src="./assets/images/payment/paypal.svg" alt=""></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#!"><img src="./assets/images/payment/visa.svg" alt=""></a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-7 mt-4 mt-md-0">
+          <ul class="list-inline mb-0 text-lg-end text-center">
+            <li class="list-inline-item mb-2 mb-md-0 text-dark">Soyez plus proche les uns des autres sur</li>
+            <li class="list-inline-item ms-4">
+              <a href="#!"> <img src="./assets/images/logo/Jiam_s3-removebg-preview.png" alt=""
+                  style="width: 140px;"></a></li>
+          </ul>
+        </div>
+      </div>
 
-		<!-- Bottom footer -->
-		<div class="row">
-			<div class="container">
-				<div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-lg-start">
-					<!-- copyright text -->
-					<div class="text-muted text-primary-hover"> Copyrights <a href="#" class="text-muted">©2022 Booking</a>. All rights reserved. </div>
-					<!-- copyright links-->
-					<div class="nav mt-2 mt-lg-0">
-						<ul class="list-inline text-primary-hover mx-auto mb-0">
-							<li class="list-inline-item me-0"><a class="nav-link py-1 text-muted" href="#">Privacy policy</a></li>
-							<li class="list-inline-item me-0"><a class="nav-link py-1 text-muted" href="#">Terms and conditions</a></li>
-							<li class="list-inline-item me-0"><a class="nav-link py-1 text-muted pe-0" href="#">Refund policy</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    </div>
+
+  </div>
 </footer>
-<!-- =======================
-Footer END -->

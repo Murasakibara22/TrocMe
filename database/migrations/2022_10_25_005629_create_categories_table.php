@@ -16,8 +16,9 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('libelle');
-            $table->string('description');
-            $table->string('photo');
+            $table->text('description');
+            $table->string('photo')->default('photo.jpg');
+            $table->string('image_illustrant')->default('imageIllustrant.jpg');
             $table->string('slug')->unique();
             $table->timestamps();
         });

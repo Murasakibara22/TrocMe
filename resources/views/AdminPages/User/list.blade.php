@@ -2,23 +2,92 @@
 
 @section('content')
 
-@if ( session('succes'))
-  <div class="alert alert-success">
-    utilisateurs modifier  avec succes 
-  </div>
 
-@endif
+       <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
 
-@if ( session('success'))
-  <div class="alert alert-success">
-    utilisateurs suprimer  avec succes 
-  </div>
+            <div class="content-page">
+                <div class="content">
+                @if ( session('successDele'))
+                    <!-- Basic Toast -->
+                    <div class="toast fade show  ms-15 bg-success align-center" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header">
+                            <img src="./assets/images/logo/freshcart-logo.svg" alt="brand-logo" height="12" class="me-1" />
+                            <strong class="me-auto">succes</strong>
+                            <small>Maintenant</small>
+                            <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            Utilisateur Supprimer avec suces .
+                        </div>
+                    </div> <!--end toast-->
 
-@endif
-<div class="col-lg-12 grid-margin stretch-card">
+                    @endif
+
+                @if ( session('succesEdit'))
+                    <!-- Basic Toast -->
+                    <div class="toast fade show  ms-7 bg-success align-center" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header">
+                            <img src="./assets/images/logo/freshcart-logo.svg" alt="brand-logo" height="12" class="me-1" />
+                            <strong class="me-auto">succes</strong>
+                            <small>Maintenant</small>
+                            <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            Utilisateur Modifier avec suces
+                        </div>
+                    </div> <!--end toast-->
+
+                    @endif
+
+
+                @if ( session('Nodetails'))
+                    <!-- Basic Toast -->
+                    <div class="alert alert-danger mt-2" role="alert">
+                        Utilisateur Non trouver
+                      </div><!--end toast-->
+
+                    @endif
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"> <a href="/addUser" class="float-end"><button type="button" class="btn btn-outline-info rounded-pill ms-5"><i class="uil-circuit"></i> Ajoutez des Utilisateurs</button> </a></li>
+
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">Utilisateurs </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+
+                        
+                        <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Liste des utilisateurs </h4>
+                  <h4 class="card-title">Liste des utilisateurs 
+                  <div class="app-search dropdown mt-2  float-end">
+                                                <form action="{{ route('findSearch') }}">
+                                                    <div class="input-group">
+                                                        <input type="search" name= "search" value="{{  request()->search ?? '' }}"  class="form-control dropdown-toggle"  placeholder="Recherche..." id="top-search">
+                                                        <span class="mdi mdi-magnify search-icon"></span>
+                                             
+                                                        <button class="input-group-text btn btn-primary" type="submit">Search</button>
+                                                    </div>
+                                                </form>
+
+                                              
+                                            </div>
+                  </h4>
                   <p class="card-description">
                     Vous avez la possibilité de  <code>modifier</code> ou de <code>suprimer  </code> un utilisateur
                   </p>
@@ -27,7 +96,7 @@
                       <thead>
                         <tr>
                           <th>
-                            Photo de profile
+                            Photo 
                           </th>
                           <th>
                            Nom
@@ -38,54 +107,33 @@
                           <th>
                             role
                           </th>
+                       
                           <th>
                             email
                           </th>
                           <th>
-                            Contact
+                            Mobile
                           </th>
                           <th>
                             Modifier
                           </th>
-                          <th>
-                            Suprimer
-                          </th>
-        
                         </tr>
                       </thead>
                       @foreach($user as $u)
                       <tbody>
                         <tr>
                           <td class="py-2">
-                            <img src="/images/equipe/{{$u->photo}}" alt="image" width="200px" height="100px"    data-bs-toggle="modal" data-bs-target="#exampleModal"/>
-
-                            
-                           <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                <img src="/images/equipe/{{$u->photo}}" alt="im" width="80px" height="80px" >
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                
-                                </div>
-                              </div>
-                            </div>
-                          </div> -->
+                            <img src="../images/User/{{$u->photo}}" alt="image" width="25%" height="15%" class="rounded-5"    data-bs-toggle="modal" data-bs-target="#exampleModal"/>
                           
                           </td>
                           <td>
                             {{$u->nom}}
                           </td>
+                         
                           <td>
                           {{$u->prenom}}
                           </td>
-                          <td>
+                           <td>
                           {{$u->role}}
                           </td>
                           <td>
@@ -95,10 +143,19 @@
                           {{$u->contact}}
                           </td> 
                        <td>
-                               <a href="/Utilisateurs-edit/{{$u->slug}}">  <button type="button" class="btn btn-outline-primary">Modifier</button> </a> 
-                          </td>
-                          <td>
-                               <a href="/Userdelete/{{$u->slug }}">  <button type="button" class="btn btn-outline-danger">Suprimer</button> </a> 
+                                                         <div class="dropdown float-end">
+                                                                  <a href="#" class="dropdown-toggle text-black arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                      <i class="mdi mdi-dots-vertical font-18"></i>
+                                                                  </a>
+                                                                  <div class="dropdown-menu dropdown-menu-end">
+                                                                      <!-- item-->
+                                                                      <a href="/Utilisateurs_edit/{{$u->slug}}" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
+                                                                      <!-- item-->
+                                                                    
+                                                                      <a href="/Userdelete/{{$u->slug}}" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>
+
+                                                                  </div>
+                                                              </div>
                           </td>
                         </tr>
                       </tbody>
@@ -107,6 +164,18 @@
                   </div>
                 </div>
               </div>
+</div>
+                            </div><!-- end col-->
+                      
+
+                 
+
+                </div> 
+
             </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
 
 @endsection

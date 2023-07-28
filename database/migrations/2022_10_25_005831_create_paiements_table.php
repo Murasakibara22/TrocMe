@@ -15,7 +15,7 @@ class CreatePaiementsTable extends Migration
     {
         Schema::create('paiements', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('details');
+            $table->text('details');
             $table->string('slug')->unique();
             $table->timestamps();
 

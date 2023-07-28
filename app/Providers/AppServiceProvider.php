@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Str;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        Paginator::useBootstrap();
     }
 
     /**
@@ -23,6 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Str::macro('currency', function ($price)
+        {
+            return number_format($price, 0, ' ', ' ');
+        });
     }
 }

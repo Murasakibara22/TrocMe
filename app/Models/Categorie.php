@@ -19,17 +19,18 @@ class Categorie extends Model
         'created_at',
         'updated_at',
         'photo',
+        'image_illustrant',
     ];
 
     public function Souscat() {
-        return $this->hasMany(SousCategorie::class,'categorie_id')->get();
+        return $this->hasMany(SousCategorie::class);
     }
 
-    public function delete()
-    {
-       DB::transaction(function(){
-            $this->Souscat()->delete();
-            parent::delete();
-       });
-    }
+    // public function delete()
+    // {
+    //    DB::transaction(function(){
+    //         $this->Souscat()->delete();
+    //         parent::delete();
+    //    });
+    // }
 }

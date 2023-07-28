@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Intervention\Image\Image;
+use Image as InterventionImage;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use Symfony\Component\Console\Input\Input;
 
 class UserController extends Controller
 {
@@ -21,7 +24,7 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'nom' => ['required', 'string', 'max:100'],
             'prenom' => ['required', 'string', 'max:255'],
-            'mobile' => ['required', 'string', 'max:15', 'unique:users'],
+            'contact' => ['required', 'string', 'max:15', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => 'required|string|min:8',
         ]);
@@ -33,21 +36,27 @@ class UserController extends Controller
         $user->prenom    = $request->prenom;
         $user->email   = $request->email;
         $user->slug   = Str::slug("$request->token". Hash::make($request->nom),"-");
-        $user->mobile  = $request->mobile;
+        $user->contact  = $request->contact;
         if (request()->file('photo')) {
             $img = request()->file('photo');
-                $photo = md5($img->getClientOriginalExtension().time().$request->email).".".$img->getClientOriginalExtension();
+                $messi = md5($img->getClientOriginalExtension().time().$request->email).".".$img->getClientOriginalExtension();
                 $source = $img;
-                $target = 'images/User/' .$photo;
+                $target = 'images/User/'.$messi;
                 InterventionImage::make($source)->fit(212,207)->save($target);
-                $user->photo   =  $photo;
+                $user->photo   =  $messi;
         }else{
             $user->photo   = "default.jpg";
         }
 
         $user->password = Hash::make($request->password);
-        $user->role    = $request->role;
 
+        if($request->role){
+            $user->role    = $request->role;
+        }else{
+            $user->role = 'user';
+        }
+        
+        
         $user->save();
 
         if( $user->save()){
@@ -70,7 +79,7 @@ class UserController extends Controller
     //liste tous
     public function listAllUser(){
 
-        $user = User::all();
+        $user = User::OrderBy('id', 'ASC')->get();
         return view('AdminPages.User.list', compact('user'));
     }
 
@@ -84,41 +93,61 @@ class UserController extends Controller
 //modifier
     public function updateUser(Request $request ,$slug){
 
-        try{
+        // try{
             $user = User::where('slug',$slug)->first();
             if(isset($user))
             {
                 $user->nom    = $request->nom;
+                $user->prenom    = $request->prenom;
                 $user->email   = $request->email;
-
                 $user->slug   = Str::slug("$request->token". Hash::make($request->nom),"-");
-                $user->mobile  = $request->mobile;
+                $user->contact  = $request->contact;
                 if (request()->file('photo')) {
                     $img = request()->file('photo');
-                        $photo = md5($img->getClientOriginalExtension().time().$request->email).".".$img->getClientOriginalExtension();
+                        $messi = md5($img->getClientOriginalExtension().time().$request->email).".".$img->getClientOriginalExtension();
                         $source = $img;
-                        $target = 'images/User/'.$photo;
+                        $target = 'images/User/'.$messi;
                         InterventionImage::make($source)->fit(212,207)->save($target);
-                        $user->photo   =  $photo;
-                }else{
-                    $user->photo   = "default.jpg";
+                        $user->photo   =  $messi;
                 }
-        
-                $user->role    = $request->role;
 
-            
+                    if (request()->file('photo_entreprise')) {
+                        $img = request()->file('photo_entreprise');
+                            $cr7 = md5($img->getClientOriginalExtension().time().$request->token."+").".".$img->getClientOriginalExtension();
+                            $source = $img;
+                            $target = 'images/User/'.$cr7;
+                            InterventionImage::make($source)->fit(212,207)->save($target);
+                            $user->photo_entreprise   =  $cr7;
+                    }
+
+                    if (request()->file('bannear')) {
+                        $img = request()->file('bannear');
+                            $pogba = md5($img->getClientOriginalExtension().time().$request->email."++").".".$img->getClientOriginalExtension();
+                            $source = $img;
+                            $target = 'images/User/'.$pogba;
+                            InterventionImage::make($source)->fit(212,207)->save($target);//taille de la banner a chercher
+                            $user->bannear   =  $pogba;
+                    }
+        
+
+                    if($request->role == "aucun"){
+                        $user->role    =   $user->role ;
+                    }else{
+                        $user->role    = $request->role;
+                    }
+
                 $user->update();
                     if($user->update()){
-                            return redirect('/Utilisateurs_list')->with('succes', 'Utilisateurs modifier');
+                            return redirect('/Utilisateurs_list')->with('succesEdit', 'Utilisateurs modifier');
                     }else{
                         return redirect()->back()->with('erreur', "l'un des champs n'est pas correctement remplis");
                     }
             }
 
-    }catch(Exception $err){
-        report($err);
-        return redirect()->back()->with('error', "probleme survenue veuillezreessayer plus tard");
-        }
+    // }catch(Exception $err){
+    //     report($err);
+    //     return redirect()->back()->with('error', "probleme survenue veuillezreessayer plus tard");
+    //     }
     }
 
 //view dele
@@ -139,9 +168,22 @@ public function deleteUser($slug)
         if(isset($user))
             {
                 $user->delete();
-                return redirect('/Utilisateurs_list')->with('success', 'Utilisateur Supprimer');
+                return redirect('/Utilisateurs_list')->with('successDele', 'Utilisateur Supprimer');
             }else{
                 return redirect('/Utilisateurs_list')->with('NotExist', "L'utilisateur spécifier n'existe pas");
             }
     }
+
+
+
+    public function findSearch(Request $request)
+        {			
+            $search = $request->search;		
+            $user = User::where( 'nom', 'LIKE', '%' . $search . '%' )->orWhere( 'email', 'LIKE', '%' . $search . '%' )->get();
+            if (count ($user) > 0 && isset($user)){
+            return view ( 'AdminPages.User.search')->with('user',$user);
+            }else{
+            return redirect( '/Utilisateurs_list')->with( 'Nodetails','No Details found. Try to search again !' );	
+            }	
+        }
 }

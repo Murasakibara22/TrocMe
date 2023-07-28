@@ -17,68 +17,151 @@
 @endif
 
 
+ <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
 
-<div class="col-md-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">ajouter un utilisateur</h4>
-                  <p class="card-description">
-                   Bienvenue Mr l'administrateur
-                  </p>
-                  <form class="forms-sample" action="{{ route('AddUser') }}" method="POST" enctype="multipart/form-data">
-                      @csrf
-                      @method('POST')
-                      
-                          <div class="imageModif">
-                           <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" class="main-profile-img" />
-                           <i class="fa fa-edit" > </i> 
-                           <div class="upload-btn-wrapper">
-                            <button class="btn" name="photo">ajouter</button>
-                            <input type="file" name="photo"  require/>
-                          </div>
-                          </div></br></br></br>
-                    <div class="form-group row">
-                      <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nom</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" name="nom" id="exampleInputUsername2" placeholder="Entrer le nom">
-                      </div>
+            <div class="content-page">
+                <div class="content">
+                @if ( session('success'))
+                    <!-- Basic Toast -->
+                    <div class="toast fade show  ms-7 bg-success align-center" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header">
+                            <img src="./assets/images/logo/freshcart-logo.svg" alt="brand-logo" height="12" class="me-1" />
+                            <strong class="me-auto">succes</strong>
+                            <small>Maintenant</small>
+                            <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            Utilisateur Sauvegarder avec succes.
+                        </div>
+                    </div> <!--end toast-->
+
+                    @endif
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title"> Utilisateurs <a href="/Utilisateurs_list" class="float-end"><button type="button" class="btn btn-outline-info rounded-pill ms-5"><i class="uil-circuit"></i> Listes des Utilisateurs</button> </a></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title">Enregistrer un Utilisateur</h4>
+
+
+                                        <div class="tab-content">
+                                            <div class="tab-pane show active" id="input-types-preview">
+                                                <div class="row">
+                                                    <div class="col-lg-10">
+                                                    <form action="{{ route('AddUser') }}" method="POST" enctype="multipart/form-data">
+                                                      @csrf 
+                                                      @method('POST')
+                                                        <div class="mb-3">
+                                                                <label for="example-palaceholder" class="form-label">Nom</label>
+                                                                <input name="nom" type="text" id="example-palaceholder" class="form-control" placeholder="Entrer le Nom">
+                                                            </div>
+
+                                                            <div class="mb-3">
+                                                                <label for="example-palaceholder" class="form-label">Prenoms</label>
+                                                                <input name="prenom" type="text" id="example-palaceholder" class="form-control" placeholder="Entrer le prenom">
+                                                            </div>
+        
+                                                            <div class="mb-3">
+                                                                <label for="example-email" class="form-label">Email</label>
+                                                                <input name="email" type="email" id="example-email" class="form-control" placeholder="Email">
+                                                            </div>
+
+                                                            <div class="mb-3">
+                                                                <label for="example-palaceholder" class="form-label">Contact</label>
+                                                                <input name="contact" type="text" id="example-palaceholder" class="form-control" value="+225">
+                                                            </div>
+
+                                                            <div class="mb-3">
+                                                            <label for="example-select" class="form-label">Status</label>
+                                                            <select class="form-select" id="example-select" name="role">
+                                                                <option value="user">utilisateurs</option>
+                                                                <option value="admin">Administrateur</option>
+                                                            </select>
+                                                        </div>
+
+                                                            <div class="mb-3">
+                                                                <label for="password" class="form-label">Show/Hide Password</label>
+                                                                <div class="input-group input-group-merge">
+                                                                    <input name="password" type="password" id="password" class="form-control" placeholder="Enter your password">
+                                                                    <div class="input-group-text" data-password="false">
+                                                                        <span class="password-eye"></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="mb-3">
+                                                            <label for="example-fileinput" class="form-label">Joindre une photo de profile (FACULTATIF)</label>
+                                                            <input name="photo" type="file" id="example-fileinput" class="form-control">
+                                                        </div>
+                
+                                                        <input type="hidden" name="token" value="{{ csrf_token() }}" />
+
+                                                        </div>
+                                                          <button type="submit" class="btn btn-primary mb-2">valider</button>
+                                                      </div>
+        
+                
+                                                        </form>
+                                                    </div> <!-- end col -->
+        
+                                                 
+                                                </div>
+                                                <!-- end row-->                      
+                                            </div> <!-- end preview-->
+                                        
+                            
+                                        </div> <!-- end tab-content-->
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card -->
+                            </div><!-- end col -->
+                        </div><!-- end row -->
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-end footer-links d-none d-md-block">
+                                    <a href="javascript: void(0);">About</a>
+                                    <a href="javascript: void(0);">Support</a>
+                                    <a href="javascript: void(0);">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group row">
-                      <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Email</label>
-                      <div class="col-sm-9">
-                        <input type="email" class="form-control" name="email" id="exampleInputEmail2" placeholder="Email">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="exampleInputMobile" class="col-sm-3 col-form-label">Mobile</label>
-                      <div class="col-sm-9">
-                        <input type="text" value="+225"  class="form-control" name="mobile" id="exampleInputMobile" placeholder="Ex : 07-XX-XX-XX-XX">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Mot de passe </label>
-                      <div class="col-sm-9">
-                        <input type="password" class="form-control" name="password" id="exampleInputPassword2" placeholder="Mot de passe par defaut">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="exampleInputPassword2" class="col-sm-3 col-form-label"> fonction</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" name="fonction" id="exampleInputPassword2" placeholder="Mot de passe par defaut">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Status</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" name="role" id="exampleInputConfirmPassword2" placeholder="Entrer le Role ">
-                      </div>
-                    </div>
-                    <input type="hidden" name="token" value="{{ csrf_token() }}" />
-                    <button type="submit" class="btn btn-primary me-3">enregistrer</button>
-                    <button class="btn btn-light">Cancel</button>
-                  </form>
-                </div>
-              </div>
+                </footer>
+                <!-- end Footer -->
+
             </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
 
 @endsection

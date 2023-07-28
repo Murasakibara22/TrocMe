@@ -20,7 +20,7 @@ class Pays extends Model
         'updated_at',
     ];
 
-    public function ville()
+    public function vil()
     {
         return $this->hasMany(Ville::class , 'pays_id')->get();
     }

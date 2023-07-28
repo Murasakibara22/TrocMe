@@ -5,142 +5,160 @@ namespace App\Http\Controllers;
 use App\Models\Categorie;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Intervention\Image\Image;
+use Image as InterventionImage;
 use Illuminate\Support\Facades\Hash;
 
 class CategorieController extends Controller
 {
-    public function newCat(){
+    public function nouvelle(){
         return view('AdminPages.Categorie.new');
     }
 
-    public function addCat(Request $request)
+    function ajoutCategorie(Request $request)
     {
-                $request->validate([
-                    'libelle' => ['required', 'string', 'max:255'],
-                    'description' => ['required'],
-                ]);
+        $request->validate([
+            'libelle'=> ['required','string','max:200'],
+        ]);
 
-                $categorie         =  new Categorie;
-                $categorie->libelle    = $request->libelle;
-                $categorie->description    = $request->description;
-                $categorie->slug   = Str::slug("$request->token". Hash::make($request->libelle),"-");
-                if (request()->file('photo')) {
-                    $img = request()->file('photo');
-                        $photo = md5($img->getClientOriginalExtension().time().$request->email).".".$img->getClientOriginalExtension();
-                        $source = $img;
-                        $target = 'images/Categorie/' .$photo;
-                        InterventionImage::make($source)->fit(212,207)->save($target);
-                        $categorie->photo   =  $photo;
-                }else{
-                    $categorie->photo   = "default.jpg";
-                }
+        $categories                = new Categorie;
+        $categories->libelle      = $request->libelle;     
+        $categories->slug   = "TrockMoi".Str::slug("$request->token".Hash::make($request->libelle),"-");  
+        if($request->description)
+        {
+            $categories->description =  $request->description;
+        }else{
+            $categories->description = 'Aucune description disponible';
+        }
 
-                $categorie->save();
+        if($request->hasfile('photo')){
+            $img = request()->file('photo');
+                $messi = md5($img->getClientOriginalExtension().time().$request->libelle).".".$img->getClientOriginalExtension();
+                $source = $img;
+                $target = 'images/Categorie/'.$messi;
+                InterventionImage::make($source)->fit(118,92)->save($target);
+                $categories->photo   =  $messi;
+        }else{
+            $categories->photo   = "default.jpg";
+        }
 
-                if( $categorie->save()){
-                
-                    return  redirect()->back()->with('success', 'categorie sauvegarder');
-                }else{
-                    return  redirect()->back()->with('error', 'categorie non sauvegarder');
-                }
+        if($request->hasfile('image_illustrant')){
+            $img = request()->file('image_illustrant');
+                $messi = md5($img->getClientOriginalExtension().time().$request->libelle).".".$img->getClientOriginalExtension();
+                $source = $img;
+                $target = 'images/Categorie/img/'.$messi;
+                InterventionImage::make($source)->fit(960,460)->save($target);
+                $categories->image_illustrant   =  $messi;
+        }else{
+            $categories->image_illustrant   = "default.jpg";
+        }
+
         
+        $categories->save();
+        
+
+        if($categories->save())
+        {
+            return redirect()->back()->with('save','sauvegarder avec success');
+        }else{
+            return redirect()->back()->with('Notsave','sauvegarder pas sauvegarder');
+        }
+
     }
 
-        public function listCat(){
-            
-            $categorie = Categorie::all();
-            return view('AdminPages.Categorie.list', compact('categorie'));
 
-        }
+    function listAll()
+    {
+        $categories  = Categorie::all();
+        return view('AdminPages.Categorie.list',compact('categories'));
+    }
 
 
-
-        public function editCat($slug)
-        {
-            $categorie = Categorie::where('slug',$slug)->first();
-            if(isset($categorie)){
-                 return view('AdminPages.Categorie.edit', compact('categorie', $categorie));
+    function change($slug)
+    {
+            $categories = Categorie::where('slug',$slug)->first();
+            if(!is_null($categories)){
+                return view('AdminPages.Categorie.edit', compact('categories'));
             }else{
-                return redirect('/Categorie_list')->with('NotExist', "La categorie n'existe pas ");
+                return redirect()->back()->with('Notedit','La categorie selectionner ne peut pas etre modifier');
             }
-        }
+    }
 
 
-        public function updateCat(Request $request, $slug)
-        {
-           // try{
-                $categorie = Categorie::where('slug',$slug)->first();
-                if(isset($categorie)){
-                    $categorie         =  new Categorie;
-                $categorie->libelle    = $request->libelle;
-                $categorie->description    = $request->description;
-                $categorie->slug   = Str::slug("$request->token". Hash::make($request->libelle),"-");
-                if (request()->file('photo')) {
+
+    function changeCategorie(Request $request, $slug)
+    {
+        $categories = Categorie::where('slug',$slug)->first();
+            if(!is_null($categories))
+            {
+                $categories->libelle      = $request->libelle;     
+                $categories->slug   = "TrockMoi".Str::slug("$request->token".Hash::make($request->libelle),"-");  
+                if($request->description)
+                {
+                    $categories->description =$request->description;
+                }else{
+                    $categories->description = 'Aucune description disponible';
+                }
+        
+                if($request->has('photo')){
                     $img = request()->file('photo');
-                        $photo = md5($img->getClientOriginalExtension().time().$request->email).".".$img->getClientOriginalExtension();
+                        $messi = md5($img->getClientOriginalExtension().time().$request->libelle).".".$img->getClientOriginalExtension();
                         $source = $img;
-                        $target = 'images/Categorie/'.$photo;
-                        InterventionImage::make($source)->fit(212,207)->save($target);
-                        $categorie->photo   =  $photo;
-                }else{
-                    $categorie->photo   = "default.jpg";
+                        $target = 'images/Categorie/'.$messi;
+                        InterventionImage::make($source)->fit(118,92)->save($target);
+                        $categories->photo   =  $messi;
                 }
-
-                $categorie->update();
-
-                if( $categorie->update()){
                 
-                    return  redirect('/Categorie_list')->with('success', 'categorie modifier ');
-                }else{
-                    return  redirect()->back()->with('error', 'categorie non modifier');
+
+                if($request->has('image_illustrant')){
+                    $img = request()->file('image_illustrant');
+                        $cr7 = md5($img->getClientOriginalExtension().time()).".".$img->getClientOriginalExtension();
+                        $source = $img;
+                        $target = 'images/Categorie/img/'.$cr7;
+                        InterventionImage::make($source)->fit(960,460)->save($target);
+                        $categories->image_illustrant   =  $cr7;
                 }
 
-                 }
+                $categories->update();
+                if($categories->update())
+                {
+                    return redirect('/Categorie_list');
+                }else{
+                    return redirect('/Categorie_list')->width('NoteditSucces','categorie non modifier');
+                }
 
-           // }catch(Exception $err){
-            //    report($err);
-//
-            //    return redirect('/categorie list')->with('probleme', 'un probleme est survenue');
-            //}
+            }else{
+                return redirect('/Categorie_list')->width('Notedit','La categorie selectionner ne peut pas etre modifier');
+            }
+    }
 
+
+    function supprimeCategorie($slug){
+        $categories  = Categorie::where('slug',$slug)->first();
+        if(!is_null($categories)){  
+            return view('AdminPages.Categorie.delete', compact('categories'));
+            
+        }else{
+            return redirect()->back()->with('Notedit','La categorie selectionner ne peut pas etre supprimer');
         }
+    }
 
 
-        public function deleteCat($slug)
-        { 
-            // try{
-                    $categorie = Categorie::where('slug',$slug)->first();
-                    if(isset($categorie)){ 
-                        return view('AdminPages.Categorie.delete', compact('categorie'));
-                    }else{
-                        return redirect('/Categorie_list')->with('NotExist', "La categorie n'existe pas ");
-                    }
-                // }catch(Exception $err){
-            //    report($err);
-//
-            //    return redirect('/categorie list')->with('probleme', 'un probleme est survenue');
-                 //}
+    function supprimer($slug)
+    {
+        $categories  = Categorie::where('slug',$slug)->first();
+        
+        if(!is_null($categories)){  
+            $categories->delete();
+            return redirect('/Categorie_list')->with('supprimerSuccess','Categorie supprimer avec success');
+        }else{
+            return redirect()->back()->with('Notedit','La categorie selectionner ne peut pas etre supprimer');
         }
+    }
 
-        public function destroyCat($slug)
-        {
-            // try{
-                    $categorie = Categorie::where('slug',$slug)->first();
-                    if(isset($categorie))
-                    {
-                        $categorie->delete();
-                        if($categorie->delete()){
-                            return  redirect('/Categorie_list')->with('success', 'categorie supprimer ');
-                        }else{
 
-                        }return  redirect()->back()->with('error', 'categorie non suprimer');
-                    }else{
-                                return redirect('/Categorie_list')->with('NotExist', "La categorie n'existe pas ");
-                            }
-  //                }catch(Exception $err){
-                    //    report($err);
-        //
-                    //    return redirect('/categorie list')->with('probleme', 'un probleme est survenue');
-                    //}
-         }
+//for souscat
+
+    
+
 }

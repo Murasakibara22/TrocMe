@@ -22,6 +22,10 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('photo')->default('default.jpg');
+            $table->string('photo_entreprise')->default('defaultEntreprise.jpg');
+            $table->string('bannear')->default('bannear.jpg');
+            $table->Boolean('souscrit')->default(0);
+            $table->integer('view_count_page')->default(0);
             $table->string('role')->default('utilisateurs');
             $table->string('slug')->unique();
             $table->rememberToken();

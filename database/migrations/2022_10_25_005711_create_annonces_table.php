@@ -23,14 +23,16 @@ class CreateAnnoncesTable extends Migration
             $table->string('Lieu');
             $table->string('email');
             $table->string('photo');
+            $table->string('images_secondaire');
             $table->string('facebook');
+            $table->integer('view_count_annonces')->default(0);
             $table->string('slug')->unique();
             $table->timestamps();
 
             $table->unsignedBigInteger('ville_id');
             $table->foreign('ville_id')
                 ->references('id')
-                ->on('villes')
+                ->on('cities')
                 ->onDelete('cascade');
 
             $table->unsignedBigInteger('user_id');

@@ -19,7 +19,7 @@ class AdminEnsure
         if($request->user()->role === $role){ 
             return $next($request);
          }else{
-             return response()->view('welcome');
+             return redirect()->route('my_account');
          }
 
         

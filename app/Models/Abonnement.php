@@ -16,7 +16,7 @@ class Abonnement extends Model
         'debut',
         'fin',
         'prix',
-        'status',
+        'statu',
         'slug',
         'created_at',
         'updated_at',

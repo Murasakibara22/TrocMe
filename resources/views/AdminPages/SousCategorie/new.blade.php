@@ -3,57 +3,130 @@
 @section('content')
 
 
-@if ( session('success'))
-  <div class="alert alert-success">
-   sauvegarder avec succès
-  </div>
 
-@endif
 
-            <div class="col-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Ajouter une Sous Categorie</h4>
-                  <p class="card-description">
+
+
+ <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+                @if ( session('saveSuccessSubCate'))
+                    <div class="alert alert-success">
+                    La Sous Categorie a ete  sauvegarder avec succes
+                    </div>
+                    @endif
+
+                @if ( session('NotsaveSuccessSubCate'))
+                    <div class="alert alert-warning">
+                    La Sous Categorie n'a pas ete  sauvegarder 
+                    </div>
+                    @endif
+
                   
-                  </p>
-                  <form  action="{{ route('addsouscat')}}" method="POST" enctype="multipart/form-data">
-                      @csrf 
-                      @method('POST')
+                    <!-- Start Content-->
+                    <div class="container-fluid">
 
-                      <div class="form-row">
-                                <div class="control-group col-sm-6">
-                                    <input type="text" class="form-control p-3" value="" id="name" placeholder="libelle" name="libelle"
-                                        required="required" data-validation-required-message="Please enter your name" />
-                                    <p class="help-block text-danger"></p>
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                           
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">Ajouter une nouvelle Sous Categorie <a href="/SousCategorie_list" class="float-end"><button type="button" class="btn btn-outline-info rounded-pill ms-5"><i class="uil-circuit"></i> Liste des Sous Categories</button> </a></h4>
+                                    
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <textarea class="form-control py-5 px-2" rows="6" value="" id="message" placeholder="Description" name="description"
-                                    required="required"
-                                    data-validation-required-message="Please enter your message"></textarea>
-                                <p class="help-block text-danger"></p>
-                            </div>
-
-                         
-                         <label for="exampleInputEmail1">Categories</label></br> </br>
-                        <div class="custom_select" name="categorie_id">
-                            <select name="categorie_id">
-                            @foreach($categorie as $categories)
-                            <option value="{{$categories->id}}" name="categorie_id" >{{$categories->libelle}}</option>
-                            @endforeach
-                            </select>
                         </div>
-                    </div> 
+                        <!-- end page title -->
 
-                            <input type="hidden" name="token" value="{{ csrf_token() }}" />
+                       
+
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title">Sous CAtegories</h4>
                             
-                            <div class="text-center">
-                                <button class="btn btn-primary py-2 px-4 " type="submit" id="sendMessageButton">Valider</button>
+                                     
+                                  <form action="{{ route('addsouscats') }}" method="POST" enctype="multipart/form-data">
+                                  @csrf 
+                                  @method('POST')
+                                        <div class="tab-content">
+                                            <div class="tab-pane show active" id="floating-preview">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <h5 class="mb-3">Nom</h5>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" name="libelle" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                                            <label for="floatingInput">Nom de la sous categorie</label>
+                                                        </div>
+                                                
+                                                    </div>
+                                                
+                                                    <div class="col-lg-6">
+                                                        <h5 class="mb-3">Categorie</h5>
+                                                        <div class="form-floating" name="categorie_id">
+                                                            <select class="form-select" id="floatingSelect" name="categorie_id" aria-label="Floating label select example">
+                                                              @foreach($categorie as $categories)
+                                                                <option value="{{$categories->id}}" name="categorie_id">{{$categories->libelle}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            <label for="floatingSelect">Selectionne la categorie cible</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <input type="hidden" name="token" value="{{ csrf_token() }}" />
+
+                                                </div>
+                                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                            </div>
+                                        
+                                        </div> <!-- end tab-content-->
+                                  </form>
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card -->
+                            </div><!-- end col -->
+                        </div><!-- end row -->
+
+
+               
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
                             </div>
-                  </form>
-                </div>
-              </div>
+                            <div class="col-md-6">
+                                <div class="text-md-end footer-links d-none d-md-block">
+                                    <a href="javascript: void(0);">About</a>
+                                    <a href="javascript: void(0);">Support</a>
+                                    <a href="javascript: void(0);">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+
             </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
 
 @endsection
