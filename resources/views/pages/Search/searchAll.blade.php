@@ -147,13 +147,13 @@
                 </div>
                 @if($annonces->type == "troque")
                      <div><a href="/annonceDetail" class="btn btn-outline-primary btn-sm mt-2  align-items-center">
-                     Afficher</a></div>
+                     Proposez</a></div>
                      @elseif($annonces->type == "vente")
                      <div><a href="/annonceDetail" class="btn btn-outline-warning btn-sm mt-2  align-items-center">
-                     Achetez</a></div>
+                     Dons</a></div>
                      @elseif($annonces->type == "Troque ou Vente")
                      <div><a href="/annonceDetail" class="btn btn-outline-info btn-sm mt-2  align-items-center">
-                     Afficher</a></div>
+                     Proposez</a></div>
                      @else
                      <div><a href="/annonceDetail" class="btn btn-outline-primary btn-sm mt-2  align-items-center">
                      proposez</a></div>

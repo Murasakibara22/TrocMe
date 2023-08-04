@@ -266,7 +266,7 @@
           <!-- nav item -->
         <li class="nav-item">
           <a class="nav-link  {{ Request::is('dashboard_user_vente') ? 'active': ''}}" href="/dashboard_user_vente"><i
-              class="feather-icon icon-credit-card me-2"></i>Mes ventes</a>
+              class="feather-icon icon-credit-card me-2"></i>Mes Dons</a>
         </li>
           <!-- nav item -->
         <li class="nav-item {{ Request::is('dashboard_user_demande') ? 'active': ''}}">

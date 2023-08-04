@@ -15,7 +15,7 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Ventes</li>
+              <li class="breadcrumb-item active" aria-current="page">Dons</li>
             </ol>
           </nav>
         </div>
@@ -33,7 +33,7 @@
           <!-- heading -->
           <div class="bg-light rounded-3 d-flex justify-content-between ps-md-10 ps-6">
             <div class="d-flex align-items-center">
-              <h1 class="mb-0 fw-bold">Ventes</h1>
+              <h1 class="mb-0 fw-bold">Dons</h1>
 
             </div>
             <div class="py-6">

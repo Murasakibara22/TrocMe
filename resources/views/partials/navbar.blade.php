@@ -4,8 +4,8 @@
             <div class="row">
 
                 <div class="col-3 text-start  d-none d-md-block">
-                    <a href="tel:+2250758293571" class="text-decoration-none text-white">
-                        +225 0758293571
+                    <a href="tel:+2252224202321" class="text-decoration-none text-white">
+                        +225 2224202321
                     </a>
                 </div>
                 <div class="col-md-5 col-8 text-center text-md-start">
@@ -59,14 +59,14 @@
                 <div class="col-xxl-2 col-lg-2">
 
                     <a class="navbar-brand d-none d-lg-block" href="/">
-                        <img src="{{ asset('./assets/images/logo/logot.svg') }}" alt="Trock Moi logo">
+                        <img src="{{ asset('./assets/images/logotroc.jpg') }}" style="width: 40%; " alt="Trock Moi logo">
 
                     </a>
 
                     
                     <div class="d-flex justify-content-between w-100 d-lg-none ms-4">
                         <a class="navbar-brand" href="/">
-                            <img src="{{ asset('./assets/images/logo/logot.svg') }}" alt="Trock Moi logo">
+                            <img src="{{ asset('./assets/images/logotroc.jpg') }}" style="width: 40%; " alt="Trock Moi logo">
 
                         </a>
 
@@ -115,7 +115,7 @@
                                     </li>
                                     <li class="nav-item ">
                                         <a class="nav-link " href="/ventes" role="button"   aria-expanded="false">
-                                            Ventes
+                                            Dons
                                         </a>
                                     </li>
 

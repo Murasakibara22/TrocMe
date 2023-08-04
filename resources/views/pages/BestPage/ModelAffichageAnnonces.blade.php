@@ -254,15 +254,15 @@
                                         @if($annonce_sponsorisers->type == "troque")
                                         <div><a href="/annonceDetail/{{$annonce_sponsorisers->slug}}"
                                                 class="btn btn-outline-primary btn-sm mt-2  align-items-center">
-                                                Afficher</a></div>
+                                                Proposez</a></div>
                                         @elseif($annonce_sponsorisers->type == "vente")
                                         <div><a href="/annonceDetailVentes/{{$annonce_sponsorisers->slug}}"
                                                 class="btn btn-outline-warning btn-sm mt-2  align-items-center">
-                                                Achetez</a></div>
+                                                Dons</a></div>
                                         @elseif($annonce_sponsorisers->type == "Troque ou Vente")
                                         <div><a href="/annonceDetail/{{$annonce_sponsorisers->slug}}"
                                                 class="btn btn-outline-info btn-sm mt-2  align-items-center">
-                                                Afficher</a></div>
+                                                Proposez</a></div>
                                         @else
                                         <div><a href="/annonceDetail/{{$annonce_sponsorisers->slug}}"
                                                 class="btn btn-outline-primary btn-sm mt-2  align-items-center">
@@ -342,15 +342,15 @@
                                         @if($annonce_simples->type == "troque")
                                         <div><a href="/annonceDetail/{{$annonce_simples->slug}}"
                                                 class="btn btn-outline-primary btn-sm mt-2  align-items-center">
-                                                Afficher</a></div>
+                                                Proposez</a></div>
                                         @elseif($annonce_simples->type == "vente")
                                         <div><a href="/annonceDetailVentes/{{$annonce_simples->slug}}"
                                                 class="btn btn-outline-warning btn-sm mt-2  align-items-center">
-                                                Achetez</a></div>
+                                                Dons</a></div>
                                         @elseif($annonce_simples->type == "Troque ou Vente")
                                         <div><a href="/annonceDetail/{{$annonce_simples->slug}}"
                                                 class="btn btn-outline-info btn-sm mt-2  align-items-center">
-                                                Afficher</a></div>
+                                                Proposez</a></div>
                                         @else
                                         <div><a href="/annonceDetail/{{$annonce_simples->slug}}"
                                                 class="btn btn-outline-primary btn-sm mt-2  align-items-center">
@@ -437,15 +437,15 @@
                                         @if($annonce_sponsorisers->type == "troque")
                                         <div><a href="/annonceDetail/{{$annonce_sponsorisers->slug}}"
                                                 class="btn btn-outline-primary btn-sm mt-2  align-items-center">
-                                                Afficher</a></div>
+                                                Proposez</a></div>
                                         @elseif($annonce_sponsorisers->type == "vente")
                                         <div><a href="/annonceDetailVentes/{{$annonce_sponsorisers->slug}}"
                                                 class="btn btn-outline-warning btn-sm mt-2  align-items-center">
-                                                Achetez</a></div>
+                                                Dons</a></div>
                                         @elseif($annonce_sponsorisers->type == "Troque ou Vente")
                                         <div><a href="/annonceDetail/{{$annonce_sponsorisers->slug}}"
                                                 class="btn btn-outline-info btn-sm mt-2  align-items-center">
-                                                Afficher</a></div>
+                                                Proposez</a></div>
                                         @else
                                         <div><a href="/annonceDetail/{{$annonce_sponsorisers->slug}}"
                                                 class="btn btn-outline-primary btn-sm mt-2  align-items-center">
@@ -525,15 +525,15 @@
                                         @if($annonce_simples->type == "troque")
                                         <div><a href="/annonceDetail/{{$annonce_simples->slug}}"
                                                 class="btn btn-outline-primary btn-sm mt-2  align-items-center">
-                                                Afficher</a></div>
+                                                Proposez</a></div>
                                         @elseif($annonce_simples->type == "vente")
                                         <div><a href="/annonceDetailVentes/{{$annonce_simples->slug}}"
                                                 class="btn btn-outline-warning btn-sm mt-2  align-items-center">
-                                                Achetez</a></div>
+                                                Dons</a></div>
                                         @elseif($annonce_simples->type == "Troque ou Vente")
                                         <div><a href="/annonceDetail/{{$annonce_simples->slug}}"
                                                 class="btn btn-outline-info btn-sm mt-2  align-items-center">
-                                                Afficher</a></div>
+                                                Proposez</a></div>
                                         @else
                                         <div><a href="/annonceDetail/{{$annonce_simples->slug}}"
                                                 class="btn btn-outline-primary btn-sm mt-2  align-items-center">
