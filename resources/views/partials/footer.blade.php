@@ -35,9 +35,9 @@
             <ul class="nav flex-column">
               <li class="nav-item mb-2"><a href="/" class="nav-link">Accueil</a></li>
               <li class="nav-item mb-2"><a href="/apropos" class="nav-link">A propos</a></li>
-              <li class="nav-item mb-2"><a href="/" class="nav-link">Troc</a></li>
-              <li class="nav-item mb-2"><a href="/" class="nav-link">Ventes</a></li>
-              <li class="nav-item mb-2"><a href="/" class="nav-link">Demandez</a></li>
+              <li class="nav-item mb-2"><a href="/troc" class="nav-link">Trock</a></li>
+              <li class="nav-item mb-2"><a href="/dons" class="nav-link">dons</a></li>
+              <li class="nav-item mb-2"><a href="/demandez" class="nav-link">Demandez</a></li>
             </ul>
           </div>
 

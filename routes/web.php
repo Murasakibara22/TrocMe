@@ -48,7 +48,7 @@ Route::get('/troc', [HomeController::class , 'aomine']);
 
 Route::get('/annonceDetail/{slug}', [HomeController::class , 'seijuro']);
 
-Route::get('/annonceDetaildonss/{slug}', [HomeController::class , 'seijurodonss']);
+Route::get('/annonceDetaildons/{slug}', [HomeController::class , 'seijurodons']);
 
 Route::get('/publiez', [HomeController::class , 'tetsuya'])->middleware(['auth']);
 
@@ -85,9 +85,9 @@ Route::get('/searchTroquer', [HomeController::class , 'searchTroquez'])->name('s
 
 Route::get('/filtre_selon_recherche', [HomeController::class , 'SearchfilterTroque'])->name('SearchfilterTroc');
 
-Route::get('/searchdons', [HomeController::class , 'searchdonss'])->name('searchVen');
+Route::get('/searchdons', [HomeController::class , 'searchdons'])->name('searchVen');
 
-Route::get('/filtre_selon_recherche_dons', [HomeController::class , 'Searchfilterdonss'])->name('SearchfilterVen');
+Route::get('/filtre_selon_recherche_dons', [HomeController::class , 'Searchfilterdons'])->name('SearchfilterVen');
 
 Route::get('/searchDm', [HomeController::class , 'searchDemande'])->name('searchDemandez');
 
@@ -96,7 +96,7 @@ Route::get('/filtre_selon_recherche_demandez', [HomeController::class , 'Searchf
 
 Route::get('/filterTroquer', [HomeController::class , 'filterTroquez'])->name('filterTroc');
 
-Route::get('/filterdons', [HomeController::class , 'filterdonss'])->name('filterVen');
+Route::get('/filterdons', [HomeController::class , 'filterdons'])->name('filterVen');
 
 Route::get('/filterDm', [HomeController::class , 'filterDemande'])->name('filterDemandez');
 
@@ -147,7 +147,7 @@ Route::put('/UserModify/{slug}', [HomeController::class , 'editionUser'])->middl
 //Dashboard Utilisateur 
 Route::get('/dashboard_user_troque',[DashboardUserController::class,'troque_utilisateur'])->middleware(['auth']);//page listant tous les troques de l'utilisateur
 
-Route::get('/dashboard_user_dons',[DashboardUserController::class,'dons_utilisateur'])->middleware(['auth']);//page listant toutes les donss de l'utilisateur
+Route::get('/dashboard_user_dons',[DashboardUserController::class,'dons_utilisateur'])->middleware(['auth']);//page listant toutes les dons de l'utilisateur
 
 Route::get('/dashboard_user_demande',[DashboardUserController::class,'demande_utilisateur'])->middleware(['auth']);//page listant toutes les demandes de l'utilisateur
 

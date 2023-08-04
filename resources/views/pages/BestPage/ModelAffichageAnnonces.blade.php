@@ -207,7 +207,7 @@
                                                     src="../images/Annonce/{{$annonce_sponsorisers->photo}}"
                                                     alt="troc moi" class="mb-3 img-fluid"></a>
                                             @elseif($annonce_sponsorisers->type == "dons")
-                                            <a href="/annonceDetaildonss/{{$annonce_sponsorisers->slug}}"> <img
+                                            <a href="/annonceDetaildons/{{$annonce_sponsorisers->slug}}"> <img
                                                     src="../images/Annonce/{{$annonce_sponsorisers->photo}}"
                                                     alt="troc moi" class="mb-3 img-fluid"></a>
                                             @elseif($annonce_sponsorisers->type == "Troque ou dons")
@@ -256,7 +256,7 @@
                                                 class="btn btn-outline-primary btn-sm mt-2  align-items-center">
                                                 Afficher</a></div>
                                         @elseif($annonce_sponsorisers->type == "dons")
-                                        <div><a href="/annonceDetaildonss/{{$annonce_sponsorisers->slug}}"
+                                        <div><a href="/annonceDetaildons/{{$annonce_sponsorisers->slug}}"
                                                 class="btn btn-outline-warning btn-sm mt-2  align-items-center">
                                                 Achetez</a></div>
                                         @elseif($annonce_sponsorisers->type == "Troque ou dons")
@@ -299,7 +299,7 @@
                                                     src="../images/Annonce/{{$annonce_simples->photo}}" alt="troc moi"
                                                     class="mb-3 img-fluid"></a>
                                             @elseif($annonce_simples->type == "dons")
-                                            <a href="/annonceDetaildonss/{{$annonce_simples->slug}}"> <img
+                                            <a href="/annonceDetaildons/{{$annonce_simples->slug}}"> <img
                                                     src="../images/Annonce/{{$annonce_simples->photo}}" alt="troc moi"
                                                     class="mb-3 img-fluid"></a>
                                             @elseif($annonce_simples->type == "Troque ou dons")
@@ -344,7 +344,7 @@
                                                 class="btn btn-outline-primary btn-sm mt-2  align-items-center">
                                                 Afficher</a></div>
                                         @elseif($annonce_simples->type == "dons")
-                                        <div><a href="/annonceDetaildonss/{{$annonce_simples->slug}}"
+                                        <div><a href="/annonceDetaildons/{{$annonce_simples->slug}}"
                                                 class="btn btn-outline-warning btn-sm mt-2  align-items-center">
                                                 Achetez</a></div>
                                         @elseif($annonce_simples->type == "Troque ou dons")
@@ -390,7 +390,7 @@
                                                     src="../images/Annonce/{{$annonce_sponsorisers->photo}}"
                                                     alt="troc moi" class="mb-3 img-fluid"></a>
                                             @elseif($annonce_sponsorisers->type == "dons")
-                                            <a href="/annonceDetaildonss/{{$annonce_sponsorisers->slug}}"> <img
+                                            <a href="/annonceDetaildons/{{$annonce_sponsorisers->slug}}"> <img
                                                     src="../images/Annonce/{{$annonce_sponsorisers->photo}}"
                                                     alt="troc moi" class="mb-3 img-fluid"></a>
                                             @elseif($annonce_sponsorisers->type == "Troque ou dons")
@@ -439,7 +439,7 @@
                                                 class="btn btn-outline-primary btn-sm mt-2  align-items-center">
                                                 Afficher</a></div>
                                         @elseif($annonce_sponsorisers->type == "dons")
-                                        <div><a href="/annonceDetaildonss/{{$annonce_sponsorisers->slug}}"
+                                        <div><a href="/annonceDetaildons/{{$annonce_sponsorisers->slug}}"
                                                 class="btn btn-outline-warning btn-sm mt-2  align-items-center">
                                                 Achetez</a></div>
                                         @elseif($annonce_sponsorisers->type == "Troque ou dons")
@@ -482,7 +482,7 @@
                                                     src="../images/Annonce/{{$annonce_simples->photo}}" alt="troc moi"
                                                     class="mb-3 img-fluid"></a>
                                             @elseif($annonce_simples->type == "dons")
-                                            <a href="/annonceDetaildonss/{{$annonce_simples->slug}}"> <img
+                                            <a href="/annonceDetaildons/{{$annonce_simples->slug}}"> <img
                                                     src="../images/Annonce/{{$annonce_simples->photo}}" alt="troc moi"
                                                     class="mb-3 img-fluid"></a>
                                             @elseif($annonce_simples->type == "Troque ou dons")
@@ -527,7 +527,7 @@
                                                 class="btn btn-outline-primary btn-sm mt-2  align-items-center">
                                                 Afficher</a></div>
                                         @elseif($annonce_simples->type == "dons")
-                                        <div><a href="/annonceDetaildonss/{{$annonce_simples->slug}}"
+                                        <div><a href="/annonceDetaildons/{{$annonce_simples->slug}}"
                                                 class="btn btn-outline-warning btn-sm mt-2  align-items-center">
                                                 Achetez</a></div>
                                         @elseif($annonce_simples->type == "Troque ou dons")
@@ -641,7 +641,7 @@
                                     <!-- input -->
                                     <input class="form-check-input" type="checkbox" value="" id="DealShare">
                                     <label class="form-check-label" for="DealShare">
-                                        donss
+                                        dons
                                     </label>
                                 </div>
                                 <!-- form check -->

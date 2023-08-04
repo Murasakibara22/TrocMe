@@ -85,7 +85,7 @@ tinymce.init({
                                 <option value="demandez">Recherchez</option>
                                 <option value="Troque ou dons">Troque ou dons</option>
                             </select>
-                            <a tabindex="0" class="btn  btn-danger" role="button" data-bs-toggle="popover" data-trigger="focus" title="Informations sur le choix des types!!" data-bs-content="Trock: Tous les articles d'occasion..........;  donss: Tous les articles mise en dons; Demandez: Les articles que vous recherchez; ">info</a>
+                            <a tabindex="0" class="btn  btn-danger" role="button" data-bs-toggle="popover" data-trigger="focus" title="Informations sur le choix des types!!" data-bs-content="Trock: Tous les articles d'occasion..........;  dons: Tous les articles mise en dons; Demandez: Les articles que vous recherchez; ">info</a>
                         </div>
 
 

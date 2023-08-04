@@ -18,7 +18,7 @@
           <!-- heading -->
           <div class="d-flex justify-content-between ps-md-8 ps-6"  style="background: url(../images/User/{{$user->bannear}} )no-repeat; background-size: cover; border-radius: ; background-position: center;">
             <div class="d-flex align-items-center">
-              <h1 class="mb-0 fw-bold">Les donss de {{$user->nom}}</h1>
+              <h1 class="mb-0 fw-bold">Les dons de {{$user->nom}}</h1>
 
             </div>
             <div class="py-14">

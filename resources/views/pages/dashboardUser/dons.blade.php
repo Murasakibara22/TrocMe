@@ -52,7 +52,7 @@
               <!-- nav item -->
               <li class="nav-item">
                 <a class="nav-link active" href="/dashboard_user_dons"><i
-                    class="feather-icon icon-settings me-2"></i>Mes donss</a>
+                    class="feather-icon icon-settings me-2"></i>Mes dons</a>
               </li>
               <!-- nav item -->
               <!-- nav item -->
@@ -76,7 +76,7 @@
           <div class="py-6 p-md-6 p-lg-10">
             <!-- heading -->
             <div class="d-flex justify-content-between mb-6 align-items-center">
-              <h2 class="mb-0">Mes donss</h2>
+              <h2 class="mb-0">Mes dons</h2>
               <a href="/publiez" class="btn btn-outline-primary" >Ajoutez une Annonce</a>
 
             </div>
@@ -109,7 +109,7 @@
                   <a href="/annonceDetail/{{$annonces->slug}}"> <img src="../images/Annonce/{{$annonces->photo}}" alt="troc moi"
                       class="icon-shape icon-xl"></a>
                       @elseif($annonces->type == "dons")
-                      <a href="/annonceDetaildonss/{{$annonces->slug}}"> <img src="../images/Annonce/{{$annonces->photo}}" alt="troc moi"
+                      <a href="/annonceDetaildons/{{$annonces->slug}}"> <img src="../images/Annonce/{{$annonces->photo}}" alt="troc moi"
                       class="icon-shape icon-xl"></a>
                       @elseif($annonces->type == "Troque ou dons")
                       <a href="/annonceDetail/{{$annonces->slug}}"> <img src="../images/Annonce/{{$annonces->photo}}" alt="troc moi"
@@ -172,7 +172,7 @@
                         </td>
                         @elseif($annonces->type == "dons")
                         <td class="text-muted align-middle border-top-0">
-                          <a href="/annonceDetaildonss/{{$annonces->slug}}" class="text-inherit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View"><i class="feather-icon icon-eye"></i></a>
+                          <a href="/annonceDetaildons/{{$annonces->slug}}" class="text-inherit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View"><i class="feather-icon icon-eye"></i></a>
                         </td>
                         @elseif($annonces->type == "Troque ou dons")
                         <td class="text-muted align-middle border-top-0">
@@ -237,7 +237,7 @@
           <!-- nav item -->
         <li class="nav-item">
           <a class="nav-link  {{ Request::is('dashboard_user_dons') ? 'active': ''}}" href="/dashboard_user_dons"><i
-              class="feather-icon icon-credit-card me-2"></i>Mes donss</a>
+              class="feather-icon icon-credit-card me-2"></i>Mes dons</a>
         </li>
           <!-- nav item -->
         <li class="nav-item {{ Request::is('dashboard_user_demande') ? 'active': ''}}">

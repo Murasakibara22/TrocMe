@@ -71,7 +71,7 @@
                             <!-- nav item -->
                             <li class="nav-item">
                                 <a class="nav-link" href="/dashboard_user_dons"><i
-                                        class="feather-icon icon-settings me-2"></i>Mes donss</a>
+                                        class="feather-icon icon-settings me-2"></i>Mes dons</a>
                             </li>
                             <!-- nav item -->
                             <!-- nav item -->
@@ -265,7 +265,7 @@
           <!-- nav item -->
         <li class="nav-item">
           <a class="nav-link  {{ Request::is('dashboard_user_dons') ? 'active': ''}}" href="/dashboard_user_dons"><i
-              class="feather-icon icon-credit-card me-2"></i>Mes donss</a>
+              class="feather-icon icon-credit-card me-2"></i>Mes dons</a>
         </li>
           <!-- nav item -->
         <li class="nav-item {{ Request::is('dashboard_user_demande') ? 'active': ''}}">

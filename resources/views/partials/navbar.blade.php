@@ -250,8 +250,8 @@
                                         </a>
                                     </li>
                                     <li class="nav-item ">
-                                        <a class="nav-link " href="/donss" role="button" aria-expanded="false">
-                                            donss
+                                        <a class="nav-link " href="/dons" role="button" aria-expanded="false">
+                                            dons
                                         </a>
                                     </li>
 
@@ -314,8 +314,8 @@
                                         </a>
                                     </li>
                                     <li class="nav-item ">
-                                        <a class="nav-link " href="/donss" role="button" aria-expanded="false">
-                                            donss
+                                        <a class="nav-link " href="/dons" role="button" aria-expanded="false">
+                                            dons
                                         </a>
                                     </li>
                                     <li class="nav-item ">

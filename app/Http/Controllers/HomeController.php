@@ -87,7 +87,7 @@ class HomeController extends Controller
         $annonce = Annonces::where('type','dons')->Orwhere('type','Troque ou dons')->OrderBy('created_at', 'DESC')->paginate(20);
         $today = date('j M, Y', strtotime(Carbon::today())  );
        
-        return view('pages/donss',compact('annonce','today'));
+        return view('pages/dons',compact('annonce','today'));
     }
 
     public function seijuro($slug){
@@ -126,7 +126,7 @@ class HomeController extends Controller
         }
     }
 
-    public function seijurodonss($slug){
+    public function seijurodons($slug){
         $annonce = Annonces::where('slug',$slug)->first();
         if(!is_null($annonce)){
 
@@ -139,7 +139,7 @@ class HomeController extends Controller
         $anno = Annonces::Where('type','dons')->take(4)->get();
         $today = date('j M, Y', strtotime(Carbon::today())  );
         $annonce->increment('view_count_annonces');
-            return view('pages/annoncesDetailsdonss',compact('annonce','nomUser','anno','today'));
+            return view('pages/annoncesDetailsdons',compact('annonce','nomUser','anno','today'));
         }else{
             return redirect()->back()->with('NotExist', "L'article selectionner n'est plus disponible");
         }
@@ -471,22 +471,22 @@ class HomeController extends Controller
          }
     }
 
-    function searchdonss(Request $request){
+    function searchdons(Request $request){
         $today = date('j M, Y', strtotime(Carbon::today())  );
         if(!is_null($request->search)){
             $searched = $request->search;		
             $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->Where( 'type', 'dons' )->Orwhere('type', 'Troque ou dons')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->paginate(20);
             
             if (count ($annonce) > 0 && isset($annonce)){
-            return view ( 'pages.Search.searchdonss',compact('today','searched'))->with('annonce',$annonce);
+            return view ( 'pages.Search.searchdons',compact('today','searched'))->with('annonce',$annonce);
             }else{
-            return redirect('/donss')->with( 'Nodetails','No Details found. Esaayez encore !' );	
+            return redirect('/dons')->with( 'Nodetails','No Details found. Esaayez encore !' );	
             }
 
         }elseif($request->searched == "" || $request->searched == " "){
-            return redirect('/donss')->with( 'Nodetails','No Details found. Esaayez encore !' );
+            return redirect('/dons')->with( 'Nodetails','No Details found. Esaayez encore !' );
         }else{
-            return redirect('/donss')->with( 'Nodetails','No Details found. Esaayez encore !' ); 
+            return redirect('/dons')->with( 'Nodetails','No Details found. Esaayez encore !' ); 
         }
     }
 
@@ -557,8 +557,8 @@ class HomeController extends Controller
 
     }
 
-    //pour les donss
-    function filterdonss(Request $request)
+    //pour les dons
+    function filterdons(Request $request)
     {
         $today = date('j M, Y', strtotime(Carbon::today())  );
         if($request->FiltrerSelon == "prix Le plus bas"){
@@ -568,7 +568,7 @@ class HomeController extends Controller
             if (count ($annonce) > 0 && isset($annonce)){
             return view('pages.Filter.filtrerdons',compact('today'))->with('annonce',$annonce);
         }else{
-            return redirect('/donss')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+            return redirect('/dons')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
             }	
         }elseif($request->FiltrerSelon == "prix Le plus haut"){
 
@@ -578,7 +578,7 @@ class HomeController extends Controller
             if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.Filter.filtrerdons',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect( '/donss')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                return redirect( '/dons')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
                 }
         }elseif($request->FiltrerSelon == "Annonces Recentes"){
             $annonce = Annonces::where('type','dons')->OrderBy('created_at','DESC')->get();
@@ -587,7 +587,7 @@ class HomeController extends Controller
             if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.Filter.filtrerdons',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect( '/donss')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                return redirect( '/dons')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
                 }
         }elseif($request->FiltrerSelon == "Annonces les plus anciens"){
             $annonce = Annonces::where('type','dons')->OrderBy('created_at','ASC')->get();
@@ -596,10 +596,10 @@ class HomeController extends Controller
             if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.Filter.filtrerdons',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect('/donss')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                return redirect('/dons')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
                 }
         }else{
-            return redirect('/donss')->with( 'Nodetails','No Details found. Esaayez encore  !' );
+            return redirect('/dons')->with( 'Nodetails','No Details found. Esaayez encore  !' );
         }
 
     }
@@ -932,9 +932,9 @@ class HomeController extends Controller
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//Filtre au niveau de la page donss
+//Filtre au niveau de la page dons
 
-public function  Searchfilterdonss(Request $request){
+public function  Searchfilterdons(Request $request){
     $today = date('j M, Y', strtotime(Carbon::today())  );
     $searched = $request->filtreSearch;
 
@@ -942,7 +942,7 @@ public function  Searchfilterdonss(Request $request){
     $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->Where('type', 'dons' )->OrderBy('prix','ASC')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->get();
         
         if (count ($annonce) > 0 && isset($annonce)){
-            return view ('pages.Search.filtersearchdonss',compact('today','searched'))->with('annonce',$annonce);
+            return view ('pages.Search.filtersearchdons',compact('today','searched'))->with('annonce',$annonce);
         }else{
             return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
         }
@@ -951,7 +951,7 @@ public function  Searchfilterdonss(Request $request){
     $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->Where('type', 'dons' )->OrderBy('prix','DESC')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->get();
         
         if (count ($annonce) > 0 && isset($annonce)){
-            return view ('pages.Search.filtersearchdonss',compact('today','searched'))->with('annonce',$annonce);
+            return view ('pages.Search.filtersearchdons',compact('today','searched'))->with('annonce',$annonce);
         }else{
             return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
         }
@@ -960,7 +960,7 @@ public function  Searchfilterdonss(Request $request){
 
         
         if (count ($annonce) > 0 && isset($annonce)){
-            return view ('pages.Search.filtersearchdonss',compact('today','searched'))->with('annonce',$annonce);
+            return view ('pages.Search.filtersearchdons',compact('today','searched'))->with('annonce',$annonce);
         }else{
             return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
         }
@@ -968,7 +968,7 @@ public function  Searchfilterdonss(Request $request){
     $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->Where('type', 'dons' )->OrderBy('created_at','ASC')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->get();
         
         if (count ($annonce) > 0 && isset($annonce)){
-            return view ('pages.Search.filtersearchdonss',compact('today','searched'))->with('annonce',$annonce);
+            return view ('pages.Search.filtersearchdons',compact('today','searched'))->with('annonce',$annonce);
         }else{
             return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
         }
