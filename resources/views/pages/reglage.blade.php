@@ -70,8 +70,8 @@
                             <!-- nav item -->
                             <!-- nav item -->
                             <li class="nav-item">
-                                <a class="nav-link" href="/dashboard_user_vente"><i
-                                        class="feather-icon icon-settings me-2"></i>Mes Ventes</a>
+                                <a class="nav-link" href="/dashboard_user_dons"><i
+                                        class="feather-icon icon-settings me-2"></i>Mes donss</a>
                             </li>
                             <!-- nav item -->
                             <!-- nav item -->
@@ -264,8 +264,8 @@
         </li>
           <!-- nav item -->
         <li class="nav-item">
-          <a class="nav-link  {{ Request::is('dashboard_user_vente') ? 'active': ''}}" href="/dashboard_user_vente"><i
-              class="feather-icon icon-credit-card me-2"></i>Mes ventes</a>
+          <a class="nav-link  {{ Request::is('dashboard_user_dons') ? 'active': ''}}" href="/dashboard_user_dons"><i
+              class="feather-icon icon-credit-card me-2"></i>Mes donss</a>
         </li>
           <!-- nav item -->
         <li class="nav-item {{ Request::is('dashboard_user_demande') ? 'active': ''}}">

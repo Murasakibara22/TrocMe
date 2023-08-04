@@ -38,7 +38,7 @@ Route::get('/indexAbonnee/{slug}', [FollowingController::class , 'Home_principal
 
 Route::get('/troque_abonnee/{slug}', [FollowingController::class , 'troque_abonnee']);
 
-Route::get('/vente_abonnee/{slug}', [FollowingController::class , 'vente_abonnee']);
+Route::get('/dons_abonnee/{slug}', [FollowingController::class , 'dons_abonnee']);
 
 Route::get('/recherchez_abonnee/{slug}', [FollowingController::class , 'recherchez_abonnee']);
 
@@ -48,11 +48,11 @@ Route::get('/troc', [HomeController::class , 'aomine']);
 
 Route::get('/annonceDetail/{slug}', [HomeController::class , 'seijuro']);
 
-Route::get('/annonceDetailVentes/{slug}', [HomeController::class , 'seijuroVentes']);
+Route::get('/annonceDetaildonss/{slug}', [HomeController::class , 'seijurodonss']);
 
 Route::get('/publiez', [HomeController::class , 'tetsuya'])->middleware(['auth']);
 
-Route::get('/ventes', [HomeController::class , 'akashi']);
+Route::get('/dons', [HomeController::class , 'akashi']);
 
 Route::get('/account_reglage', [HomeController::class , 'daiki'])->middleware(['auth']); //recopis le slug
 
@@ -85,9 +85,9 @@ Route::get('/searchTroquer', [HomeController::class , 'searchTroquez'])->name('s
 
 Route::get('/filtre_selon_recherche', [HomeController::class , 'SearchfilterTroque'])->name('SearchfilterTroc');
 
-Route::get('/searchVente', [HomeController::class , 'searchVentes'])->name('searchVen');
+Route::get('/searchdons', [HomeController::class , 'searchdonss'])->name('searchVen');
 
-Route::get('/filtre_selon_recherche_vente', [HomeController::class , 'SearchfilterVentes'])->name('SearchfilterVen');
+Route::get('/filtre_selon_recherche_dons', [HomeController::class , 'Searchfilterdonss'])->name('SearchfilterVen');
 
 Route::get('/searchDm', [HomeController::class , 'searchDemande'])->name('searchDemandez');
 
@@ -96,7 +96,7 @@ Route::get('/filtre_selon_recherche_demandez', [HomeController::class , 'Searchf
 
 Route::get('/filterTroquer', [HomeController::class , 'filterTroquez'])->name('filterTroc');
 
-Route::get('/filterVente', [HomeController::class , 'filterVentes'])->name('filterVen');
+Route::get('/filterdons', [HomeController::class , 'filterdonss'])->name('filterVen');
 
 Route::get('/filterDm', [HomeController::class , 'filterDemande'])->name('filterDemandez');
 
@@ -147,7 +147,7 @@ Route::put('/UserModify/{slug}', [HomeController::class , 'editionUser'])->middl
 //Dashboard Utilisateur 
 Route::get('/dashboard_user_troque',[DashboardUserController::class,'troque_utilisateur'])->middleware(['auth']);//page listant tous les troques de l'utilisateur
 
-Route::get('/dashboard_user_vente',[DashboardUserController::class,'vente_utilisateur'])->middleware(['auth']);//page listant toutes les ventes de l'utilisateur
+Route::get('/dashboard_user_dons',[DashboardUserController::class,'dons_utilisateur'])->middleware(['auth']);//page listant toutes les donss de l'utilisateur
 
 Route::get('/dashboard_user_demande',[DashboardUserController::class,'demande_utilisateur'])->middleware(['auth']);//page listant toutes les demandes de l'utilisateur
 
@@ -347,7 +347,7 @@ Route::get('/get_all_annonce',[WebsiteController::class , 'get_annonces'] )->nam
  Route::get('/particulier-page-get_all_annonce', [DashboardUserController::class, 'particulier_page_get'])->name('particulier_page_gets'); 
  Route::get('/autocomplete-search-demandez', [DashboardUserController::class, 'autocompleteSearchDemandez'])->name('search.demandez'); 
  Route::get('/autocomplete-search-trock', [DashboardUserController::class, 'autocompleteSearchTrock'])->name('search.Trock'); 
- Route::get('/autocomplete-search-vente', [DashboardUserController::class, 'autocompleteSearchVente'])->name('search.Vente'); 
+ Route::get('/autocomplete-search-dons', [DashboardUserController::class, 'autocompleteSearchdons'])->name('search.dons'); 
 
  
     Route::group(['prefix' => '/TrockMoi-profil/client'], function () { 

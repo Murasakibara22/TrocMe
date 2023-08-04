@@ -114,7 +114,7 @@
                   <div class=" position-absolute top-0 start-0">
                   @if($annonces->type == "troque")
                     <span class="badge bg-success">{{$annonces->type}}</span>
-                    @elseif($annonces->type == "Troque ou Vente")
+                    @elseif($annonces->type == "Troque ou dons")
                     <span class="badge bg-warning">{{$annonces->type}}</span>
                     @elseif($annonces->type == "demandez")
                     <span class="badge bg-danger">{{$annonces->type}}</span>
@@ -148,10 +148,10 @@
                 @if($annonces->type == "troque")
                      <div><a href="/annonceDetail" class="btn btn-outline-primary btn-sm mt-2  align-items-center">
                      Afficher</a></div>
-                     @elseif($annonces->type == "vente")
+                     @elseif($annonces->type == "dons")
                      <div><a href="/annonceDetail" class="btn btn-outline-warning btn-sm mt-2  align-items-center">
                      Achetez</a></div>
-                     @elseif($annonces->type == "Troque ou Vente")
+                     @elseif($annonces->type == "Troque ou dons")
                      <div><a href="/annonceDetail" class="btn btn-outline-info btn-sm mt-2  align-items-center">
                      Afficher</a></div>
                      @else

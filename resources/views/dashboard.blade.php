@@ -287,9 +287,9 @@
                                             <div class="w-100 overflow-hidden">
                                                 @if($userAnnonces->type == "troque")
                                                 <span class="badge badge-warning-lighten float-end">{{$userAnnonces->type}}</span>
-                                                @elseif($userAnnonces->type == "vente")
+                                                @elseif($userAnnonces->type == "dons")
                                                 <span class="badge badge-danger-lighten float-end">{{$userAnnonces->type}}</span>
-                                                @elseif($userAnnonces->type == "troque ou vente")
+                                                @elseif($userAnnonces->type == "troque ou dons")
                                                 <span class="badge badge-secondary-lighten float-end">{{$userAnnonces->type}}</span>
                                                 @else
                                                 <span class="badge badge-success-lighten float-end">{{$userAnnonces->type}}</span>

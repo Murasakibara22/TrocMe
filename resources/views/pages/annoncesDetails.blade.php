@@ -339,13 +339,13 @@
 
                 <div class="text-center position-relative ">
                  
-                  <a href="/annonceDetailVentes/{{$annos->slug}}"> <img src="../images/Annonce/{{$annos->photo}}" alt="Troc moi"
+                  <a href="/annonceDetaildonss/{{$annos->slug}}"> <img src="../images/Annonce/{{$annos->photo}}" alt="Troc moi"
                       class="mb-3 img-fluid"></a>
 
                  
 
                 </div>
-                <div class="text-small mb-1"><a href="/annonceDetailVentes/" class="text-decoration-none text-muted"><small>Abidjan</small></a></div>
+                <div class="text-small mb-1"><a href="/annonceDetaildonss/" class="text-decoration-none text-muted"><small>Abidjan</small></a></div>
                 <div style="height:19px;" class="overflow-hidden justify-content-between">
                 <h2 class="fs-6 "><a href="./pages/shop-single.html" class="text-inherit text-decoration-none">{{$annos->titre}}</a></h2>
                 </div>
@@ -362,7 +362,7 @@
                   <div><span class="text-dark">{{number_format($annos->prix,0,',',' ')}} FCFA</span> 
                   </div>
                 </div>
-                <div><a href="/annonceDetailVentes/" class="btn btn-outline-primary btn-sm mt-2  align-items-center">Affichez </a></div>
+                <div><a href="/annonceDetaildonss/" class="btn btn-outline-primary btn-sm mt-2  align-items-center">Affichez </a></div>
               </div>
             </div>
           </div>

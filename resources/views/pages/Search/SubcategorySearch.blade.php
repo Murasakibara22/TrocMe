@@ -67,7 +67,7 @@
                   <div class=" position-absolute top-0 start-0">
                   @if($annonces->type == "troque")
                     <span class="badge bg-success">{{$annonces->type}}</span>
-                    @elseif($annonces->type == "Troque ou Vente")
+                    @elseif($annonces->type == "Troque ou dons")
                     <span class="badge bg-warning">{{$annonces->type}}</span>
                     @elseif($annonces->type == "demandez")
                     <span class="badge bg-danger">{{$annonces->type}}</span>
@@ -78,10 +78,10 @@
                   @if($annonces->type == "troque")
                   <a href="/annonceDetail/{{$annonces->slug}}"> <img src="../images/Annonce/{{$annonces->photo}}" alt="troc moi"
                       class="mb-3 img-fluid"></a>
-                      @elseif($annonces->type == "vente")
-                      <a href="/annonceDetailVentes/{{$annonces->slug}}"> <img src="../images/Annonce/{{$annonces->photo}}" alt="troc moi"
+                      @elseif($annonces->type == "dons")
+                      <a href="/annonceDetaildonss/{{$annonces->slug}}"> <img src="../images/Annonce/{{$annonces->photo}}" alt="troc moi"
                       class="mb-3 img-fluid"></a>
-                      @elseif($annonces->type == "Troque ou Vente")
+                      @elseif($annonces->type == "Troque ou dons")
                       <a href="/annonceDetail/{{$annonces->slug}}"> <img src="../images/Annonce/{{$annonces->photo}}" alt="troc moi"
                       class="mb-3 img-fluid"></a>
                       @else
@@ -111,10 +111,10 @@
                 @if($annonces->type == "troque")
                      <div><a href="/annonceDetail/{{$annonces->slug}}" class="btn btn-outline-primary btn-sm mt-2  align-items-center">
                      Afficher</a></div>
-                     @elseif($annonces->type == "vente")
-                     <div><a href="/annonceDetailVentes/{{$annonces->slug}}" class="btn btn-outline-warning btn-sm mt-2  align-items-center">
+                     @elseif($annonces->type == "dons")
+                     <div><a href="/annonceDetaildonss/{{$annonces->slug}}" class="btn btn-outline-warning btn-sm mt-2  align-items-center">
                      Achetez</a></div>
-                     @elseif($annonces->type == "Troque ou Vente")
+                     @elseif($annonces->type == "Troque ou dons")
                      <div><a href="/annonceDetail/{{$annonces->slug}}" class="btn btn-outline-info btn-sm mt-2  align-items-center">
                      Afficher</a></div>
                      @else

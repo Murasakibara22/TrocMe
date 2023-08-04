@@ -113,7 +113,7 @@
                     </div>
                     <!-- Banner Content -->
                     <!-- Banner Image -->
-                    <!-- img --><img src="../assets/images/banner/assortment-citrus-fruits.png" alt="troc moi Bannear Vente"
+                    <!-- img --><img src="../assets/images/banner/assortment-citrus-fruits.png" alt="troc moi Bannear dons"
                     class="img-fluid rounded ">
                     <!-- Banner Image -->
                 </div>
@@ -134,7 +134,7 @@
 
             <!-- card body -->
             <div class="card-body p-4">
-              <h2 class="mb-0 fs-3">Annonces Ventes</h2>
+              <h2 class="mb-0 fs-3">Annonces donss</h2>
             </div>
           </div>
           <!-- text -->

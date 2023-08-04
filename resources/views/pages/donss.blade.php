@@ -34,10 +34,10 @@
                                     
                                  
 
-                            <form action="{{ route('searchVen') }}"  class="col-lg-12" id="recherche_vente">
+                            <form action="{{ route('searchVen') }}"  class="col-lg-12" id="recherche_dons">
                       
                                     <div class="input-group">
-                                              <input type="search" name= "search" value="{{  request()->search ?? '' }}"  class="form-control dropdown-toggle"  placeholder="Recherche..." id="search-term_vente">
+                                              <input type="search" name= "search" value="{{  request()->search ?? '' }}"  class="form-control dropdown-toggle"  placeholder="Recherche..." id="search-term_dons">
                                         <span class="mdi mdi-magnify search-icon"></span>
                                         
                                 
@@ -47,7 +47,7 @@
 
                                 </div>
                             </div>
-                            <div id="search-results_vente"  style="width: 86%;position: absolute;z-index: 990; opacity: 0.95; background-color: #f0f3f2; "></div>
+                            <div id="search-results_dons"  style="width: 86%;position: absolute;z-index: 990; opacity: 0.95; background-color: #f0f3f2; "></div>
                         </div>
 
                         
@@ -117,7 +117,7 @@
 
 
 
-    <livewire:vente.vente-list />
+    <livewire:dons.dons-list />
 
 
 </main>
@@ -132,16 +132,16 @@
 
 <script>
 $(document).ready(function() {
-    $('#search-term_vente').on('input', function() {
+    $('#search-term_dons').on('input', function() {
         var term = $(this).val();
 
         $.ajax({
-            url: '/autocomplete-search-vente',
+            url: '/autocomplete-search-dons',
             data: {
               term: term
             },
             success: function(response) {
-                var results = $('#search-results_vente');
+                var results = $('#search-results_dons');
 
                 results.html(response)
             }
@@ -153,15 +153,15 @@ $(document).ready(function() {
 
 <script>
   
-var rechercheDivvente = document.getElementById('recherche_vente');
-var resultatsDivvente = document.getElementById('search-results_vente');
+var rechercheDivdons = document.getElementById('recherche_dons');
+var resultatsDivdons = document.getElementById('search-results_dons');
 
 // Ajoute un écouteur d'événements click sur le document
 document.addEventListener('click', function(e) {
   // Vérifie si l'événement a été déclenché en dehors de la div de recherche
-  if (!rechercheDivvente.contains(e.target)) {
+  if (!rechercheDivdons.contains(e.target)) {
     // Efface les résultats pré-affichés
-    resultatsDivvente.innerHTML = '';
+    resultatsDivdons.innerHTML = '';
   }
 });
 

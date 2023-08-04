@@ -15,7 +15,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-                            <li class="breadcrumb-item"><a href="/ventes">Ventes</a></li>
+                            <li class="breadcrumb-item"><a href="/donss">donss</a></li>
                             @foreach($annonce->souscat()->get() as $souscats)
 
                             <li class="breadcrumb-item active" aria-current="page">{{$souscats->libelle}}</li>
@@ -37,7 +37,7 @@
                                 <img itemprop="photo" src="../images/Annonce/{{$annonce->photo}}" class="d-block w-100 "
                                     alt="...">
                             </div>
-                            @if(!is_null($annonce->images_secondaire))
+                            @if(!is_null($annonce->images_secondaire) && $annonce->images_secondaire != "NULL")
                             @foreach(json_decode($annonce->images_secondaire) as $img)
                             <div class="carousel-item">
                                 <img src="../images/Annonce/{{$img}}" class="d-block w-100 " alt="...">
@@ -317,14 +317,14 @@
 
                             <div class="text-center position-relative ">
 
-                                <a href="/annonceDetailVentes/{{$annos->slug}}"> <img
+                                <a href="/annonceDetaildonss/{{$annos->slug}}"> <img
                                         src="../images/Annonce/{{$annos->photo}}" alt="Troc moi"
                                         class="mb-3 img-fluid"></a>
 
 
 
                             </div>
-                            <div class="text-small mb-1"><a href="/annonceDetailVentes/"
+                            <div class="text-small mb-1"><a href="/annonceDetaildonss/"
                                     class="text-decoration-none text-muted"><small>Abidjan</small></a></div>
                             <div style="height:19px;" class="overflow-hidden justify-content-between">
                                 <h2 class="fs-6 "><a href="./pages/shop-single.html"
@@ -344,7 +344,7 @@
                                 <div><span class="text-dark">{{number_format($annos->prix,0,',',' ')}} FCFA</span>
                                 </div>
                             </div>
-                            <div><a href="/annonceDetailVentes/"
+                            <div><a href="/annonceDetaildonss/"
                                     class="btn btn-outline-primary btn-sm mt-2  align-items-center">Achetez </a></div>
                         </div>
                     </div>
