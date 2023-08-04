@@ -80,9 +80,9 @@
                 <select class="form-select" id="inputGroupSelect02" name="type" value="{{ old($annonce->type) ?? $annonce->type}}">
                 <option selected value="{{ old($annonce->type) ?? $annonce->type}}">{{ old($annonce->type) ?? $annonce->type}}</option>
                     <option value="troque">Troque</option>
-                    <option value="vente">Vente</option>
+                    <option value="dons">dons</option>
                     <option value="demandez">Recherchez</option>
-                    <option value="Troque ou Vente">Troque ou Vente</option>
+                    <option value="Troque ou dons">Troque ou dons</option>
                 </select>
                 <label class="input-group-text" for="inputGroupSelect02">Type</label>
             </div>

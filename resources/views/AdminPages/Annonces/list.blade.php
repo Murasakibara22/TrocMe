@@ -158,8 +158,8 @@
                         <td>{{$ville->name}}</td>
                         <td>{{$utilisateur->nom}}, {{$utilisateur->prenom}}</td>
                         <td> 
-                            @if($annonces->type == "vente")
-                            <a href="/annonceDetailVentes/{{$annonces->slug}}"><button type="button" class="btn btn-warning"><i class="mdi mdi-eye"></i> </button></a>
+                            @if($annonces->type == "dons")
+                            <a href="/annonceDetaildonss/{{$annonces->slug}}"><button type="button" class="btn btn-warning"><i class="mdi mdi-eye"></i> </button></a>
                             @elseif($annonces->type == "troque")
                             <a href="/annonceDetail/{{$annonces->slug}}"><button type="button" class="btn btn-warning"><i class="mdi mdi-eye"></i> </button></a>
                            @else

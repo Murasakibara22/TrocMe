@@ -16,11 +16,11 @@ class DashboardUserController extends Controller
     }
 
 
-    //Page de Vente de l'utilisateur 
-    public function vente_utilisateur(){
-        $annonce = Annonces::Where('type','vente')->where('user_id',Auth()->user()->id)->get();
+    //Page de dons de l'utilisateur 
+    public function dons_utilisateur(){
+        $annonce = Annonces::Where('type','dons')->where('user_id',Auth()->user()->id)->get();
 
-            return view('pages.dashboardUser.vente',compact('annonce'));
+            return view('pages.dashboardUser.dons',compact('annonce'));
     }
 
 
@@ -120,11 +120,11 @@ class DashboardUserController extends Controller
         return response()->json($resultat_search);
     }
 
-    public function autocompleteSearchVente(Request $request)
+    public function autocompleteSearchdons(Request $request)
     {
         $term = $request->input('term');
 
-        $results = Annonces::where('titre', 'like', '%'.$term.'%')->where('type','vente')->take(12)->get();
+        $results = Annonces::where('titre', 'like', '%'.$term.'%')->where('type','dons')->take(12)->get();
     
         $resultat_search = view('pages.listSearchDemandez',compact('results'))->render();
         return response()->json($resultat_search);

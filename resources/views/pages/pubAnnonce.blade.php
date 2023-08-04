@@ -81,11 +81,11 @@ tinymce.init({
                             <select class="form-select" id="inputGroupSelect02" name="type" required>
                                 <option selected>choix...</option>
                                 <option value="troque">Troque</option>
-                                <option value="vente">Vente</option>
+                                <option value="dons">dons</option>
                                 <option value="demandez">Recherchez</option>
-                                <option value="Troque ou Vente">Troque ou Vente</option>
+                                <option value="Troque ou dons">Troque ou dons</option>
                             </select>
-                            <a tabindex="0" class="btn  btn-danger" role="button" data-bs-toggle="popover" data-trigger="focus" title="Informations sur le choix des types!!" data-bs-content="Trock: Tous les articles d'occasion..........;  Ventes: Tous les articles mise en vente; Demandez: Les articles que vous recherchez; ">info</a>
+                            <a tabindex="0" class="btn  btn-danger" role="button" data-bs-toggle="popover" data-trigger="focus" title="Informations sur le choix des types!!" data-bs-content="Trock: Tous les articles d'occasion..........;  donss: Tous les articles mise en dons; Demandez: Les articles que vous recherchez; ">info</a>
                         </div>
 
 

@@ -107,7 +107,7 @@
               <!-- input -->
               <input class="form-check-input" type="checkbox" value="" id="DealShare">
               <label class="form-check-label" for="DealShare">
-                Ventes
+                dons
               </label>
             </div>
             <!-- form check -->
