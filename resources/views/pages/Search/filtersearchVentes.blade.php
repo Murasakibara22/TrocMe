@@ -33,7 +33,7 @@
           <!-- heading -->
           <div class="bg-light rounded-3 d-flex justify-content-between ps-md-10 ps-6">
             <div class="d-flex align-items-center">
-              <h1 class="mb-0 fw-bold">Ventes</h1>
+              <h1 class="mb-0 fw-bold">dons</h1>
 
             </div>
             <div class="py-6">
@@ -114,11 +114,11 @@
 
                 <div class="text-center position-relative ">
                  
-                  <a href="/annonceDetaildonss/{{$annonces->slug}}"> <img src="../images/Annonce/{{$annonces->photo}}" alt="Troc moi"
+                  <a href="/annonceDetaildons/{{$annonces->slug}}"> <img src="../images/Annonce/{{$annonces->photo}}" alt="Troc moi"
                       class="mb-3 img-fluid"></a>
                 </div>
                 @foreach($annonces->villes()->get()  as  $ville)
-                <div class="text-small mb-1"><a href="/annonceDetaildonss/{{$annonces->slug}}" class="text-decoration-none text-muted"><small>{{$ville->libelle}}</small></a></div>
+                <div class="text-small mb-1"><a href="/annonceDetaildons/{{$annonces->slug}}" class="text-decoration-none text-muted"><small>{{$ville->libelle}}</small></a></div>
                 @endforeach
                 <div style="height:19px;" class="overflow-hidden justify-content-between">
                 <h2 class="fs-6 "><a href="./pages/shop-single.html" class="text-inherit text-decoration-none">{{$annonces->titre}}</a></h2>
@@ -137,7 +137,7 @@
                   <div><span class="text-dark">{{number_format($annonces->prix,0,',',' ')}} FCFA</span> 
                   </div>
                 </div>
-                <div><a href="/annonceDetaildonss/{{$annonces->slug}}" class="btn btn-outline-primary btn-sm mt-2  align-items-center">
+                <div><a href="/annonceDetaildons/{{$annonces->slug}}" class="btn btn-outline-primary btn-sm mt-2  align-items-center">
                      Achetez</a></div>
               </div>
             </div>

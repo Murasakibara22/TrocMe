@@ -134,7 +134,7 @@
 
             <!-- card body -->
             <div class="card-body p-4">
-              <h2 class="mb-0 fs-3">Annonces donss</h2>
+              <h2 class="mb-0 fs-3">Annonces dons</h2>
             </div>
           </div>
           <!-- text -->

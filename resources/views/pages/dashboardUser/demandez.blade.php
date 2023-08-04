@@ -109,7 +109,7 @@
                   <a href="/annonceDetail/{{$annonces->slug}}"> <img src="../images/Annonce/{{$annonces->photo}}" alt="troc moi"
                       class="icon-shape icon-xl"></a>
                       @elseif($annonces->type == "dons")
-                      <a href="/annonceDetaildonss/{{$annonces->slug}}"> <img src="../images/Annonce/{{$annonces->photo}}" alt="troc moi"
+                      <a href="/annonceDetaildons/{{$annonces->slug}}"> <img src="../images/Annonce/{{$annonces->photo}}" alt="troc moi"
                       class="icon-shape icon-xl"></a>
                       @elseif($annonces->type == "Troque ou dons")
                       <a href="/annonceDetail/{{$annonces->slug}}"> <img src="../images/Annonce/{{$annonces->photo}}" alt="troc moi"
@@ -171,7 +171,7 @@
                         </td>
                         @elseif($annonces->type == "dons")
                         <td class="text-muted align-middle border-top-0">
-                          <a href="/annonceDetaildonss/{{$annonces->slug}}" class="text-inherit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View"><i class="feather-icon icon-eye"></i></a>
+                          <a href="/annonceDetaildons/{{$annonces->slug}}" class="text-inherit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View"><i class="feather-icon icon-eye"></i></a>
                         </td>
                         @elseif($annonces->type == "Troque ou dons")
                         <td class="text-muted align-middle border-top-0">
@@ -236,7 +236,7 @@
           <!-- nav item -->
         <li class="nav-item">
           <a class="nav-link  {{ Request::is('dashboard_user_dons') ? 'active': ''}}" href="/dashboard_user_dons"><i
-              class="feather-icon icon-credit-card me-2"></i>Mes donss</a>
+              class="feather-icon icon-credit-card me-2"></i>Mes dons</a>
         </li>
           <!-- nav item -->
         <li class="nav-item {{ Request::is('dashboard_user_demande') ? 'active': ''}}">
