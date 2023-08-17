@@ -176,6 +176,8 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
 
     Route::get('/findSearch', [UserController::class , 'findSearch'])->name('findSearch');
 
+    Route::view('aide', 'AdminPages/Aide');
+
 
 
 

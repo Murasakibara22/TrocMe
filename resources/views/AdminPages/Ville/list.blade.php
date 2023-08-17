@@ -42,85 +42,82 @@
                     <!--  -->
                   
 
-                    <!-- Start Content-->
-                    <div class="container-fluid">
+                        <!-- Start Content-->
+                        <div class="container-fluid">
 
-                     <!-- start page title -->
-                     <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            
-                                        </ol>
+                            <!-- start page title -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="page-title-box">
+                                        <div class="page-title-right">
+                                            <ol class="breadcrumb m-0">
+                                                
+                                            </ol>
+                                        </div>
+                                        <h4 class="page-title"> Nos ville 
+                                        <a href="/new_ville" class="float-end"><button type="button" class="btn btn-outline-info rounded-pill ms-5"><i class="uil-circuit"></i> Ajoutez un ville</button> </a>
+
+                                        </h4>
                                     </div>
-                                    <h4 class="page-title"> Nos ville 
-                                    <a href="/new_ville" class="float-end"><button type="button" class="btn btn-outline-info rounded-pill ms-5"><i class="uil-circuit"></i> Ajoutez un ville</button> </a>
-
-                                    </h4>
                                 </div>
                             </div>
+                            <!-- end page title -->
+
+
+
+                            <div class="col-lg-12 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                            <h4 class="card-title">Liste des ville
+                                
+                                                        <div class="app-search dropdown float-end">
+                                                            <form action="{{ route('findSearchVille') }}">
+                                                                <div class="input-group">
+                                                                    <input type="search" name= "search" value="{{  request()->search ?? '' }}"  class="form-control dropdown-toggle"  placeholder="Recherche..." id="top-search">
+                                                                    <span class="mdi mdi-magnify search-icon"></span>
+                                                                    
+                                                                    <button class="input-group-text btn btn-primary" type="submit">Search</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                            </h4>
+                                                <p class="card-description">
+                                                    Vous avez la possibilité de  <code>modifier</code> ou de <code>suprimer  </code> un Partenaire
+                                                </p>
+                                                <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead class="thead-dark bg-info">
+                                                        <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">libelle</th>
+                                                        <th scope="col">code</th>
+                                                        <th scope="col">Pays</th>
+                                        
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach($ville  as $villes)
+                                                        @foreach($villes->state()->get() as $item)
+                                                        <tr>
+                                                            <th scope="row">{{$villes->id}}</th>
+                                                            <td>{{$villes->name}}</td>
+                                                            <td>{{$item->id}}</td>
+                                                            <td>{{$item->name}}</td>
+                                                        </tr>
+                                                        @endforeach
+                                                    @endforeach
+                                                    </tbody>
+                                                    </table>
+
+
+                                                </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
                         </div>
-                        <!-- end page title -->
-
-
-
-                    <div class="col-lg-12 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body">
-                            <h4 class="card-title">Liste des ville
-                    
-                                            <div class="app-search dropdown float-end">
-                                                <form action="{{ route('findSearchVille') }}">
-                                                    <div class="input-group">
-                                                        <input type="search" name= "search" value="{{  request()->search ?? '' }}"  class="form-control dropdown-toggle"  placeholder="Recherche..." id="top-search">
-                                                        <span class="mdi mdi-magnify search-icon"></span>
-                                                        
-                                                        <button class="input-group-text btn btn-primary" type="submit">Search</button>
-                                                    </div>
-                                                </form>
-
-                                              
-                                            </div>
-                
-                </h4>
-                  <p class="card-description">
-                    Vous avez la possibilité de  <code>modifier</code> ou de <code>suprimer  </code> un Partenaire
-                  </p>
-                  <div class="table-responsive">
-                  <table class="table">
-                    <thead class="thead-dark bg-info">
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">libelle</th>
-                        <th scope="col">code</th>
-                        <th scope="col">Pays</th>
-         
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($ville  as $villes)
-                        @foreach($villes->state()->get() as $item)
-                        <tr>
-                            <th scope="row">{{$villes->id}}</th>
-                            <td>{{$villes->name}}</td>
-                            <td>{{$item->id}}</td>
-                            <td>{{$item->name}}</td>
-                        </tr>
-                        @endforeach
-                    @endforeach
-                    </tbody>
-                    </table>
-
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-
-                     </div>
                 </div>
             </div>
 

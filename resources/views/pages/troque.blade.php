@@ -42,9 +42,8 @@
                                     </form>
 
                                 </div>
-                                
+                                <div id="search-results_trock" class="m-auto" style="min-width: 61%! important;max-width: 87%! important;position: absolute;z-index: 990; opacity: 0.95; background-color: #f0f3f2; "></div>
                             </div>
-                            <div id="search-results_trock" style="width: 86%;position: absolute;z-index: 990; opacity: 0.95; background-color: #f0f3f2; "></div>
 
                         </div>
 

@@ -1,14 +1,77 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<!DOCTYPE html>
+<html lang="en">
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+<head>
+
+  <title>Trock moi</title>
+  <!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Site de Troque et vente d'articles de tous genre">
+<meta content="Murasakibara" name="author">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M8S4MT3EYG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M8S4MT3EYG');
+</script>
+
+<!-- Favicon icon-->
+<link rel="shortcut icon" type="image/x-icon" href="{{ asset('../assets/images/favicon/favicon.ico') }}">
+
+
+<!-- Libs CSS -->
+<link href="{{ asset('../assets/libs/bootstrap-icons/font/bootstrap-icons.css') }}" rel="stylesheet">
+<link href="{{ asset('../assets/libs/feather-webfont/dist/feather-icons.css') }}" rel="stylesheet">
+<link href="{{ asset('../assets/libs/simplebar/dist/simplebar.min.css') }}" rel="stylesheet">
+
+
+<!-- Theme CSS -->
+<link rel="stylesheet" href="{{ asset('../assets/css/theme.min.css') }}">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+
+
+</head>
+
+<body>
+
+  <!-- navigation -->
+<div class="border-bottom shadow-sm">
+  <nav class="navbar navbar-light py-2">
+    <div class="container justify-content-center justify-content-lg-between">
+      <a class="navbar-brand" href="../index.html">
+        <img src="{{ asset('../assets/images/logo/-logo.svg') }}" alt="" class="d-inline-block align-text-top">
+      </a>
+      <span class="navbar-text">
+        je n'ai pas de compte ? <a href="../register">Inscription</a>
+      </span>
+    </div>
+  </nav>
+</div>
+
+ 
+<main>
+<!-- section -->
+  <section class="my-lg-14 my-8">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row justify-content-center align-items-center">
+        <div class="col-12 col-md-6 col-lg-4 order-lg-1 order-2">
+          <!-- img -->
+          <img src="../assets/images/fp-g.svg" alt="" class="img-fluid">
         </div>
+        <div class="col-12 col-md-6 offset-lg-1 col-lg-4 order-lg-2 order-1 d-flex align-items-center">
+          <div>
+            <div class="mb-lg-9 mb-5">
+
+            
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -16,21 +79,59 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+              <!-- heading -->
+              <h1 class="mb-2 h2 fw-bold">Mot de passe oublier?</h1>
+              <p>Veuillez saisir l'adresse e-mail associée à votre compte et nous vous enverrons par e-mail un lien pour réinitialiser votre mot de passe.</p>
             </div>
+            <!-- form -->
+            <form method="POST" action="{{ route('password.email') }}">
+                @csrf
+              <!-- row -->
+              <div class="row g-3">
+               <!-- col -->
+                <div class="col-12">
+                  <!-- input -->
+                  <input type="email" class="form-control"  name="email" :value="old('email')" placeholder="Email" required="">
+                </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+<!-- btn -->
+                <div class="col-12 d-grid gap-2"> <button type="submit" class="btn btn-primary">Reset Password</button>
+                  <a href="{{route('login')}}" class="btn btn-light">Back</a>
+                </div>
+
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+</main>
+
+
+
+
+  <!-- Footer -->
+  <!-- footer -->
+  @include('partials/footer')
+
+  <!-- Javascript-->
+  <!-- Libs JS -->
+<script src="{{ asset('../assets/libs/jquery/dist/jquery.min.js ') }}"></script>
+<script src="{{ asset('../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js ') }}"></script>
+<script src="{{ asset('../assets/libs/simplebar/dist/simplebar.min.js ') }}"></script>
+
+<!-- Theme JS -->
+<script src="{{ asset('../assets/js/theme.min.js ') }}"></script>
+  <script src="{{ asset('../assets/js/vendors/password.js ') }}"></script>
+
+
+
+
+</body>
+
+</html>

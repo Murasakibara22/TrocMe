@@ -57,7 +57,7 @@
                       
                     <div class="row mt-2">
                       @foreach($categories as $categorie)
-                            <div class="col-lg-10">
+                            <div class="col-lg-6">
                                 <div class="card">
                                     <div class="row g-0 align-items-center">
                                         <div class="col-md-2">
@@ -90,7 +90,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
-                                <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+                                <script>document.write(new Date().getFullYear())</script> © Trock Moi 
                             </div>
                             <div class="col-md-6">
                                 <div class="text-md-end footer-links d-none d-md-block">

@@ -83,13 +83,20 @@
                                 @error('password_confirmation') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
 
+                            <div class="col-12">
+                            <div class="form-group" >
+                                <strong>Recaptcha:</strong>                  
+                                {!! NoCaptcha::renderJs() !!}
+                                {!! NoCaptcha::display() !!}
+                            </div>
+                            </div>
+
 
                             <div class="col-2 me-3 mt-3 d-grid float-start"> <button type="button" wire:click="PrecedenteCurrentPage" class="btn btn-danger ">Back</button>
                             </div>
 
                             <div class="col-3 ms-2 mt-3 d-grid float-end"> <button type="submit" class="btn btn-primary " :disabled="$disabled">Enregistrer</button>
                             </div>
-
 
                             @endif
 

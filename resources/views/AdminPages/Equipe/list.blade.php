@@ -52,47 +52,52 @@
                        
 
                         <div class="row">
-                            @foreach($equipe as $equipes)
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="card">
-                                    <img src="/images/Equipe/{{$equipes->photo}}" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{$equipes->nom}},({{$equipes->fonction}})
 
-                                                               <div class="dropdown float-end">
-                                                                  <a href="#" class="dropdown-toggle text-black arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                      <i class="mdi mdi-dots-vertical font-18"></i>
-                                                                  </a>
-                                                                  <div class="dropdown-menu dropdown-menu-end">
-                                                                      <!-- item-->
-                                                                      <a href="/equipe_edit/{{$equipes->slug}}" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
-                                                                      <!-- item-->
-                                                                    
-                                                                      <a href="/equipe_delete/{{$equipes->slug}}" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>
+                            <div class="app-search dropdown">
+                                <form action="{{ route('findSearchTeam') }}">
+                                    <div class="input-group">
+                                        <input type="search" name= "search" value="{{  request()->search ?? '' }}"  class="form-control dropdown-toggle"  placeholder="Recherche..." id="top-search">
+                                        <span class="mdi mdi-magnify search-icon"></span>
+                                        
+                                
+                                        <button class="input-group-text btn btn-primary" type="submit">Search</button>
+                                    </div>
+                                </form>
+                            </div>
 
-                                                                  </div>
-                                                              </div>
-                                        </h5>
-                                        <button class="btn btn-primary ms-1" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapseExample"
-                                                aria-expanded="false" aria-controls="collapseExample">
-                                               Informations suppl...
-                                            </button>
-                                        </p>
-                                        <div class="collapse show" id="collapseExample">
-                                            <div class="card card-body mb-0">
-                                            
-                                               <p> nom:       {{$equipes->nom}} </p>
-                                                  <p> prenom:    {{$equipes->prenom}} </p>
-                                                    <p> contact:   {{$equipes->contact}} </p>
-                                                     <p> fonction:  {{$equipes->fonction}} </p>
-                                                <p> email:      {{$equipes->email}}</p>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end card-body -->
-                                </div> <!-- end card -->
-                            </div> <!-- end col-->
-                            @endforeach
+
+                            <div class="table-responsive col-lg-10 m-auto">
+                                <table class="table table-striped table-centered mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>User</th>
+                                            <th>Fonctions</th>
+                                            <th>Account No.</th>
+                                            <th>Balance</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if($equipe && $equipe->count() > 0)
+                                        @foreach($equipe as $item)
+                                        <tr>
+                                            <td class="table-user">
+                                                <img src="/images/Equipe/{{$item->photo}}" alt="table-user" class="me-2 rounded-circle" />
+                                                {{$item->nom}} {{$item->prenom}}
+                                            </td>
+                                            <td>{{$item->fonction}}</td>
+                                            <td>{{$item->contact}}</td>
+                                            <td>{{$item->email}}</td>
+                                            <td class="table-action">
+                                                <a href="/equipe_edit/{{$item->slug}}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                <a href="/equipe_delete/{{$item->slug}}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @endif
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <!-- end row -->
                         
@@ -100,18 +105,7 @@
 
                 </div> <!-- content -->
 
-                                         <div class="app-search dropdown">
-                                                <form action="{{ route('findSearchTeam') }}">
-                                                    <div class="input-group">
-                                                        <input type="search" name= "search" value="{{  request()->search ?? '' }}"  class="form-control dropdown-toggle"  placeholder="Recherche..." id="top-search">
-                                                        <span class="mdi mdi-magnify search-icon"></span>
-                                                        
-                                                
-                                                        <button class="input-group-text btn btn-primary" type="submit">Search</button>
-                                                    </div>
-                                                </form>
-                                              
-                                            </div>
+                                        
                 <!-- Footer Start -->
                 <footer class="footer">
                     <div class="container-fluid">

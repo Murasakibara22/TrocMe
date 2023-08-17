@@ -21,7 +21,7 @@
                     style="background: url(assets/images/slideback.jpg)no-repeat; background-size: cover; border-radius: ; background-position: center;">
                     <div class="ps-lg-12 py-lg-10 col-xxl-5 col-md-7 py-5 px-8 text-xs-center">
 
-                        <h2 class="text-dark display-5 fw-bold mt-4 text-white">Bienvenue </br>sur Troc Moi</h2>
+                        <h2 class="text-dark display-5 fw-bold mt-4 text-white">Bienvenue </br>sur Trock Moi</h2>
                         <p class="lead text-white">Troque tous, rapidement et simplement ici</p>
                         <a href="/publiez" class="btn btn-dark mt-3">Publiez <i
                                 class="feather-icon icon-arrow-right ms-1"></i></a>
@@ -267,7 +267,7 @@
                                     <div class="text-center position-relative ">
 
                                         <a href="/annonceDetail/{{$annonce_sponsorisers->slug}}"> <img
-                                                src="../images/Annonce/{{$annonce_sponsorisers->photo}}" alt="troc moi {{$annonce_sponsorisers->titre}}"
+                                                src="../images/Annonce/{{$annonce_sponsorisers->photo}}" alt="trock moi {{$annonce_sponsorisers->titre}}"
                                                 class=" img-fluid" style="height: 6.5rem!important;"></a>
                                     </div>
                                 </div>
@@ -342,19 +342,19 @@
                                 </div>
                                 @if($annonces->type == "troque")
                                 <a href="/annonceDetail/{{$annonces->slug}}"> <img
-                                        src="../images/Annonce/{{$annonces->photo}}" alt="troc moi {{$annonces->titre}}"
+                                        src="../images/Annonce/{{$annonces->photo}}" alt="trock moi {{$annonces->titre}}"
                                         class="mb-3 img-fluid"></a>
                                 @elseif($annonces->type == "dons")
                                 <a href="/annonceDetaildons/{{$annonces->slug}}"> <img
-                                        src="../images/Annonce/{{$annonces->photo}}" alt="troc moi {{$annonces->titre}}"
+                                        src="../images/Annonce/{{$annonces->photo}}" alt="trock moi {{$annonces->titre}}"
                                         class="mb-3 img-fluid"></a>
                                 @elseif($annonces->type == "Troque ou dons")
                                 <a href="/annonceDetail/{{$annonces->slug}}"> <img
-                                        src="../images/Annonce/{{$annonces->photo}}" alt="troc moi {{$annonces->titre}}"
+                                        src="../images/Annonce/{{$annonces->photo}}" alt="trock moi {{$annonces->titre}}"
                                         class="mb-3 img-fluid"></a>
                                 @else
                                 <a href="/annonceDetail/{{$annonces->slug}}"> <img
-                                        src="../images/Annonce/{{$annonces->photo}}" alt="troc moi {{$annonces->titre}}"
+                                        src="../images/Annonce/{{$annonces->photo}}" alt="trock moi {{$annonces->titre}}"
                                         class="mb-3 img-fluid"></a>
                                 @endif
 
@@ -384,15 +384,15 @@
                             @if($annonces->type == "troque")
                             <div><a href="/annonceDetail/{{$annonces->slug}}"
                                     class="btn btn-outline-primary btn-sm mt-2  align-items-center">
-                                    Afficher</a></div>
+                                    proposez</a></div>
                             @elseif($annonces->type == "dons")
                             <div><a href="/annonceDetaildons/{{$annonces->slug}}"
                                     class="btn btn-outline-warning btn-sm mt-2  align-items-center">
-                                    Achetez</a></div>
+                                    Dons</a></div>
                             @elseif($annonces->type == "Troque ou dons")
                             <div><a href="/annonceDetail/{{$annonces->slug}}"
                                     class="btn btn-outline-info btn-sm mt-2  align-items-center">
-                                    Afficher</a></div>
+                                    proposez</a></div>
                             @else
                             <div><a href="/annonceDetail/{{$annonces->slug}}"
                                     class="btn btn-outline-primary btn-sm mt-2  align-items-center">
@@ -431,7 +431,7 @@
                             <!-- text -->
 
                             <div class="ms-lg-4">
-                                <h1 class="fs-2 mb-1">Telecharger Troc Moi gratuitement  </h1>
+                                <h1 class="fs-2 mb-1">Telecharger Trock Moi gratuitement  </h1>
 
                             </div>
 

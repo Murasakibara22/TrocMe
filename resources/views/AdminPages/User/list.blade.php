@@ -122,9 +122,8 @@
                       @foreach($user as $u)
                       <tbody>
                         <tr>
-                          <td class="py-2">
-                            <img src="../images/User/{{$u->photo}}" alt="image" width="25%" height="15%" class="rounded-5"    data-bs-toggle="modal" data-bs-target="#exampleModal"/>
-                          
+                          <td class="table-user">
+                            <img src="../images/User/{{$u->photo}}" alt="image"  class="me-2 rounded-circle"  data-bs-toggle="modal" data-bs-target="#exampleModal"/>
                           </td>
                           <td>
                             {{$u->nom}}
@@ -142,20 +141,20 @@
                           <td>
                           {{$u->contact}}
                           </td> 
-                       <td>
-                                                         <div class="dropdown float-end">
-                                                                  <a href="#" class="dropdown-toggle text-black arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                      <i class="mdi mdi-dots-vertical font-18"></i>
-                                                                  </a>
-                                                                  <div class="dropdown-menu dropdown-menu-end">
-                                                                      <!-- item-->
-                                                                      <a href="/Utilisateurs_edit/{{$u->slug}}" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
-                                                                      <!-- item-->
-                                                                    
-                                                                      <a href="/Userdelete/{{$u->slug}}" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>
+                          <td>
+                                <div class="dropdown float-end">
+                                        <a href="#" class="dropdown-toggle text-black arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="mdi mdi-dots-vertical font-18"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <!-- item-->
+                                            <a href="/Utilisateurs_edit/{{$u->slug}}" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
+                                            <!-- item-->
+                                          
+                                            <a href="/Userdelete/{{$u->slug}}" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>
 
-                                                                  </div>
-                                                              </div>
+                                        </div>
+                                    </div>
                           </td>
                         </tr>
                       </tbody>

@@ -36,7 +36,7 @@
               <!-- img -->
               <!-- img --><img src="../images/Annonce/{{$annonce->photo}}" alt="">
             </div>
-            @if(!empty($annonce->images_secondaire))
+            @if(!is_null($annonce->images_secondaire) && $annonce->images_secondaire != "NULL")
               @foreach(json_decode($annonce->images_secondaire) as $img)
             <div>
               <div class="zoom" onmousemove="zoom(event)"
@@ -57,7 +57,7 @@
                   <img src="../images/Annonce/{{$annonce->photo}}" alt="">
                 </div>
               </div>
-              @if(!empty($annonce->images_secondaire))
+              @if(!is_null($annonce->images_secondaire) && $annonce->images_secondaire != "NULL")
               @foreach(json_decode($annonce->images_secondaire) as $img)
               <div class="col-3" style="width:17%;">
                 <div class="thumbnails-img">
@@ -124,16 +124,23 @@
                         @if(isset($userStatus))
                         <tr>
                              <td  class="text-dark">Status :</td>
-                          <td class="{{$userStatus->is_online == 0 ? 'text-success' : 'text-danger'}}">
-                             {{$userStatus->is_online == 0 ? 'En ligne' : 'Hors ligne'}}  @if($userStatus->is_online == 1) <i class="bi bi-wifi-off fs-5"></i> @else <i class="bi bi-wifi"></i> @endif
+                          
+
+                          @if( isset(Auth::user()->find($userStatus->id)) )
+                          <td class="text-success">
+                            En ligne <i class="bi bi-wifi-off fs-5"></i>
                           </td>
+                          @else
+                          <td class="text-danger">
+                            Hors ligne <i class="bi bi-wifi-off fs-5"></i>
+                          </td>
+                          @endif
                         </tr>
                         @endif
                         @endforeach
                         <tr>
                             <td  class="text-dark">Type:</td>
                             <td>{{$annonce->type}}</td>
-
                         </tr>
 
                         <tr>
@@ -362,7 +369,7 @@
                   <div><span class="text-dark">{{number_format($annos->prix,0,',',' ')}} FCFA</span> 
                   </div>
                 </div>
-                <div><a href="/annonceDetaildons/" class="btn btn-outline-primary btn-sm mt-2  align-items-center">Affichez </a></div>
+                <div><a href="/annonceDetaildons/" class="btn btn-outline-primary btn-sm mt-2  align-items-center">proposez </a></div>
               </div>
             </div>
           </div>

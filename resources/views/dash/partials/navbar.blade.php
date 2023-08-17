@@ -244,11 +244,15 @@
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                     aria-expanded="false">
-                    <span class="account-user-avatar"> 
-                        <img src="assets/images/users/avatar-1.jpg" alt="" class="rounded-circle">
+                    <span class="account-user-avatar">
+                        @if(!is_null(Auth::user()->photo) && Auth::user()->photo != 'default.jpg') 
+                        <img src="../images/User/{{Auth::user()->photo}}" alt="" class="rounded-circle">
+                        @else
+                        <img src="assets/images/team-2.png" alt="" class="rounded-circle">
+                        @endif
                     </span>
                     <span>
-                        <span class="account-user-name">Murasakibara</span>
+                        <span class="account-user-name">{{Auth::user()->nom}}</span>
                         
                     </span>
                 </a>
@@ -330,9 +334,9 @@
         <!-- Leftbar User -->
         <div class="leftbar-user">
             <a href="pages-profile.html">
-                <img src="dashStyle/assets/images/users/avatar-1.jpg" alt="user-image" height="42"
+                <img src="../images/User/{{Auth::user()->photo}}" alt="user-image" height="42"
                     class="rounded-circle shadow-sm">
-                <span class="leftbar-user-name">Murasakibara</span>
+                <span class="leftbar-user-name">{{Auth::user()->nom}}</span>
             </a>
         </div>
 
@@ -354,14 +358,14 @@
             <li class="side-nav-title side-nav-item">Nos listes</li>
 
             <li class="side-nav-item">
-                <a href="/new_Categorie" class="side-nav-link">
+                <a href="/Categorie_list" class="side-nav-link">
                     <i class="uil-calender"></i>
                     <span> Categories </span>
                 </a>
             </li>
 
             <li class="side-nav-item">
-                <a href="/new_SousCat" class="side-nav-link">
+                <a href="/SousCategorie_list" class="side-nav-link">
                     <i class="uil-swatchbook"></i>
                     <span> Sous-Categories </span>
                 </a>
@@ -467,6 +471,14 @@
                     class="side-nav-link" href="/type_professionUser">
                     <i class="uil-symbol"></i>
                     <span>Type Compte professionnel</span>
+                   
+                </a>
+            </li>
+            <li class="side-nav-item">
+                <a  
+                    class="side-nav-link" href="/aide">
+                    <i class="uil-symbol"></i>
+                    <span>Aide</span>
                    
                 </a>
             </li>

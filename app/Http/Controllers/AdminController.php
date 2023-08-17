@@ -33,9 +33,10 @@ class AdminController extends Controller
                     ->select('nom','prenom','type','users.email as email','annonces.created_at as date','users.photo as image')
                     ->join('annonces','annonces.user_id','=','users.id')
                     ->limit(1)
-                    ->get();       
+                    ->get();
+        $user_more_view_profile = User::OrderBy('view_count_page','DESC')->take(5)->get();       
 
-        return view('dashboard', compact('villecount','annonceCount','souscatCount', 'payscount','userAnnonce','today'));
+        return view('dashboard', compact('villecount','annonceCount','souscatCount', 'payscount','userAnnonce','today','user_more_view_profile'));
     }
 
 

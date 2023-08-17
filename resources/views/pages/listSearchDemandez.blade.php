@@ -5,7 +5,7 @@
                         <!-- card body -->
                         <div class="card-body "
                             style="padding: 0px!important;">
-                            <div class=" row ">
+                            <div class=" row p-2">
                                 <!-- col -->
                                 <div class="col-md-3 col-5 col-sm-6 col-xs-6">
                                     <div class="text-center position-relative ">
@@ -18,7 +18,7 @@
                                 <div class="col-md-9 col-7 col-sm-6  col-xs-6 flex-grow-1" align="start">
 
                                     <h2 class="fs-5 text-truncate" style="max-whidth: 97%;">
-                                        <a href="shop-single.html"
+                                        <a href="/annonceDetail/{{$resultss->slug}}"
                                             class="text-inherit text-decoration-none">{{$resultss->titre}}</a>
                                     </h2>
                                     <div>

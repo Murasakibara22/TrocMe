@@ -123,7 +123,6 @@
                     <thead class="thead-dark">
                         <tr class="bg-warning">
                         <th scope="col">titre</th>
-                        <th scope="col">Whatssapp</th>
                         <th scope="col">prix</th>
                         <th scope="col">type</th>
                         <th scope="col">lieu</th>
@@ -148,9 +147,7 @@
                                   </div>
                               </td>
                                
-                        <td>
-                          <a href="https://api.whatsapp.com/send?phone={{$annonces->contactWhatsapp}}"><button type="button" class="btn btn-success"><i class="mdi mdi-whatsapp"></i> </button></a>
-                        </td>
+                       
                         <td class="fw-bold"> {{$annonces->prix}} FCFA</td>
                         <td>{{$annonces->type}}</td>
                         <td>{{$annonces->Lieu}}</td>

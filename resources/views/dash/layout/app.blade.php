@@ -21,6 +21,8 @@
         @yield('styles')
         <!-- Icons css -->
         <link href="{{ asset('dashStyle/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        @livewireStyles
+
     </head>
 
     <body>
@@ -33,6 +35,9 @@
 
         @yield('content')
 
+
+
+        @livewireScripts
 
         <div class="return_div_modal_delete_TUP"></div>
 
