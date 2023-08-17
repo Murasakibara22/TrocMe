@@ -116,7 +116,7 @@
                      Achetez</a></div>
                      @elseif($annonces->type == "Troque ou dons")
                      <div><a href="/annonceDetail/{{$annonces->slug}}" class="btn btn-outline-info btn-sm mt-2  align-items-center">
-                     Afficher</a></div>
+                     Proposez</a></div>
                      @else
                      <div><a href="/annonceDetail/{{$annonces->slug}}" class="btn btn-outline-primary btn-sm mt-2  align-items-center">
                      proposez</a></div>
