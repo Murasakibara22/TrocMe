@@ -27,9 +27,9 @@ class HomeController extends Controller
 
 
     function index(){
-        
 
-        $category = Categorie::OrderBy('id','ASC')->get(); 
+
+        $category = Categorie::OrderBy('id','ASC')->get();
         $patenaire = Partenaire::all();
         $souscat = SousCategorie::OrderBy('libelle','ASC')->get();
         $ville   = City::where('state_id',858)->orWhere('state_id',857)->OrderBy('name','ASC')->get();
@@ -47,9 +47,9 @@ class HomeController extends Controller
 
 
         $user_souscrit = User::Where('souscrit',1)->take(3)->get();
- 
 
-        
+
+
         return view('welcome',compact('patenaire','category','souscat','ville','espace1','espace2','annonce','today','user_souscrit','annonce_sponsoriser'));
     }
 
@@ -82,11 +82,11 @@ class HomeController extends Controller
         return view('pages/troque',compact('today','annonce','annonce_sponsoriser'));
     }
 
-    
+
     public function akashi(){
         $annonce = Annonces::where('type','dons')->Orwhere('type','Troque ou dons')->OrderBy('created_at', 'DESC')->paginate(20);
         $today = date('j M, Y', strtotime(Carbon::today())  );
-       
+
         return view('pages/dons',compact('annonce','today'));
     }
 
@@ -98,7 +98,7 @@ class HomeController extends Controller
             $today = date('j M, Y', strtotime(Carbon::today()) );
            $annonce->increment('view_count_annonces');
 
-           
+
             $annonce_sponsoriser = Annonces::query()
                         ->select('annonces.id','annonces.titre','annonces.prix','annonces.type','annonces.created_at','annonces.slug','annonces.photo','annonces.souscategorie_id')
                         ->join('annonce_prenia','annonce_prenia.annonce_id','=','annonces.id')
@@ -107,19 +107,19 @@ class HomeController extends Controller
                         ->OrderBy('annonce_prenia.created_at','DESC')
                         ->get();
 
-                       
-                       
+
+
                 foreach($annonce_sponsoriser as $a_prenium){
                     if($a_prenium->id == $annonce->id){
-     
+
                         $is_vip = "vip";
-          
+
                     }else{
                         $is_vip = "non_vip";
                     }
                 }
-               
-       
+
+
              return view('pages/annoncesDetails',compact('annonce','anno','today'));
         }else{
             return redirect()->back()->with('NotExist', "L'article selectionner n'est plus disponible");
@@ -143,7 +143,7 @@ class HomeController extends Controller
         }else{
             return redirect()->back()->with('NotExist', "L'article selectionner n'est plus disponible");
         }
-        
+
     }
 
     public function tetsuya(){
@@ -167,7 +167,6 @@ class HomeController extends Controller
         $userSlug = Auth()->user()->slug;
         $user = User::where('slug',$userSlug)->first();
                    
-
         if(!is_null($user)){
 
             $validity_souscrit_pro = User::query()
@@ -178,19 +177,19 @@ class HomeController extends Controller
                             ->where('users.id','=',$user->id)
                             ->first();
 
-                        
+
                             if($validity_souscrit_pro){
                                 $user_pro = True ;
                             }else{
                                 $user_pro = False;
                             }
 
-                         
+
             return view('pages/reglage',compact('user','user_pro'));
         }else{
             return redirect()->back()->with('NotExist',"L'utilisateu n'est pas correctement authentifier");
         }
-        
+
     }
 
     public function pricing()
@@ -209,7 +208,7 @@ class HomeController extends Controller
         $equipe = Equipe::all();
         return view('pages/About', compact('equipe'));
     }
-    
+
     public function aboutdetail(){
         return view('pages/aboutDetails');
     }
@@ -260,87 +259,87 @@ class HomeController extends Controller
 
         $today = date('j M, Y', strtotime(Carbon::today())  );
         if(!is_null($request->ville_id) && !is_null($request->souscategorie_id) && !is_null($request->TrouveSelon)){
-            
-            
+
+
             if($request->TrouveSelon == "prix Le plus bas"){
                 $annonce = Annonces::where( 'titre', 'LIKE', '%' . $request->fieldSearch . '%' )->where('ville_id',$request->ville_id)->where('souscategorie_id',$request->souscategorie_id)->OrderBy('prix','ASC')->paginate(20);
-               
-               
+
+
                 if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.barofsearch',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
-                }	
+                return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
+                }
             }elseif($request->TrouveSelon == "prix Le plus haut"){
-    
+
                 $annonce = Annonces::where( 'titre', 'LIKE', '%' . $request->fieldSearch . '%' )->where('ville_id',$request->ville_id)->where('souscategorie_id',$request->souscategorie_id)->OrderBy('prix','DESC')->paginate(20);
-               
-                
+
+
                 if (count ($annonce) > 0 && isset($annonce)){
                     return view('pages.barofsearch',compact('today'))->with('annonce',$annonce);
                 }else{
-                    return redirect( '/')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                    return redirect( '/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                     }
             }elseif($request->TrouveSelon == "Annonces Recentes"){
                 $annonce = Annonces::where( 'titre', 'LIKE', '%' . $request->fieldSearch . '%' )->where('ville_id',$request->ville_id)->where('souscategorie_id',$request->souscategorie_id)->OrderBy('created_at','DESC')->paginate(20);
-               
-                
+
+
                 if (count ($annonce) > 0 && isset($annonce)){
                     return view('pages.barofsearch',compact('today'))->with('annonce',$annonce);
                 }else{
-                    return redirect( '/')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                    return redirect( '/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                     }
             }elseif($request->TrouveSelon == "Annonces les plus anciens"){
                 $annonce = Annonces::where( 'titre', 'LIKE', '%' . $request->fieldSearch . '%' )->where('ville_id',$request->ville_id)->where('souscategorie_id',$request->souscategorie_id)->OrderBy('created_at','ASC')->paginate(20);
-               
-                
+
+
                 if (count ($annonce) > 0 && isset($annonce)){
                     return view('pages.barofsearch',compact('today'))->with('annonce',$annonce);
                 }else{
-                    return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                    return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                     }
             }
 
         }
         elseif(!isset($request->ville_id) && !is_null($request->souscategorie_id) && !is_null($request->TrouveSelon))
         {
-            
+
             if($request->TrouveSelon == "prix Le plus bas"){
                 $annonce = Annonces::where( 'titre', 'LIKE', '%' . $request->fieldSearch . '%' )->where('souscategorie_id',$request->souscategorie_id)->OrderBy('prix','ASC')->paginate(20);
-               
-                
+
+
                 if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.barofsearch',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
-                }	
+                return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
+                }
             }elseif($request->TrouveSelon == "prix Le plus haut"){
-    
+
                 $annonce = Annonces::where( 'titre', 'LIKE', '%' . $request->fieldSearch . '%' )->where('souscategorie_id',$request->souscategorie_id)->OrderBy('prix','DESC')->paginate(20);
-               
-                
+
+
                 if (count ($annonce) > 0 && isset($annonce)){
                     return view('pages.barofsearch',compact('today'))->with('annonce',$annonce);
                 }else{
-                    return redirect( '/')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                    return redirect( '/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                     }
             }elseif($request->TrouveSelon == "Annonces Recentes"){
                 $annonce = Annonces::where( 'titre', 'LIKE', '%' . $request->fieldSearch . '%' )->where('souscategorie_id',$request->souscategorie_id)->OrderBy('created_at','DESC')->paginate(20);
-               
-                
+
+
                 if (count ($annonce) > 0 && isset($annonce)){
                     return view('pages.barofsearch',compact('today'))->with('annonce',$annonce);
                 }else{
-                    return redirect( '/')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                    return redirect( '/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                     }
             }elseif($request->TrouveSelon == "Annonces les plus anciens"){
                 $annonce = Annonces::where( 'titre', 'LIKE', '%' . $request->fieldSearch . '%' )->where('souscategorie_id',$request->souscategorie_id)->OrderBy('created_at','ASC')->paginate(20);
-               
-                
+
+
                 if (count ($annonce) > 0 && isset($annonce)){
                     return view('pages.barofsearch',compact('today'))->with('annonce',$annonce);
                 }else{
-                    return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                    return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                     }
             }else{
                 return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
@@ -350,102 +349,102 @@ class HomeController extends Controller
         }
         elseif(!is_null($request->ville_id) && !isset($request->souscategorie_id) && !is_null($request->TrouveSelon))
         {
-            
+
             if($request->TrouveSelon == "prix Le plus bas"){
                 $annonce = Annonces::where( 'titre', 'LIKE', '%' . $request->fieldSearch . '%' )->where('ville_id',$request->ville_id)->OrderBy('prix','ASC')->paginate(20);
-               
-               
+
+
                 if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.barofsearch',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
-                }	
+                return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
+                }
             }elseif($request->TrouveSelon == "prix Le plus haut"){
-    
+
                 $annonce = Annonces::where( 'titre', 'LIKE', '%' . $request->fieldSearch . '%' )->where('ville_id',$request->ville_id)->OrderBy('prix','DESC')->paginate(20);
-               
-                
+
+
                 if (count ($annonce) > 0 && isset($annonce)){
                     return view('pages.barofsearch',compact('today'))->with('annonce',$annonce);
                 }else{
-                    return redirect( '/')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                    return redirect( '/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                     }
             }elseif($request->TrouveSelon == "Annonces Recentes"){
                 $annonce = Annonces::where( 'titre', 'LIKE', '%' . $request->fieldSearch . '%' )->where('ville_id',$request->ville_id)->OrderBy('created_at','DESC')->paginate(20);
-               
-                
+
+
                 if (count ($annonce) > 0 && isset($annonce)){
                     return view('pages.barofsearch',compact('today'))->with('annonce',$annonce);
                 }else{
-                    return redirect( '/')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                    return redirect( '/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                     }
             }elseif($request->TrouveSelon == "Annonces les plus anciens"){
                 $annonce = Annonces::where( 'titre', 'LIKE', '%' . $request->fieldSearch . '%' )->where('ville_id',$request->ville_id)->OrderBy('created_at','ASC')->paginate(20);
-               
-                
+
+
                 if (count ($annonce) > 0 && isset($annonce)){
                     return view('pages.barofsearch',compact('today'))->with('annonce',$annonce);
                 }else{
-                    return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                    return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                     }
             }else{
                 return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
             }
-            
+
 
         }
         elseif(!is_null($request->ville_id) && !is_null($request->souscategorie_id) && !isset($request->TrouveSelon))
         {
-            
+
                 $annonce = Annonces::where( 'titre', 'LIKE', '%' . $request->fieldSearch . '%' )->where('ville_id',$request->ville_id)->where('souscategorie_id',$request->souscategorie_id)->paginate(20);
-               
-                
+
+
                 if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.barofsearch',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
-                }	
+                return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
+                }
 
-            
+
 
         }
         elseif(!is_null($request->ville_id) && !isset($request->souscategorie_id) &&  !isset($request->TrouveSelon))
         {
-            
+
             $annonce = Annonces::where( 'titre', 'LIKE', '%' . $request->fieldSearch . '%' )->where('ville_id',$request->ville_id)->paginate(20);
-            
+
             if (count ($annonce) > 0 && isset($annonce)){
             return view('pages.barofsearch',compact('today'))->with('annonce',$annonce);
         }else{
-            return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
-            }	
-            
+            return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
+            }
+
 
         }
         elseif(!isset($request->ville_id) && !is_null ($request->souscategorie_id) &&  !isset($request->TrouveSelon))
         {
             $annonce = Annonces::where( 'titre', 'LIKE', '%' . $request->fieldSearch . '%' )->where('souscategorie_id',$request->souscategorie_id)->paginate(20);
-               
-            
+
+
             if (count ($annonce) > 0 && isset($annonce)){
             return view('pages.barofsearch',compact('today'))->with('annonce',$annonce);
         }else{
-            return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
-            }	
-            
+            return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
+            }
+
 
         }
         elseif(!isset($request->ville_id) &&  !isset($request->souscategorie_id) &&  !is_null($request->fieldSearch))
         {
 
                 $annonce = Annonces::where( 'titre', 'LIKE', '%' . $request->fieldSearch . '%' )->OrderBy('created_at','DESC')->paginate(20);
-               
+
                 if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.barofsearch',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
-                }	
-           
+                return redirect('/')->with( 'Nodetails','No Details found. Esaayez encore  !' );
+                }
+
         }
 
     }
@@ -456,56 +455,56 @@ class HomeController extends Controller
     function searchTroquez(Request $request){
         $today = date('j M, Y', strtotime(Carbon::today())  );
         if(!is_null($request->search)){
-                $searched = $request->search;		
+                $searched = $request->search;
                 $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->Where('type', 'troque' )->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->paginate(20);
-            
+
                 if (count ($annonce) > 0 && isset($annonce)){
                 return view ('pages.Search.searchAnnonce',compact('today','searched'))->with('annonce',$annonce);
                 }else{
-                return redirect('/troc')->with( 'Nodetails','No Details found. Esaayez encore !' );	
+                return redirect('/troc')->with( 'Nodetails','No Details found. Esaayez encore !' );
                 }
          }elseif($request->searched == "" || $request->searched == " "){
             return redirect('/troc')->with( 'Nodetails','No Details found. Esaayez encore !' );
          }else{
-             return redirect('/troc')->with( 'Nodetails','No Details found. Esaayez encore !' ); 
+             return redirect('/troc')->with( 'Nodetails','No Details found. Esaayez encore !' );
          }
     }
 
     function searchdons(Request $request){
         $today = date('j M, Y', strtotime(Carbon::today())  );
         if(!is_null($request->search)){
-            $searched = $request->search;		
+            $searched = $request->search;
             $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->Where( 'type', 'dons' )->Orwhere('type', 'Troque ou dons')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->paginate(20);
-            
+
             if (count ($annonce) > 0 && isset($annonce)){
             return view ( 'pages.Search.searchdons',compact('today','searched'))->with('annonce',$annonce);
             }else{
-            return redirect('/dons')->with( 'Nodetails','No Details found. Esaayez encore !' );	
+            return redirect('/dons')->with( 'Nodetails','No Details found. Esaayez encore !' );
             }
 
         }elseif($request->searched == "" || $request->searched == " "){
             return redirect('/dons')->with( 'Nodetails','No Details found. Esaayez encore !' );
         }else{
-            return redirect('/dons')->with( 'Nodetails','No Details found. Esaayez encore !' ); 
+            return redirect('/dons')->with( 'Nodetails','No Details found. Esaayez encore !' );
         }
     }
 
     function searchDemande(Request $request){
         $today = date('j M, Y', strtotime(Carbon::today())  );
         if(!is_null($request->search)){
-                $searched = $request->search;		
+                $searched = $request->search;
                 $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->Where( 'type', 'demandez' )->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->paginate(20);
-            
+
                 if (count ($annonce) > 0 && isset($annonce)){
                 return view ( 'pages.Search.searchDemande',compact('today','searched'))->with('annonce',$annonce);
                 }else{
-                return redirect('/demandez')->with( 'Nodetails','No Details found. Esaayez encore !' );	
+                return redirect('/demandez')->with( 'Nodetails','No Details found. Esaayez encore !' );
                 }
 
         }elseif($request->searched == "" || $request->searched == " "){
             return redirect('/demandez')->with( 'Nodetails','No Details found. Esaayez encore !' );
         }else{
-            return redirect('/demandez')->with( 'Nodetails','No Details found. Esaayez encore !' ); 
+            return redirect('/demandez')->with( 'Nodetails','No Details found. Esaayez encore !' );
         }
     }
     //fin recherche
@@ -517,39 +516,39 @@ class HomeController extends Controller
         $today = date('j M, Y', strtotime(Carbon::today())  );
         if($request->FiltrerSelon == "prix Le plus bas"){
             $annonce = Annonces::where('type','troque')->OrderBy('prix','ASC')->paginate(40);
-           
-            
+
+
             if (count ($annonce) > 0 && isset($annonce)){
             return view('pages.Filter.filtrerAnnonce',compact('today'))->with('annonce',$annonce);
         }else{
-            return redirect('/troc')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
-            }	
+            return redirect('/troc')->with( 'Nodetails','No Details found. Esaayez encore  !' );
+            }
         }elseif($request->FiltrerSelon == "prix Le plus haut"){
 
             $annonce = Annonces::where('type','troque')->OrderBy('prix','DESC')->paginate(40);
-           
-           
+
+
             if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.Filter.filtrerAnnonce',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect('/troc')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                return redirect('/troc')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                 }
         }elseif($request->FiltrerSelon == "Annonces Recentes"){
             $annonce = Annonces::where('type','troque')->OrderBy('created_at','DESC')->paginate(40);
-          
+
             if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.Filter.filtrerAnnonce',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect('/troc')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                return redirect('/troc')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                 }
         }elseif($request->FiltrerSelon == "Annonces les plus anciens"){
             $annonce = Annonces::where('type','troque')->OrderBy('created_at','ASC')->paginate(40);
-           
-           
+
+
             if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.Filter.filtrerAnnonce',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect('/troc')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                return redirect('/troc')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                 }
         }else{
             return redirect('/troc')->with( 'Nodetails','No Details found. Esaayez encore  !' );
@@ -563,40 +562,40 @@ class HomeController extends Controller
         $today = date('j M, Y', strtotime(Carbon::today())  );
         if($request->FiltrerSelon == "prix Le plus bas"){
             $annonce = Annonces::where('type','dons')->OrWhere('type','Troque ou dons')->OrderBy('prix','ASC')->paginate(20);
-           
-            
+
+
             if (count ($annonce) > 0 && isset($annonce)){
             return view('pages.Filter.filtrerdons',compact('today'))->with('annonce',$annonce);
         }else{
-            return redirect('/dons')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
-            }	
+            return redirect('/dons')->with( 'Nodetails','No Details found. Esaayez encore  !' );
+            }
         }elseif($request->FiltrerSelon == "prix Le plus haut"){
 
             $annonce = Annonces::where('type','dons')->OrderBy('prix','DESC')->get();
-           
-            
+
+
             if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.Filter.filtrerdons',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect( '/dons')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                return redirect( '/dons')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                 }
         }elseif($request->FiltrerSelon == "Annonces Recentes"){
             $annonce = Annonces::where('type','dons')->OrderBy('created_at','DESC')->get();
-           
-           
+
+
             if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.Filter.filtrerdons',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect( '/dons')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                return redirect( '/dons')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                 }
         }elseif($request->FiltrerSelon == "Annonces les plus anciens"){
             $annonce = Annonces::where('type','dons')->OrderBy('created_at','ASC')->get();
-           
-           
+
+
             if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.Filter.filtrerdons',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect('/dons')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                return redirect('/dons')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                 }
         }else{
             return redirect('/dons')->with( 'Nodetails','No Details found. Esaayez encore  !' );
@@ -610,40 +609,40 @@ class HomeController extends Controller
         $today = date('j M, Y', strtotime(Carbon::today())  );
         if($request->FiltrerSelon == "prix Le plus bas"){
             $annonce = Annonces::where('type','demandez')->OrderBy('prix','ASC')->paginate(40);
-           
-            
+
+
             if (count ($annonce) > 0 && isset($annonce)){
             return view('pages.Filter.filtrerDemandez',compact('today'))->with('annonce',$annonce);
         }else{
-            return redirect('/demandez')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
-            }	
+            return redirect('/demandez')->with( 'Nodetails','No Details found. Esaayez encore  !' );
+            }
         }elseif($request->FiltrerSelon == "prix Le plus haut"){
 
             $annonce = Annonces::where('type','demandez')->OrderBy('prix','DESC')->paginate(40);
-           
-            
+
+
             if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.Filter.filtrerDemandez',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect( '/demandez')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                return redirect( '/demandez')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                 }
         }elseif($request->FiltrerSelon == "Annonces Recentes"){
             $annonce = Annonces::where('type','demandez')->OrderBy('created_at','DESC')->paginate(40);
-           
-            
+
+
             if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.Filter.filtrerDemandez',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect( '/demandez')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                return redirect( '/demandez')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                 }
         }elseif($request->FiltrerSelon == "Annonces les plus anciens"){
             $annonce = Annonces::where('type','demandez')->OrderBy('created_at','ASC')->paginate(40);
-           
-            
+
+
             if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.Filter.filtrerDemandez',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect('/demandez')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                return redirect('/demandez')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                 }
         }else{
             return redirect('/demandez')->with( 'Nodetails','No Details found. Esaayez encore  !' );
@@ -652,21 +651,21 @@ class HomeController extends Controller
     }
 
 
-    //barre de recherche des annonces selon les categorie 
+    //barre de recherche des annonces selon les categorie
     function SubcategorySearchAnnon(Request $request, $slug){
         //verifie si le slug est bien rattacher a une sousCategorie
         $FindSlug = SousCategorie::where('slug',$slug)->first();
-       
+
         if(!is_null($FindSlug)){
             $search = $request->search;
-            $annonce = Annonces::where('souscategorie_id',$FindSlug->id)->Where( 'prix', 'LIKE', '%' . $search . '%' )->orWhere('titre', 'LIKE', '%' . $search . '%' )->orWhere('Lieu', 'LIKE', '%' . $search . '%' )->get(); 
+            $annonce = Annonces::where('souscategorie_id',$FindSlug->id)->Where( 'prix', 'LIKE', '%' . $search . '%' )->orWhere('titre', 'LIKE', '%' . $search . '%' )->orWhere('Lieu', 'LIKE', '%' . $search . '%' )->get();
             $today = date('j M, Y', strtotime(Carbon::today())  );
-            
+
             if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.Search.SubcategorySearch',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore  !' );	
-                }  
+                return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore  !' );
+                }
         }
     }
 
@@ -680,40 +679,40 @@ class HomeController extends Controller
                     $today = date('j M, Y', strtotime(Carbon::today())  );
                             if($request->FindAnnonce == "prix Le plus bas"){
                                 $annonce = Annonces::where('souscategorie_id',$FindSlug->id)->OrderBy('prix','ASC')->get();
-                               
-                                
+
+
                                 if (count ($annonce) > 0 && isset($annonce)){
                                 return view('pages.Search.SubcategorySearch',compact('today'))->with('annonce',$annonce);
                             }else{
-                                return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore  !' );	
-                                }	
+                                return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore  !' );
+                                }
                             }elseif($request->FindAnnonce == "prix Le plus haut"){
 
                                 $annonce = Annonces::where('souscategorie_id',$FindSlug->id)->OrderBy('prix','DESC')->get();
-                                
-                                
+
+
                                 if (count ($annonce) > 0 && isset($annonce)){
                                     return view('pages.Search.SubcategorySearch',compact('today'))->with('annonce',$annonce);
                                 }else{
-                                    return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                                    return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore  !' );
                                     }
                             }elseif($request->FindAnnonce == "Annonces Recentes"){
                                 $annonce = Annonces::where('souscategorie_id',$FindSlug->id)->OrderBy('created_at','DESC')->get();
-                            
-                                
+
+
                                 if (count ($annonce) > 0 && isset($annonce)){
                                     return view('pages.Search.SubcategorySearch',compact('today'))->with('annonce',$annonce);
                                 }else{
-                                    return redirect( )->back()->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                                    return redirect( )->back()->with( 'Nodetails','No Details found. Esaayez encore  !' );
                                     }
                             }elseif($request->FindAnnonce == "Annonces les plus anciens"){
                                 $annonce = Annonces::where('souscategorie_id',$FindSlug->id)->OrderBy('created_at','ASC')->get();
-                            
-                                
+
+
                                 if (count ($annonce) > 0 && isset($annonce)){
                                     return view('pages.Search.SubcategorySearch',compact('today'))->with('annonce',$annonce);
                                 }else{
-                                    return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                                    return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore  !' );
                                     }
                             }else{
                                 return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore  !' );
@@ -724,16 +723,16 @@ class HomeController extends Controller
 
         //fonction de recherche sur la pages toutes les annonces
         function findSearchAnnonces(Request $request)
-        {			
+        {
             $today = date('j M, Y', strtotime(Carbon::today())  );
-        $searched = $request->search;		
+        $searched = $request->search;
         $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->orWhere('description', 'LIKE', '%' . $searched . '%' )->OrderBy('created_at','DESC')->paginate(20);
 
         if (count ($annonce) > 0 && isset($annonce)){
         return view ( 'pages.Search.searchAll',compact('today','searched'))->with('annonce',$annonce);
         }else{
-        return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore  !' );	
-        }	
+        return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore  !' );
+        }
         }
 
 
@@ -743,39 +742,39 @@ class HomeController extends Controller
         $today = date('j M, Y', strtotime(Carbon::today())  );
         if($request->FiltrerSelon == "prix Le plus bas"){
             $annonce = Annonces::OrderBy('prix','ASC')->paginate(7);;
-            
+
             if (count ($annonce) > 0 && isset($annonce)){
             return view('pages.Filter.filtrerAllAnnonce',compact('today','annonce'));
         }else{
-            return redirect('/AllAnnonce')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
-            }	
+            return redirect('/AllAnnonce')->with( 'Nodetails','No Details found. Esaayez encore  !' );
+            }
         }
         if($request->FiltrerSelon == "prix Le plus haut"){
 
             $annonce = Annonces::OrderBy('prix','DESC')->get();
-    
+
             if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.Filter.filtrerAllAnnonce',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect( '/AllAnnonce')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                return redirect( '/AllAnnonce')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                 }
         }
         if($request->FiltrerSelon == "Annonces Recentes"){
             $annonce = Annonces::OrderBy('created_at','DESC')->get();
-         
+
             if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.Filter.filtrerAllAnnonce',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect( '/AllAnnonce')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                return redirect( '/AllAnnonce')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                 }
         }
         if($request->FiltrerSelon == "Annonces les plus anciens"){
             $annonce = Annonces::OrderBy('created_at','ASC')->get();
-         
+
             if (count ($annonce) > 0 && isset($annonce)){
                 return view('pages.Filter.filtrerAllAnnonce',compact('today'))->with('annonce',$annonce);
             }else{
-                return redirect( '/AllAnnonce')->with( 'Nodetails','No Details found. Esaayez encore  !' );	
+                return redirect( '/AllAnnonce')->with( 'Nodetails','No Details found. Esaayez encore  !' );
                 }
         }
     }
@@ -794,7 +793,7 @@ class HomeController extends Controller
                             ->take(3)
                             ->get();
 
-            
+
           $annonced  = Annonces::query()
           ->select('annonces.id', 'annonces.titre','annonces.description','annonces.prix','annonces.type','annonces.Lieu','annonces.email','annonces.photo','annonces.photo','annonces.souscategorie_id')
           ->join('sous_categories','annonces.souscategorie_id','=','annonces.id')
@@ -822,7 +821,7 @@ class HomeController extends Controller
                 $user->email   = $request->email;
                 $user->slug   = Str::slug("$request->token". Hash::make($request->nom),"-");
                 $user->contact  = $request->contact;
-                if (request()->hasfile('photo')) 
+                if (request()->hasfile('photo'))
                 {
                         $img = request()->file('photo');
                         $messi = md5($img->getClientOriginalExtension().time().$request->token).".".$img->getClientOriginalExtension();
@@ -849,7 +848,7 @@ class HomeController extends Controller
                         InterventionImage::make($source)->fit(960,425)->save($target);//taille de la banner a chercher
                         $user->bannear   =  $pogba;
                 }
-    
+
 
                 $user->update();
                     if($user->update()){
@@ -867,7 +866,7 @@ class HomeController extends Controller
 
 
 
-    //supprimer un compte user 
+    //supprimer un compte user
     function deleteMyAccount(Request $request, $slug)
     {
         $user = User::where('slug',$slug)->first();
@@ -875,17 +874,17 @@ class HomeController extends Controller
             $user->nom = ($request->nom."TrocMoi");
             $user->email = ($request->email."TrocMoi");
         }
-        
+
     }
 
 
-    
+
 ///////////////////////////////////////////////////////
 /**Filtre dans la recherche souhaiter */
 //////////////////////////////////////////////////////
 
 
-//Filtre au niveau de la page troque 
+//Filtre au niveau de la page troque
 
     public function SearchfilterTroque(Request $request){
 
@@ -897,7 +896,7 @@ class HomeController extends Controller
             if (count ($annonce) > 0 && isset($annonce)){
                 return view ('pages.Search.filtersearchAnnonce',compact('today','searched'))->with('annonce',$annonce);
             }else{
-                return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
+                return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );
             }
 
         }elseif($request->FiltrerSelon == "prix Le plus haut"){
@@ -906,7 +905,7 @@ class HomeController extends Controller
             if (count ($annonce) > 0 && isset($annonce)){
                 return view ('pages.Search.filtersearchAnnonce',compact('today','searched'))->with('annonce',$annonce);
             }else{
-                return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
+                return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );
             }
 
         }elseif($request->FiltrerSelon == "Annonces Recentes"){
@@ -915,7 +914,7 @@ class HomeController extends Controller
             if (count ($annonce) > 0 && isset($annonce)){
                 return view ('pages.Search.filtersearchAnnonce',compact('today','searched'))->with('annonce',$annonce);
             }else{
-                return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
+                return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );
             }
         }elseif($request->FiltrerSelon == "Annonces les plus anciens"){
             $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->Where('type', 'troque' )->OrderBy('created_at','ASC')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->get();
@@ -923,10 +922,10 @@ class HomeController extends Controller
             if (count ($annonce) > 0 && isset($annonce)){
                 return view ('pages.Search.filtersearchAnnonce',compact('today','searched'))->with('annonce',$annonce);
             }else{
-                return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
+                return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );
             }
         }else{
-            return redirect()->back()->with( 'NotSelectedFilter','Aucun type de filtrage choisit, veuillez Reessayer' );	
+            return redirect()->back()->with( 'NotSelectedFilter','Aucun type de filtrage choisit, veuillez Reessayer' );
         }
     }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -940,40 +939,40 @@ public function  Searchfilterdons(Request $request){
 
     if($request->FiltrerSelon == "prix Le plus bas"){
     $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->Where('type', 'dons' )->OrderBy('prix','ASC')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->get();
-        
+
         if (count ($annonce) > 0 && isset($annonce)){
             return view ('pages.Search.filtersearchdons',compact('today','searched'))->with('annonce',$annonce);
         }else{
-            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
+            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );
         }
 
     }elseif($request->FiltrerSelon == "prix Le plus haut"){
     $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->Where('type', 'dons' )->OrderBy('prix','DESC')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->get();
-        
+
         if (count ($annonce) > 0 && isset($annonce)){
             return view ('pages.Search.filtersearchdons',compact('today','searched'))->with('annonce',$annonce);
         }else{
-            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
+            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );
         }
     }elseif($request->FiltrerSelon == "Annonces Recentes"){
     $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->Where('type', 'dons' )->OrderBy('created_at','DESC')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->get();
 
-        
+
         if (count ($annonce) > 0 && isset($annonce)){
             return view ('pages.Search.filtersearchdons',compact('today','searched'))->with('annonce',$annonce);
         }else{
-            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
+            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );
         }
     }elseif($request->FiltrerSelon == "Annonces les plus anciens"){
     $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->Where('type', 'dons' )->OrderBy('created_at','ASC')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->get();
-        
+
         if (count ($annonce) > 0 && isset($annonce)){
             return view ('pages.Search.filtersearchdons',compact('today','searched'))->with('annonce',$annonce);
         }else{
-            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
+            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );
         }
     }else{
-        return redirect()->back()->with( 'NotSelectedFilter','Aucun type de filtrage choisit, veuillez Reessayer' );	
+        return redirect()->back()->with( 'NotSelectedFilter','Aucun type de filtrage choisit, veuillez Reessayer' );
     }
 }
 
@@ -988,40 +987,40 @@ public function  SearchfilterDemander(Request $request){
 
     if($request->FiltrerSelon == "prix Le plus bas"){
     $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->Where('type', 'demandez' )->OrderBy('prix','ASC')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->get();
-        
+
         if (count ($annonce) > 0 && isset($annonce)){
             return view ('pages.Search.filtersearchDemandes',compact('today','searched'))->with('annonce',$annonce);
         }else{
-            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
+            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );
         }
 
     }elseif($request->FiltrerSelon == "prix Le plus haut"){
     $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->Where('type', 'demandez' )->OrderBy('prix','DESC')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->get();
-        
+
         if (count ($annonce) > 0 && isset($annonce)){
             return view ('pages.Search.filtersearchDemandes',compact('today','searched'))->with('annonce',$annonce);
         }else{
-            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
+            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );
         }
     }elseif($request->FiltrerSelon == "Annonces Recentes"){
     $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->Where('type', 'demandez' )->OrderBy('created_at','DESC')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->get();
 
-        
+
         if (count ($annonce) > 0 && isset($annonce)){
             return view ('pages.Search.filtersearchDemandes',compact('today','searched'))->with('annonce',$annonce);
         }else{
-            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
+            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );
         }
     }elseif($request->FiltrerSelon == "Annonces les plus anciens"){
     $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->Where('type', 'demandez' )->OrderBy('created_at','ASC')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->get();
-        
+
         if (count ($annonce) > 0 && isset($annonce)){
             return view ('pages.Search.filtersearchDemandes',compact('today','searched'))->with('annonce',$annonce);
         }else{
-            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
+            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );
         }
     }else{
-        return redirect()->back()->with( 'NotSelectedFilter','Aucun type de filtrage choisit, veuillez Reessayer' );	
+        return redirect()->back()->with( 'NotSelectedFilter','Aucun type de filtrage choisit, veuillez Reessayer' );
     }
 }
 
@@ -1036,40 +1035,40 @@ public function  SearchfilterAllAnnonce(Request $request){
 
     if($request->FiltrerSelon == "prix Le plus bas"){
     $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->OrderBy('prix','ASC')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->get();
-        
+
         if (count ($annonce) > 0 && isset($annonce)){
             return view ('pages.Search.filtersearchAll',compact('today','searched'))->with('annonce',$annonce);
         }else{
-            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
+            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );
         }
 
     }elseif($request->FiltrerSelon == "prix Le plus haut"){
     $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->OrderBy('prix','DESC')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->get();
-        
+
         if (count ($annonce) > 0 && isset($annonce)){
             return view ('pages.Search.filtersearchAll',compact('today','searched'))->with('annonce',$annonce);
         }else{
-            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
+            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );
         }
     }elseif($request->FiltrerSelon == "Annonces Recentes"){
     $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->OrderBy('created_at','DESC')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->get();
 
-        
+
         if (count ($annonce) > 0 && isset($annonce)){
             return view ('pages.Search.filtersearchAll',compact('today','searched'))->with('annonce',$annonce);
         }else{
-            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
+            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );
         }
     }elseif($request->FiltrerSelon == "Annonces les plus anciens"){
     $annonce = Annonces::where( 'titre', 'LIKE', '%' . $searched . '%' )->OrderBy('created_at','ASC')->orWhere( 'prix', 'LIKE', '%' . $searched . '%' )->get();
-        
+
         if (count ($annonce) > 0 && isset($annonce)){
             return view ('pages.Search.filtersearchAll',compact('today','searched'))->with('annonce',$annonce);
         }else{
-            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );	
+            return redirect()->back()->with( 'Nodetails','No Details found. Esaayez encore !' );
         }
     }else{
-        return redirect()->back()->with( 'NotSelectedFilter','Aucun type de filtrage choisit, veuillez Reessayer' );	
+        return redirect()->back()->with( 'NotSelectedFilter','Aucun type de filtrage choisit, veuillez Reessayer' );
     }
 }
 

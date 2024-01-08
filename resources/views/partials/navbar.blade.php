@@ -28,8 +28,8 @@
                             <a class=" text-center text-decoration-none text-white" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <span class="me-1">
-                                    <img src="{{ url('../images/User/' . Auth::user()->photo) }}"
-                                        alt="TROC-MOI {{ Auth::user()->nom }}" width="7%" height="7%"
+                                    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed={{ Auth::user()->prenom }}"
+                                        alt="TROC-MOI {{ Auth::user()->prenom }}" width="7%" height="7%"
                                         class="rounded-5">
                                 </span> <span
                                     class="text-white">{{ Illuminate\Support\Str::words(!is_null(Auth::user()) ?? Auth::user()->prenom, 2, '..') }}</span>
@@ -129,7 +129,7 @@
                     @endauth
 
                     <div class="ms-6 text-center">
-                        <a href="#" class="text-reset">
+                        <a href="/account" class="text-reset">
                             <div class="lh-1">
                                 <div class="mb-2">
                                     <i class="bi bi-archive fs-4"></i>

@@ -104,7 +104,7 @@
                               <div class="card-product-action">
                                   <div class="d-grid ">
                               <a href="/pricings" class="btn btn-success ">
-                              
+
                                 Devenir Professionnel
                               </a>
                           </div>
@@ -140,7 +140,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Nom</label>
                                             <input type="text" class="form-control" name="nom"
-                                                value="{{ old($user->nom) ?? $user->nom}}">
+                                                value="@if(!is_null($user->nom) )  {{$user->nom}} @else Entrer un nom @endif">
                                         </div>
                                         <!-- input -->
                                         <div class="mb-3">
@@ -193,7 +193,7 @@
                                             <input type="file" class="form-control" name="photo_entreprise">
                                         </div>
                                         <!-- input -->
-                                        
+
                                     </div>
                                     @endif
 
@@ -201,8 +201,8 @@
                                     <input type="hidden" name="token" value="{{ csrf_token() }}" />
                                 </div>
 
-                                
-                             
+
+
 
 
 
@@ -216,7 +216,7 @@
 
                         @if($user_pro == True)
                         <!-- Mon composant Livewire pour la bannear -->
-                        
+
                                 @livewire('reglage-user.ajout-img', ['Userid' => $user->id], key($user->id))
                              @endif
 
@@ -300,6 +300,6 @@
 
 
 
-    
+
 
 @endsection
