@@ -28,11 +28,16 @@
                             <a class=" text-center text-decoration-none text-white" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <span class="me-1">
-                                    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed={{ Auth::user()->prenom }}"
-                                        alt="TROC-MOI {{ Auth::user()->prenom }}" width="7%" height="7%"
+                                    <img src="@if(!is_null(Auth::user()->photo) && Auth::user()->photo != "default.jpg" && strpos(Auth::user()->photo, "https") === false )
+                                         {{ url('../images/User/'.Auth::user()->photo) }}
+                                      @elseif(strpos(Auth::user()->photo, "https") !==false )
+                                          {{ Auth::user()->photo }}
+                                      @else
+                                      https://api.dicebear.com/7.x/adventurer/svg?seed={{ Auth::user()->prenom }}
+                                      @endif"
+                                        alt="{{ Auth::user()->prenom }}" width="7%" height="7%"
                                         class="rounded-5">
-                                </span> <span
-                                    class="text-white">{{ Illuminate\Support\Str::words(!is_null(Auth::user()) ?? Auth::user()->prenom, 2, '..') }}</span>
+                                </span> <span class="text-white">{{Auth::user()->prenom}}</span>
                             </a>
 
                             <ul class="dropdown-menu">

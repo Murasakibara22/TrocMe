@@ -177,7 +177,13 @@
                                         <div class="row">
                                             <div class="col-5 justify-content-center rounded-2"
                                                 style="margin: 0.5rem 3rem 0 3.5rem">
-                                                <img src="../images/User/{{$user->photo}}" alt="Troc moi " height="100%"
+                                                <img src="@if(!is_null(Auth::user()->photo) && Auth::user()->photo != "default.jpg" && strpos(Auth::user()->photo, "https") === false )
+                                                {{ url('../images/User/'.Auth::user()->photo) }}
+                                             @elseif(strpos(Auth::user()->photo, "https") !==false )
+                                                 {{ Auth::user()->photo }}
+                                             @else
+                                             https://api.dicebear.com/7.x/adventurer/svg?seed={{ Auth::user()->prenom }}
+                                             @endif"
                                                     width="90%" style="box-shadow: 0.2px 0.3px 7px 2px;"
                                                     class="rounded-3">
                                             </div>
