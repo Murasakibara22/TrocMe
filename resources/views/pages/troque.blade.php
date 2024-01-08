@@ -24,30 +24,17 @@
                         <div class="container mt-2 rounded-2 py-5 mb-7" style="background-color: #fff; box-shadow: 5px 1px 30px 2px black;">
                             <div class="col-12">
                             <div class="d-lg-flex justify-content-between align-items-center">
+
+                                <livewire:recherche.form :params="$annonce->first()->type">
                                     
-                                 
-
-                                <form action="{{ route('searchTroc') }}" id="recherche_trock" class="col-lg-12">
-
-                                    <div class="input-group">
-                                        <input type="search" name="search" wire:model="query" value="{{  request()->search ?? '' }}"
-                                            class="form-control dropdown-toggle" placeholder="Recherche..."
-                                            id="search-term_trock">
-                                        <span class="mdi mdi-magnify search-icon"></span>
-
-
-                                        <button class="input-group-text btn btn-primary"
-                                            type="submit">recherche</button>
-                                    </div>
-                                    </form>
 
                                 </div>
-                                <div id="search-results_trock" class="m-auto" style="min-width: 61%! important;max-width: 87%! important;position: absolute;z-index: 990; opacity: 0.95; background-color: #f0f3f2; "></div>
+                                {{-- <div id="search-results_trock" class="m-auto" style="min-width: 61%! important;max-width: 87%! important;position: absolute;z-index: 990; opacity: 0.95; background-color: #f0f3f2; "></div> --}}
                             </div>
 
                         </div>
 
-                        
+
                      <div class="mt-1">
                         <small class="text-white"> Bonjour, Connectez-vous pour la meilleure expérience. Nouveau sur Trockmoi ?  <a href="#" class="text-white">inscrivez-vous</a></small>
                      </div>
@@ -57,7 +44,7 @@
         </section>
 
 
-    
+
 
         <section class="mt-0">
             <!-- container -->
@@ -73,7 +60,7 @@
                                 <!-- title -->
                                 <!-- <form action="{{ route('filterTroc') }}">
                                     <div class="d-flex  mt-lg-0 ">
-                                    select option 
+                                    select option
                                         <select class="form-select" aria-label="Default select example"
                                             name="FiltrerSelon">
                                             <option selected>Categorie: </option>
@@ -105,7 +92,7 @@
 
 
 
-        <div class="container" style="padding-right: 0px!important;padding-left: 1%!important;"> 
+        <div class="container" style="padding-right: 0px!important;padding-left: 1%!important;">
             <!-- row -->
 
 
@@ -138,7 +125,7 @@
 
                                     </span>
 
-                                   
+
 
                                     <div>
                                         <!-- price -->
@@ -151,14 +138,14 @@
                                         <!-- btn -->
                                      <div class="fs-3">
 
-                                     <i class="bi bi-patch-check-fill  fs-6"  style="color: green;"></i> <span class="text-success small fs-6"> certifiée </span> 
-                                    
+                                     <i class="bi bi-patch-check-fill  fs-6"  style="color: green;"></i> <span class="text-success small fs-6"> certifiée </span>
+
                                             <a href="/annonceDetail/{{$annonce_sponsorisers->slug}}"
                                                 class="btn btn-info btn-sm mt-3 float-end   align-items-center">Voir
                                                 plus</a>
 
                                                 </div>
-                                    
+
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +185,7 @@
 
                             <div>
                                 <span class="text-muted small">{{$annonces->created_at->diffForHumans()}}</span>
-                                
+
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-3">
                                 <div><span class="text-dark">{{number_format($annonces->prix,0,',',' ')}} FCFA</span>
@@ -249,7 +236,7 @@
     @livewireScripts
 
 
-    
+
     <script>
 $(document).ready(function() {
     $('#search-term_trock').on('input', function() {
@@ -272,7 +259,7 @@ $(document).ready(function() {
 </script>
 
 <script>
-  
+
 var rechercheDivtrock = document.getElementById('recherche_trock');
 var resultatsDivtrock = document.getElementById('search-results_trock');
 

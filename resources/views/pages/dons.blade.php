@@ -20,7 +20,7 @@
                     </div>
                     @endif
 
-          
+
 <main>
       <section class="py-lg-6 py-6" style="background: url(../assets/images/banner/banner-4.jpg)no-repeat; background-position: center; background-size: cover;">
             <div class="container">
@@ -31,26 +31,15 @@
                         <div class="container mt-2 rounded-2 py-5 mb-7" style="background-color: #fff; box-shadow: 5px 1px 30px 2px black;">
                             <div class="col-12">
                             <div class="d-lg-flex justify-content-between align-items-center">
-                                    
-                                 
 
-                            <form action="{{ route('searchVen') }}"  class="col-lg-12" id="recherche_dons">
-                      
-                                    <div class="input-group">
-                                              <input type="search" name= "search" value="{{  request()->search ?? '' }}"  class="form-control dropdown-toggle"  placeholder="Recherche..." id="search-term_dons">
-                                        <span class="mdi mdi-magnify search-icon"></span>
-                                        
-                                
-                                        <button class="input-group-text btn btn-primary" type="submit">Recherche</button>
-                                    </div>
-                                </form>
+                                <livewire:recherche.form :params="$annonce->first()->type">
 
                                 </div>
                             </div>
                             <div id="search-results_dons"  style="width: 86%;position: absolute;z-index: 990; opacity: 0.95; background-color: #f0f3f2; "></div>
                         </div>
 
-                        
+
                      <div class="mt-1">
                         <small class="text-white"> Bonjour, Connectez-vous pour la meilleure expérience. Nouveau sur Trockmoi ?  <a href="#" class="text-white">inscrivez-vous</a></small>
                      </div>
@@ -68,29 +57,29 @@
         <h6 class="mt-3">Recherchez ou filtrez selon la Categorie</h6>
         <div class="row">
           <div class="mb-1 col-6">
-           
+
             <!-- recherche -->
               <!-- <div class="app-search dropdown ">
                          <form action="{{ route('searchVen') }}" >
-                      
+
                              <div class="input-group">
                                        <input type="search" name= "search" value="{{  request()->search ?? '' }}"  class="form-control dropdown-toggle"  placeholder="Recherche..." id="top-search">
                                  <span class="mdi mdi-magnify search-icon"></span>
-                                 
-                         
+
+
                                  <button class="input-group-text btn btn-primary" type="submit">Search</button>
                              </div>
                          </form>
-                       
+
                      </div> -->
           </div>
 
               <div class="mb-1 col-6">
-                
+
                 <!-- title -->
                 <!-- <form action="{{ route('filterVen') }}">
                   <div class="d-flex  mt-lg-0 ">
-                        <!-- select option 
+                        <!-- select option
                         <select class="form-select" aria-label="Default select example" name="FiltrerSelon">
                         <option selected >Categorie: </option>
                           <option value="prix Le plus bas">Prix Le plus bas</option>
@@ -100,15 +89,15 @@
                         </select>
 
                         <button type="submit" class="btn btn-dark ms-3">Filtrer </button>
-                      
+
                       </div>
-                              
-                          
-                        
+
+
+
                       </form> -->
               </div>
           </div>
-  
+
           </div>
         </div>
       </div>
@@ -152,7 +141,7 @@ $(document).ready(function() {
 </script>
 
 <script>
-  
+
 var rechercheDivdons = document.getElementById('recherche_dons');
 var resultatsDivdons = document.getElementById('search-results_dons');
 

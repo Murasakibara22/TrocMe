@@ -23,25 +23,18 @@
                             <div class=" col-12" style="padding-right: 0px!important;">
 
 
-                            <form action="{{ route('searchDemandez') }}" id="recherche_demandez" class="col-lg-12">
-                         
-                                <div class="input-group" >
-                                      <input type="search" name= "search"   class="form-control dropdown-toggle"   placeholder="Recherche..." id="search-term_demande">
-                                    <span class="mdi mdi-magnify search-icon"></span>
+                        
+                                <livewire:recherche.form :params="$annonce->first()->type">
 
-                                    <button class="input-group-text btn btn-primary" type="submit">Recherche</button>
-                  
-                                    </div>
-                            </form>
 
-                            <div id="search-results_demandez"  style="width: 86%;position: absolute;z-index: 990; opacity: 0.95; background-color: #f0f3f2; "> </div>
+                            {{-- <div id="search-results_demandez"  style="width: 86%;position: absolute;z-index: 990; opacity: 0.95; background-color: #f0f3f2; "> </div> --}}
 
                                 </div>
                                 </div>
                             </div>
                         </div>
 
-                        
+
                      <div class="mt-1">
                         <small class="text-white"> Bonjour, Connectez-vous pour la meilleure expérience. Nouveau sur Trockmoi ?  <a href="#" class="text-white">inscrivez-vous</a></small>
                      </div>
@@ -53,20 +46,20 @@
   <section class="mt-5">
     <!-- container -->
     <div class="container" style="padding-right: 1%!important;">
-     
+
       <!-- Filtrage -->
       <div class="row">
         <div class="col-12">
         <h6 class="mt-4">Recherchez ou filtrez selon la Categorie</h6>
         <div class="row">
-          
+
 
               <!-- <div class="mb-1 col-6">
-                
+
                 <!-- title
                 <form action="{{ route('filterDemandez') }}">
                   <div class="d-flex  mt-lg-0 ">
-                        <!-- select option 
+                        <!-- select option
                         <select class="form-select" aria-label="Default select example" name="FiltrerSelon">
                           <option selected >Categorie: </option>
                           <option value="prix Le plus bas">Prix Le plus bas</option>
@@ -77,15 +70,15 @@
                         </select>
 
                         <button type="submit" class="btn btn-dark ms-3">Filtrer </button>
-                      
+
                       </div>
-                              
-                          
-                        
+
+
+
                       </form>
               </div> -->
           </div>
-  
+
           </div>
         </div>
       </div>
@@ -125,7 +118,7 @@
 
                                     </span>
 
-                                   
+
 
                                     <div>
 
@@ -137,14 +130,14 @@
                                         <!-- btn -->
                                      <div class="fs-3">
 
-                                     <i class="bi bi-patch-check-fill  fs-6"  style="color: green;"></i> <span class="text-success small fs-6"> certifiée </span> 
-                                    
+                                     <i class="bi bi-patch-check-fill  fs-6"  style="color: green;"></i> <span class="text-success small fs-6"> certifiée </span>
+
                                             <a href="/annonceDetail/{{$annonce_sponsorisers->slug}}"
                                                 class="btn btn-info btn-sm mt-1 float-end d-none d-sm-block  align-items-end">Voir
                                                 plus</a>
 
                                                 </div>
-                                    
+
                                     </div>
                                 </div>
                             </div>
@@ -264,7 +257,7 @@ $(document).ready(function() {
 
 
 <script>
-  
+
 var rechercheDivdemandez = document.getElementById('recherche_demandez');
 var resultatsDivdemandez = document.getElementById('search-results_demandez');
 

@@ -149,11 +149,9 @@
                             role="button" aria-controls="offcanvasRight" class="text-reset">
                             <div class="text-center">
                                 <div class="">
-                                    <i class="bi bi-cart2 fs-4"></i>
-
-
+                                    <i class="bi bi-patch-plus-fill text-primary fs-4"></i>
                                 </div>
-                                <p class="mb-0 d-none d-xl-block small">Shopping Cart</p>
+                                <p class="mb-0 d-none d-xl-block small">Publiez une annonces</p>
                             </div>
                         </a>
                     </div>
