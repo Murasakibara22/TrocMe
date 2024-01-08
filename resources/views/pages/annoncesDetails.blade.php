@@ -17,7 +17,7 @@
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
               <li class="breadcrumb-item"><a href="/troc">Troque</a></li>
               @foreach($annonce->souscat()->get()  as $souscats)
-                    
+
               <li class="breadcrumb-item active" aria-current="page">{{$souscats->libelle}}</li>
             </ol>
           </nav>
@@ -75,29 +75,29 @@
             <!-- content -->
             <a href="/searchAnnonceSouscat/{{$souscats->slug}}" class="mb-4 d-block">{{$souscats->libelle}}</a>
             <!-- heading -->
-            <h2 class="mb-1" style="font-family: poppins;"> {{$annonce->titre}} 
-          
+            <h2 class="mb-1" style="font-family: poppins;"> {{$annonce->titre}}
+
             @foreach($annonce->annonce_prenium()->get() as $annonce_sponso)
             @if(isset($annonce_sponso) && $annonce_sponso->date_fin >= date('Y-m-d') && $annonce_sponso->etat == 1 )
            <img src="{{ asset('../assets/images/premium.gif') }}" alt="">
             @endif
             @endforeach
-            
+
           </h2>
 
-          
-    
+
+
             <div class="fs-4 mt-4">
-              <!-- price --><span class="fw-bold text-dark">{{number_format($annonce->prix,0,',',' ')}} FCFA</span> 
+              <!-- price --><span class="fw-bold text-dark">{{number_format($annonce->prix,0,',',' ')}} FCFA</span>
             </div>
             <!-- hr -->
             <hr class="my-6">
 
 
-         
+
                 <!-- input -->
-               
-            
+
+
             </div>
 
             <div>
@@ -109,7 +109,7 @@
                             <td class="text-dark">Categorie :</td>
                             <td>{{$souscats->libelle}}</td>
 
-                          
+
 
                         </tr>
                         <tr>
@@ -117,16 +117,16 @@
                             @foreach($annonce->user()->get() as $utilisat)
                             <td>  <a href="{{ route('latestModel.index_page',$utilisat->slug) }}">{{$utilisat->prenom}} {{$utilisat->nom}}</a></td>
                                 @endforeach
-                             
+
                         </tr>
 
                         @foreach($annonce->user()->get() as $userStatus )
                         @if(isset($userStatus))
                         <tr>
                              <td  class="text-dark">Status :</td>
-                          
 
-                          @if( isset(Auth::user()->find($userStatus->id)) )
+
+                        @if( !is_null(Auth::user()->find($userStatus->id)) )
                           <td class="text-success">
                             En ligne <i class="bi bi-wifi-off fs-5"></i>
                           </td>
@@ -153,12 +153,12 @@
 
             </div>
 
-           
+
             <!-- hr -->
             <hr class="my-6">
-            
+
             <div class="mt-3 row justify-content-end g-2 align-items-center">
-            
+
             <div class="col-xxl-4 col-lg-4 col-md-5 col-5 d-grid">
               <!-- button -->
               @foreach($annonce->user()->get() as $utilisateur)
@@ -188,18 +188,18 @@
             </div>
 
 
-                
+
           </div>
           <!-- div pour l'alerte -->
                 <div class="mt-8">
                     <div class="ps-lg-10 mt-6 mt-md-0  rounded-3 p-3" style="background-color:#FBE58D ; font-family: poppins; box-shadow: 1px 3px 7px 2px;">
                             <!-- heading -->
                             <h5 class=" text-danger mt-8">ATTENTION AUX ARNAQUES ! COMMENT LES EVITER ?</h5>
-                    
+
                             <div class="fs-4 mt-4">
                                 <p style="font-size: 0.8rem; padding-right:5%; ">
                                             L'équipe Trock Moi surveille en permanence les annonces en général elle détecte rapidement les arnaqueurs ou spammeurs. Toutefois il arrive que certains d'entre eux passent entre les mailles du filet, et il convient d'être très prudent lors de vos transactions et échanges de messages. </br>
-                                            <ul style="font-size: 0.8rem;"> 
+                                            <ul style="font-size: 0.8rem;">
                                                 <li>Ne jamais envoyer d'argent </li>
                                                 <li>Ne jamais transmettre son numéro de carte bleue ou son RIB à un inconnu ou à une entreprise étrangère (par message privé, email, téléphone ou sur le site d'une entreprise).</li>
                                                 <li>N’envoyez jamais de copie de documents officiels (carte grise, pièces d’identité,)</li>
@@ -207,18 +207,18 @@
                                 </p>
                             </div>
                             <!-- hr -->
-                          
-                
+
+
                     </div>
                 </div>
         </div>
-                 
+
       </div>
-                  
+
     </div>
   </section>
 
-  
+
   <section class="mt-lg-4 ">
     <div class="container">
       <div class="row">
@@ -283,8 +283,8 @@
                           <a href="{{ route('latestModel.index_page',$utilisat->slug) }}">  <td>{{$utilisat->prenom}}</td></a>
                         </tr>
                         @endforeach
-                    
-                      
+
+
                       </tbody>
                     </table>
                   </div>
@@ -345,18 +345,18 @@
               <div class="card-body">
 
                 <div class="text-center position-relative ">
-                 
+
                   <a href="/annonceDetaildons/{{$annos->slug}}"> <img src="../images/Annonce/{{$annos->photo}}" alt="Troc moi"
                       class="mb-3 img-fluid"></a>
 
-                 
+
 
                 </div>
                 <div class="text-small mb-1"><a href="/annonceDetaildons/" class="text-decoration-none text-muted"><small>Abidjan</small></a></div>
                 <div style="height:19px;" class="overflow-hidden justify-content-between">
                 <h2 class="fs-6 "><a href="./pages/shop-single.html" class="text-inherit text-decoration-none">{{$annos->titre}}</a></h2>
                 </div>
-                
+
                 <div>
 
                 @if( date('j M, Y', strtotime($annos->created_at))  == $today )
@@ -366,7 +366,7 @@
                     @endif
                 </div>
                 <div class="d-flex justify-content-between align-items-center mt-3">
-                  <div><span class="text-dark">{{number_format($annos->prix,0,',',' ')}} FCFA</span> 
+                  <div><span class="text-dark">{{number_format($annos->prix,0,',',' ')}} FCFA</span>
                   </div>
                 </div>
                 <div><a href="/annonceDetaildons/" class="btn btn-outline-primary btn-sm mt-2  align-items-center">proposez </a></div>
@@ -382,9 +382,9 @@
                     </svg> PLUS D'ANNONCES <i class="feather-icon icon-arrow-right ms-1"></i></a></div>
       </div>
     </div>
-    
+
   </section>
-  
+
 
 </main>
 
@@ -540,7 +540,7 @@
                 </button>
               </div> -->
               <!-- <div>
-              
+
                 <div class="input-group input-spinner  ">
                   <input type="button" value="-" class="button-minus  btn  btn-sm " data-field="quantity">
                   <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field form-control-sm form-input   ">
@@ -550,7 +550,7 @@
               <div
                 class="mt-3 row justify-content-start g-2 align-items-center"
               >
-               
+
                 <div class="col-lg-4 col-md-5 col-6 d-grid">
                   <!-- button -->
                   <!-- btn -->
@@ -594,7 +594,7 @@
                       <td>Type:</td>
                       <td>Categorie type</td>
                     </tr>
-                   
+
                   </tbody>
                 </table>
               </div>

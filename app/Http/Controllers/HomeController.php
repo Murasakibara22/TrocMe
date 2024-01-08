@@ -28,6 +28,8 @@ class HomeController extends Controller
 
     function index(){
 
+        //  Annonces::where('type','vente')->Orwhere('type','Troque ou vente')->update(['type'=>'dons']);
+
 
         $category = Categorie::OrderBy('id','ASC')->get();
         $patenaire = Partenaire::all();
@@ -166,7 +168,7 @@ class HomeController extends Controller
     public function daiki(){
         $userSlug = Auth()->user()->slug;
         $user = User::where('slug',$userSlug)->first();
-                   
+
         if(!is_null($user)){
 
             $validity_souscrit_pro = User::query()
