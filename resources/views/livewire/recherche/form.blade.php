@@ -12,7 +12,7 @@
     <div class="list-group">
         @if(!is_null($annonceValue) && $annonceValue != "")
             @foreach ($annonceValue as $item)
-                <a href="#" class="list-group-item list-group-item-action" style="position: relative; z-index: 990;" >{{$item->titre}}</a>
+                <a href="/annonceDetail/{{$item->slug}}" class="list-group-item list-group-item-action" style="position: relative; z-index: 990;" >{{$item->titre}}</a>
             @endforeach
         @endif
     </div>

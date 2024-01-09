@@ -120,24 +120,7 @@
 
                         </tr>
 
-                        @foreach($annonce->user()->get() as $userStatus )
-                        @if(isset($userStatus))
-                        <tr>
-                             <td  class="text-dark">Status :</td>
-
-
-                        @if( !is_null(Auth::user()->find($userStatus->id)) )
-                          <td class="text-success">
-                            En ligne <i class="bi bi-wifi-off fs-5"></i>
-                          </td>
-                          @else
-                          <td class="text-danger">
-                            Hors ligne <i class="bi bi-wifi-off fs-5"></i>
-                          </td>
-                          @endif
-                        </tr>
-                        @endif
-                        @endforeach
+                    
                         <tr>
                             <td  class="text-dark">Type:</td>
                             <td>{{$annonce->type}}</td>

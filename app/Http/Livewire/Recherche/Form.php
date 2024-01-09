@@ -21,11 +21,8 @@ class Form extends Component
             }
             else
             {
-                $this->annonceValue = Annonces::where('type', "demandez")
+                $this->annonceValue = Annonces::where('type', $this->TypeAnnonce)
                 ->where('titre', 'like', '%'.$this->searchValue.'%')
-                ->orWhere('description', 'like', '%'.$this->searchValue.'%')
-                ->orWhere('prix', 'like', '%'.$this->searchValue.'%')
-                ->orWhere('lieu', 'like', '%'.$this->searchValue.'%')
                 ->orderBy('created_at', 'desc')
                 ->take(5)
                 ->get();
